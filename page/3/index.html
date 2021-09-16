@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永遠都在的倉庫">
+  <meta name="author" content="NALocal">
+  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
+  <meta name="referrer" content="no-referrer"/>
+  
+  <title>微笑之家</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Smile</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="你努不努力其實心裡都有數">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/12/12thDay12/" target="_self">
+          Day12 - Discord的訊息刪除與更新事件(額外)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/12/12thDay12/" target="_self">
+          
+          
+            
+          
+          欸…原本接下來想教後台託管與資料庫的教學的但因為筆者禮拜五把文稿跟圖片還有範例程式全都留在公司了…所以這兩天筆者先教一下其他東西
+就當作是惡補前面沒講到的Discord.js功能，我們今天來說說Discord.js的其他事件監聽吧
+
+刪除與更新事件目前我們的所有事件都是建立在使用者發送訊息 -&gt; Discord廣播給機器人 -&gt; 機器人的Message事件觸發
+1client.on(&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-12 23:26" pubdate>
+              2020-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/11/12thDay11/" target="_self">
+          Day11 - 音樂系統(2)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/11/12thDay11/" target="_self">
+          
+          
+            
+          
+          
+今天我們把剩下的功能做完
+繼續做之前，我們回顧一下音樂播放的其中一小段
+
+在playMusic2這段，我們將音樂網址與相關設定打入connection後，connection開始播放歌曲，並且返還控制項；我們宣告一個dispatcher來接收控制項，並且在下一行監聽finish事件
+從這一段會注意到他解決了一件事情，那就是我們該怎麼監測歌曲播放的狀態?
+dispatcher這個物件在被賦予後，可
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-11 09:05" pubdate>
+              2020-09-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/10/12thDay10/" target="_self">
+          Day10 - 音樂系統(1)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/10/12thDay10/" target="_self">
+          
+          
+            
+          
+          昨天我們把架構很籠統的說了大概今天的內容會專注在編程為主，discord.js的元素不會再多贅述可能會比較枯燥一點萬里長路始於足下，同學們加油~
+音樂總方法
+新增一個音樂系統的分類，然後在底下創建MusicFunction方法一併把OnMessage事件下的音樂指令導向這個方法這樣Message事件就不會因為我們的程式碼肥大，進而影響閱讀
+12345678910111213141516171819
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-10 09:03" pubdate>
+              2020-09-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/09/12thDay9/" target="_self">
+          Day9 - 註解摺疊與音樂系統介紹
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/09/12thDay9/" target="_self">
+          
+          
+            
+          
+          昨天我們把機器人的架構做了些修改，對功能做了分類今天我們稍微整理一下程式，並且說說音樂系統；如果正在觀看文章的小夥伴不需要音樂系統可以跳過接下來三天的內容，不會影響後續教學的!
+region
+開始寫音樂前，因為程式碼準備要開始增加了筆者先對所有程式做了分類#region#endregion被這兩段覆蓋的程式碼可以摺疊，摺疊後只看的到region後的字
+
+這個功能必須IDE有支援才可以使用，VSCo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-09 10:21" pubdate>
+              2020-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/08/12thDay8/" target="_self">
+          Day8 - 呃...他會需要更多前綴字
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/08/12thDay8/" target="_self">
+          
+          
+            
+          
+          昨天我們對message事件做了完善的前置判斷
+如果你做的跟範例一樣，這時我們可以在 ! 後面加入任何字串，來命令機器人做對應的事情
+假設之後機器人的指令不斷增加，除了單純的文字回覆，可能還會有查表，投票，管理員指令，權限控制與音樂功能等
+這種時候、比起單純的只使用!，機器人支援多種前綴詞顯然是更好的分類手段今天我們進一步修改昨天已經完善的message框架，並且做出音樂功能(假)
+
+首先，請幫我
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-08 09:07" pubdate>
+              2020-09-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/07/12thDay7/" target="_self">
+          Day7 - 你的Bot需要一個前綴字
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/07/12thDay7/" target="_self">
+          
+          
+            
+          
+          今天接續昨天的主題，進一步修改message方法
+正常我們在Discord上看到別人玩bot的指令都是有一個前綴字，後面附帶著指令的例如: !help $dice
+之類的，今天我們要來完成這個需求，並且把前置防呆做好
+
+(終於要開始來爆改啦)
+前置判斷除了判斷訊息是否是機器人以外，我希望機器人只回應來自群組的消息
+
+因為message物件屬於discord包好給我們的，擔心有哪一層物件的錯誤導致整
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 09:22" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/06/12thDay6/" target="_self">
+          Day6 - 防呆觀念
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/06/12thDay6/" target="_self">
+          
+          
+            
+          
+          昨天我們大致說明了關於bot.js的運作今天對library文檔做一些補充，以及程序防呆概念
+昨天我們介紹bot.js時，有提到client在監聽message事件時，會回傳一message物件
+
+我們將message物件取名為msg，並且從msg中撈出content來檢查訊息內容，用reply來回傳訊息到訊息原本的頻道。
+這些功能都可以從library文檔中找到，我們開啟昨天的discord.j
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 20:57" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/05/12thDay5/" target="_self">
+          Day5 - 函式庫文檔與基本範例講解
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/05/12thDay5/" target="_self">
+          
+          
+            
+          
+          昨天我們成功叫醒了自己的兒子/女兒
+在繼續教育小孩(增加功能)前，今天想說說昨天安裝的discord.js這個工具
+該怎麼使用，以及應用後的例子
+discord.js是node.js中的一個library，也就是其他人寫好的程式集我們可以安裝他人發佈的程式並且引用，進而降低開發的難度與作業性
+https://discord.js.org/#/
+這是discord.js的文檔庫，裡面有此庫作者撰寫的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-05 16:23" pubdate>
+              2020-09-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/04/12thDay4/" target="_self">
+          Day4 - 機器人的家
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/04/12thDay4/" target="_self">
+          
+          
+            
+          
+          昨天我們成功創建了自己的機器人並且加入群組
+
+可是機器人加入後怎麼都在睡覺，我怎麼找不到地方操作呢?
+那是因為我們昨天做的事情是在Discord申請一個機器人帳戶而已~就像我們的Discord帳戶需要透過Discord登入，Bot其實也需要登入喔
+不過Bot的登入路口是要”自己寫”的，今天我們就來叫機器人起床吧!
+
+環境安裝首先請確保你已經安裝
+Node.js安裝教學
+Node.js是我們機器人會
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-04 09:03" pubdate>
+              2020-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/03/12thDay3/" target="_self">
+          Day3 - 你自己的...他叫甚麼名字?
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/03/12thDay3/" target="_self">
+          
+          
+            
+          
+          今天來說說怎麼創建Bot
+建立DiscordBot，首先要有一個Discord帳號
+到這個網站
+登入帳號後，右上角會有一個[ New Application ]
+
+這邊的名字是”應用名稱”同時也會是預設的機器人名稱，仔細想好後就送出吧~
+
+送出後就會進來應用介面了
+點擊頭像可替換應用的大頭貼，名字就是你剛剛取的
+都設定好之後，我們點選左邊列表第三排的Bot
+
+第一次點應該會問你是否要建立，點選是這
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-03 09:22" pubdate>
+              2020-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

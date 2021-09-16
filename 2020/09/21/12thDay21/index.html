@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永遠都在的倉庫">
+  <meta name="author" content="NALocal">
+  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
+  <meta name="referrer" content="no-referrer"/>
+  
+  <title>Day21 - 認識GitHub - 微笑之家</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Smile</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Day21 - 認識GitHub">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-21 09:27" pubdate>
+        2020年9月21日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Day21 - 認識GitHub</h1>
+            
+            <div class="markdown-body">
+              <p>今天想先說該怎麼把專案推上github，可以順便複習與heroku配套的git指令</p>
+<p>heroku會用到git是因為heroku推程序這個動作跟github一樣，都是將專案推到網路上某個地方，推到github或heroku的差別而已</p>
+<p>既然如此，heroku理所當然也可以做到跟github一樣的事情<br>那又為什麼還要額外放在github呢?</p>
+<h1 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h1><p><img src="https://i.imgur.com/J0tiaEH.png" srcset="/img/loading.gif" lazyload alt="21-1"></p>
+<p>GitHub是基於Git語言的開源專案庫<br>他提供任何人將自己的程序打包成專案，透過Git推上GitHub進行開發&amp;版本紀錄<br>GitHub對開源有著良好的圖形介面支持，所有人都可以在GitHub上看到對方的專案，並且提出協作要求、讓多位工程師來協同完成一件專案</p>
+<p>一言以蔽之、將我們的機器人推上GitHub就像是展示你自己的作品，讓所有人都看的到你做過哪些東西，又是何時更新、更新了甚麼，是資訊人要讓人了解自己最快速的一步</p>
+<p>推GitHub專案雖然也要使用Git語言，但因為GitHub是圍繞著Git開發的網站，其對Git語言的支援十分強大，除了網站本身按一按就能把專案推上去以外，他還推出了專案管理的圖形使用者介面</p>
+<h1 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h1><p><a target="_blank" rel="noopener" href="https://desktop.github.com/">https://desktop.github.com/</a><br>請點擊連結並且下載GitHub Desktop</p>
+<p><img src="https://i.imgur.com/rIGrdAg.png" srcset="/img/loading.gif" lazyload alt="21-2"></p>
+<p>安裝完開啟後會要求你登入，請直接登入<br>可以選擇亮或暗主題<br>一開始會問你要不要直接新增專案，請拒絕，想辦法進到這個畫面 </p>
+<p><img src="https://i.imgur.com/1YNrkrT.png" srcset="/img/loading.gif" lazyload alt="21-3"></p>
+<p>點擊左上角，拉出Add下拉框，點開後有個Create new repository</p>
+<p><img src="https://i.imgur.com/ZAwEqcQ.png" srcset="/img/loading.gif" lazyload alt="21-4"></p>
+<p>這是新增一個新專案，點下去後他會先要你選擇本機上的路徑</p>
+<p><img src="https://i.imgur.com/bj3clLV.png" srcset="/img/loading.gif" lazyload alt="21-5"></p>
+<p>第一個是資料夾名稱，我們取DiscordBot<br>第二個是專案簡介，可以隨便寫、但注意不要太多，一行就好<br>第三個是路徑，請放在原專案外面<br>Initialize this repository with a README記得打勾<br>下面兩個是使用語言之類的，這部份GitHub上傳後會自動判斷，可以不管</p>
+<p>都好了之後我們按…..不對!還不能按Create repository!<br>我們先進到專案資料夾</p>
+<p><img src="https://i.imgur.com/G02dXTW.png" srcset="/img/loading.gif" lazyload alt="21-6"></p>
+<p>我們把.git資料夾改名成Herokugit<br>如果看不到.git資料夾請上網查一下怎麼看到隱藏資料夾</p>
+<p><img src="https://i.imgur.com/g4EsJIR.png" srcset="/img/loading.gif" lazyload alt="21-7"></p>
+<p>好了之後我們回去按Create repository<br>按完會發現資料夾內多了</p>
+<p>README.md<br>.gitattributes<br>.git</p>
+<p><img src="https://i.imgur.com/r8bUU7S.png" srcset="/img/loading.gif" lazyload alt="21-8"></p>
+<p>記得我們一開始建Heroku有提到嗎，只要是Git專案都會有.git檔案<br>因為使用Heroku的同時，他就是屬於Heroku的專案了，我們如果也要推上GitHub的話，就要先讓他不是Heroku的專案，不然會覆蓋掉!</p>
+<p>然後我們新增一個.gitignore，注意沒有副檔名喔</p>
+<p><img src="https://i.imgur.com/HWtBE6s.png" srcset="/img/loading.gif" lazyload alt="21-9"></p>
+<p><img src="https://i.imgur.com/JbUJatt.png" srcset="/img/loading.gif" lazyload alt="21-10"></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">auth<span class="hljs-selector-class">.json</span><br><span class="hljs-selector-class">.gitignore</span><br>Herokugit<br></code></pre></td></tr></table></figure>
+
+<p>這是給GitHub看的文件，可以讓GitHub在將專案commit前，選擇要忽略哪些檔案<br>我們的私密資料都在auth.json，所以auth.json自然不能推到任何人都能看得GitHub上<br>Herokugit是讓GitHub不會上傳到Heroku的.git檔案</p>
+<p><img src="https://i.imgur.com/CeXOZni.png" srcset="/img/loading.gif" lazyload alt="21-11"></p>
+<p>這時我們回到GitHubDesktop，可以看到左下角告訴你，專案commit好了，並且版號是init(初始化)</p>
+<p>在宣告一個新專案庫時，相當於他幫你下了</p>
+<p>git add .<br>git commit init</p>
+<p>這兩個指令，我們可以點左上角的history看到我們有哪些檔案被commit，只要等等再下push就會被推上網際網路</p>
+<p>那我們點一下右上角的Publish repository</p>
+<p><img src="https://i.imgur.com/8oMDTIu.png" srcset="/img/loading.gif" lazyload alt="21-12"></p>
+<p>第一次push時會有像這樣的提示框，他會二次確認你在GitHub上的專案要叫甚麼名字</p>
+<p>Keep this code private打勾的話，這個專案就會是私人的，只有你登錄帳號時看的見<br>我們希望程序是可以被人看見的，所以我們要把打勾取消掉</p>
+<p>好了之後我們點Publish repository，他就會開始上傳專案，第一次比較久，我們等一下，可以去到杯水再回來看看</p>
+<p><img src="https://i.imgur.com/2UQueAh.png" srcset="/img/loading.gif" lazyload alt="21-13"></p>
+<p>畫面長這樣就是成功了，左下角的commit消失(被推上去)</p>
+<p><img src="https://i.imgur.com/RZ42yiU.png" srcset="/img/loading.gif" lazyload alt="21-14"></p>
+<p>History可以看到我們的歷史版本，以及做了那些變動</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+                    
+                      <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> ，轉載請註明出處！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/20/12thDay20/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Day20 - GAS抓表(4)</span>
+                        <span class="visible-mobile">下一篇</span>
+                      </a>
+                    
+                  </article>
+				  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/22/12thDay22/">
+                        <span class="hidden-mobile">Day22 - 音樂系統的多群組化(額外)</span>
+                        <span class="visible-mobile">上一篇</span>
+						<i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script>
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css');
+          Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', function() {
+            new DisqusJS({
+              shortname: 'na-local',
+              apikey: ''
+            });
+          });
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

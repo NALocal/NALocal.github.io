@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永遠都在的倉庫">
+  <meta name="author" content="NALocal">
+  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
+  <meta name="referrer" content="no-referrer"/>
+  
+  <title>Day18 - GAS抓表(2) - 微笑之家</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Smile</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Day18 - GAS抓表(2)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-18 09:17" pubdate>
+        2020年9月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      819 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Day18 - GAS抓表(2)</h1>
+            
+            <div class="markdown-body">
+              <p>昨天我們在雲端上建好了試算表<br>將GAS發布成API的GET方法，只要我們訪問就能成功獲取試算表資料</p>
+<p>今天我們來寫點程式</p>
+<p>我們來回顧一下，目前機器人在Message下可以做到的事情</p>
+<ul>
+<li>文字回應</li>
+<li>音樂系統</li>
+</ul>
+<p>我們希望增加一個可以針對表格內容，動態觸發回應的功能<br>這種功能因為不會直接知道有哪些指令，應該要是沒有前綴字的，只要字串符合就會觸發</p>
+<p>由此可知，我們應該要將這個方法添加在所有功能的最底層<br>只有當前綴字都不符合時，才會來辨識表格資料</p>
+<p>觀念大致帶過，我們開始動手</p>
+<p>先幫我在專案目錄下建立一個Script資料夾，在裡面放一個GetGas.js</p>
+<p><img src="https://i.imgur.com/OJB3z4l.png" srcset="/img/loading.gif" lazyload alt="18-1"></p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs autoit">//<span class="hljs-meta">#<span class="hljs-meta-keyword">region</span> 全域引用</span><br><span class="hljs-keyword">const</span> auth = require(<span class="hljs-string">&#x27;../JSONHome/auth.json&#x27;</span>)<span class="hljs-comment">;</span><br><span class="hljs-keyword">const</span> request = require(<span class="hljs-string">&#x27;request&#x27;</span>)<span class="hljs-comment">;</span><br><br>//<span class="hljs-meta">#<span class="hljs-meta-keyword">endregion</span></span><br><br></code></pre></td></tr></table></figure>
+
+<p>裡面請先幫我引用auth.json跟request</p>
+<p>auth目前只有存放機器人的key，跟key一樣，我們不希望自己與GAS串接的API暴露&amp;寫死在程式裡面，所以之後要把連結寫在auth，之後透過auth來讀取連結<br>務必注意引用auth的路徑比bot.js多了一個點，這是因為GetGas.js要先從Script路徑出來才找的到JSONHome。</p>
+<p>request是提供給js的網路請求library，我們之後都會透過他來傳遞Get方法</p>
+<p><img src="https://i.imgur.com/pwcJ7OJ.png" srcset="/img/loading.gif" lazyload alt="18-2"></p>
+<p>auth.json目前的樣子</p>
+<p>在原本的Key後面加上一個逗號，然後新增Gas參數，內涵一個JsonObject{}<br>{}裡面再包一個Get參數，內涵一個JsonArray[]<br>第一個JsonObject內包一個baseExcel參數<br>baseExcel參數會帶回我們昨天做的API連結</p>
+<p>包三層是為了增加程式含意，方便之後閱讀<br>跟Get同一層之後可以再添加post等<br>不過Get原本是包JsonObject就好，這邊為了多介紹JsonArray所以用了，原本就會的同學可以少包Array</p>
+<p>這種架構下，如果我們要獲取Url就會是<br>auth.Gas.Get[0].baseExcel</p>
+<p><img src="https://i.imgur.com/YcsHJpa.png" srcset="/img/loading.gif" lazyload alt="18-3"></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span><span class="hljs-comment">#region 宣告請求</span><br>const baseExcel = &#123;<br>    <span class="hljs-string">&#x27;method&#x27;</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>    <span class="hljs-string">&#x27;url&#x27;</span>: auth.Gas.Get[<span class="hljs-number">0</span>].baseExcel,<br>    <span class="hljs-string">&#x27;headers&#x27;</span>: &#123;&#125;<br>&#125;;<br><br><span class="hljs-regexp">//</span><span class="hljs-comment">#endregion</span><br></code></pre></td></tr></table></figure>
+
+<p>再來我們宣告一個baseExcel常數，將http請求需要的參數帶給他<br>method表示我們使用的是Get方法<br>url就帶我們剛剛寫好的url<br>headers是傳送時的表頭，這邊放空值就好</p>
+<p><img src="https://i.imgur.com/8v4kmCE.png" srcset="/img/loading.gif" lazyload alt="18-4"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//#region 傳送請求</span><br><span class="hljs-built_in">exports</span>.getBaseExcel = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">userTalk, callback</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> backValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>    request(baseExcel, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response</span>) </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                callback(error);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(response.body); <span class="hljs-comment">//接收回傳(response)的body</span><br>                <span class="hljs-keyword">const</span> keysValue = <span class="hljs-built_in">Object</span>.keys(data); <span class="hljs-comment">//將JsonObject的key值輸出成Array</span><br>                <span class="hljs-comment">//迴圈判斷是否符合</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; keysValue.length; i++) &#123;<br>                    <span class="hljs-keyword">if</span> (data[keysValue[i]].NAME === userTalk) &#123;<br>                        callback(data[keysValue[i]].VALUE); <span class="hljs-comment">//正確回傳結果</span><br>                    &#125;<br>                &#125;<br>                callback(<span class="hljs-literal">false</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getBaseExcelError&#x27;</span>, err);<br>            callback(<span class="hljs-string">&#x27;getBaseExcelError&#x27;</span>);<br>        &#125;<br>    &#125;);<br>&#125;;<br><br><span class="hljs-comment">//#endregion</span><br></code></pre></td></tr></table></figure>
+
+<p>最後我們實際創建一個callback方法，供外部調用<br>http請求後，將回傳值定義為JSON給data<br>之後讓data跑迴圈，判斷message是否與表格的NAME欄相符<br>叫到名字的話，機器人就要回傳VALUE值</p>
+<p>這樣我們就把GetGas.js做好了，剩下bot.js呼叫與傳送訊息的部分<br>我們明天繼續</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+                    
+                      <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> ，轉載請註明出處！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/17/12thDay17/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Day17 - GAS抓表(1)</span>
+                        <span class="visible-mobile">下一篇</span>
+                      </a>
+                    
+                  </article>
+				  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/19/12thDay19/">
+                        <span class="hidden-mobile">Day19 - GAS抓表(3)</span>
+                        <span class="visible-mobile">上一篇</span>
+						<i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script>
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css');
+          Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', function() {
+            new DisqusJS({
+              shortname: 'na-local',
+              apikey: ''
+            });
+          });
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
