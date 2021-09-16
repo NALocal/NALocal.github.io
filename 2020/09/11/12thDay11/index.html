@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day9 - 註解摺疊與音樂系統介紹 - 微笑之家</title>
+  <title>Day11 - 音樂系統(2) - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day9 - 註解摺疊與音樂系統介紹">
+            <span class="h2" id="subtitle" title="Day11 - 音樂系統(2)">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-11 09:05" pubdate>
+        2020年9月11日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      751 字
+      803 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      10
        分钟
     </span>
   
@@ -225,49 +225,35 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day9 - 註解摺疊與音樂系統介紹</h1>
+            <h1 style="display: none">Day11 - 音樂系統(2)</h1>
             
             <div class="markdown-body">
-              <p>昨天我們把機器人的架構做了些修改，對功能做了分類<br>今天我們稍微整理一下程式，並且說說音樂系統；<br>如果正在觀看文章的小夥伴不需要音樂系統可以跳過接下來三天的內容，不會影響後續教學的!</p>
-<h1 id="region"><a href="#region" class="headerlink" title="region"></a>region</h1><p><img src="https://i.imgur.com/oZB8tKp.png" srcset="/img/loading.gif" lazyload alt="9-1"></p>
-<p>開始寫音樂前，因為程式碼準備要開始增加了<br>筆者先對所有程式做了分類<br>#region<br>#endregion<br>被這兩段覆蓋的程式碼可以摺疊，摺疊後只看的到region後的字</p>
-<p><img src="https://i.imgur.com/w6UlfLn.png" srcset="/img/loading.gif" lazyload alt="9-2"></p>
-<p>這個功能必須IDE有支援才可以使用，VSCode支援這個好用的收納方法，所以我們就好好利用一下!</p>
+              <p><img src="https://i.imgur.com/0pmzip7.png" srcset="/img/loading.gif" lazyload alt="11-1"></p>
+<p>今天我們把剩下的功能做完</p>
+<p>繼續做之前，我們回顧一下音樂播放的其中一小段</p>
+<p><img src="https://i.imgur.com/LxEyK0Q.png" srcset="/img/loading.gif" lazyload alt="11-2"></p>
+<p>在playMusic2這段，我們將音樂網址與相關設定打入connection後，connection開始播放歌曲，並且返還控制項；<br>我們宣告一個dispatcher來接收控制項，並且在下一行監聽finish事件</p>
+<p>從這一段會注意到他解決了一件事情，那就是我們該怎麼監測歌曲播放的狀態?</p>
+<p>dispatcher這個物件在被賦予後，可以直接當成是我們的遙控器<br>不管是監聽歌曲是不是播完了，還是調整音量&amp;咖歌等，都會需要調用dispatcher</p>
+<p>所以如果之後我們要繼續實作咖歌&amp;循環播放等功能，除了需要調用歌曲清單以外，還需要調用到dispatcher</p>
+<p><img src="https://i.imgur.com/pcZSGNK.png" srcset="/img/loading.gif" lazyload alt="11-3"></p>
+<p>這邊在音樂系統的最上方，將dispatcher宣告成全域變數<br>並且記得原本宣告dispatcher的const要拿掉!</p>
+<p>觀念說完，那我們繼續:</p>
+<h2 id="中斷歌曲"><a href="#中斷歌曲" class="headerlink" title="中斷歌曲"></a>中斷歌曲</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-comment">//?skip</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">skipMusic</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//將歌曲關閉，觸發finish事件</span><br>    <span class="hljs-keyword">if</span> (dispatcher !== <span class="hljs-literal">undefined</span>) dispatcher.end();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="重播歌曲"><a href="#重播歌曲" class="headerlink" title="重播歌曲"></a>重播歌曲</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>?replay<br><span class="hljs-keyword">function</span> replayMusic() &#123;<br>    <span class="hljs-keyword">if</span> (musicList.length &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-regexp">//</span>把當前曲目再推一個到最前面<br>        musicList.unshift(musicList[<span class="hljs-number">0</span>]);<br>        <span class="hljs-regexp">//</span>將歌曲關閉，觸發finish事件<br>        <span class="hljs-regexp">//</span>finish事件將清單第一首歌排出，然後繼續播放下一首<br>        <span class="hljs-keyword">if</span> (dispatcher !== undefined) dispatcher.end();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="顯示歌曲清單"><a href="#顯示歌曲清單" class="headerlink" title="顯示歌曲清單"></a>顯示歌曲清單</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//?queue</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queueShow</span>(<span class="hljs-params">channelID</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (musicList.length &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">let</span> info;<br>            <span class="hljs-keyword">let</span> message = <span class="hljs-string">&#x27;&#x27;</span>;<br>            <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; musicList.length; i++) &#123;<br>                <span class="hljs-comment">//從連結中獲取歌曲資訊 標題 總長度等</span><br>                info = <span class="hljs-keyword">await</span> ytdl.getInfo(musicList[i]);<br>                <span class="hljs-comment">//歌曲標題</span><br>                title = info.videoDetails.title;<br>                <span class="hljs-comment">//串字串</span><br>                message = message + <span class="hljs-string">`\n<span class="hljs-subst">$&#123;i+<span class="hljs-number">1</span>&#125;</span>. <span class="hljs-subst">$&#123;title&#125;</span>`</span>;<br>            &#125;<br>            <span class="hljs-comment">//把最前面的\n拿掉</span><br>            message = message.substring(<span class="hljs-number">1</span>, message.length);<br>            client.channels.fetch(channelID).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(message))<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;queueShowError&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="顯示當前歌曲"><a href="#顯示當前歌曲" class="headerlink" title="顯示當前歌曲"></a>顯示當前歌曲</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//?np</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nowPlayMusic</span>(<span class="hljs-params">channelID</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (dispatcher !== <span class="hljs-literal">undefined</span> &amp;&amp; musicList.length &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//從連結中獲取歌曲資訊 標題 總長度等</span><br>            <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> ytdl.getInfo(musicList[<span class="hljs-number">0</span>]);<br>            <span class="hljs-comment">//歌曲標題</span><br>            <span class="hljs-keyword">const</span> title = info.videoDetails.title;<br>            <span class="hljs-comment">//歌曲全長(s)</span><br>            <span class="hljs-keyword">const</span> songLength = info.videoDetails.lengthSeconds;<br>            <span class="hljs-comment">//當前播放時間(ms)</span><br>            <span class="hljs-keyword">const</span> nowSongLength = <span class="hljs-built_in">Math</span>.floor(dispatcher.streamTime / <span class="hljs-number">1000</span>);<br>            <span class="hljs-comment">//串字串</span><br>            <span class="hljs-keyword">const</span> message = <span class="hljs-string">`<span class="hljs-subst">$&#123;title&#125;</span>\n<span class="hljs-subst">$&#123;streamString(songLength,nowSongLength)&#125;</span>`</span>;<br>            client.channels.fetch(channelID).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(message))<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;nowPlayMusicError&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//▬▬▬▬▬▬▬▬▬?▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">streamString</span>(<span class="hljs-params">songLength, nowSongLength</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> mainText = <span class="hljs-string">&#x27;?&#x27;</span>;<br>    <span class="hljs-keyword">const</span> secondText = <span class="hljs-string">&#x27;▬&#x27;</span>;<br>    <span class="hljs-keyword">const</span> whereMain = <span class="hljs-built_in">Math</span>.floor((nowSongLength / songLength) * <span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">let</span> message = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">30</span>; i++) &#123;<br>        <span class="hljs-keyword">if</span> (i * <span class="hljs-number">3.3</span> + <span class="hljs-number">1</span> &gt;= whereMain) &#123;<br>            message = message + mainText;<br>            mainText = secondText;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            message = message + secondText;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> message;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <hr>
-<h1 id="函式庫安裝"><a href="#函式庫安裝" class="headerlink" title="函式庫安裝"></a>函式庫安裝</h1><p>那麼我們準備要開始音樂功能了喔!<br>在正式開始撰寫前，我們先開啟終端機<br>依序安裝<br>npm install ffmpeg-static<br>npm install opusscript<br>跟<br>npm install ytdl-core</p>
-<p><img src="https://i.imgur.com/zYAoHnj.png" srcset="/img/loading.gif" lazyload alt="9-3"></p>
-<p>記得路徑要在project的根目錄下</p>
-<p>這些都是discordBot要播放音樂時需要的插件<br>其中ytdl-core是後續抓取youtube歌曲的library，會需要透過程式來調用<br>所以安裝完之後，我們還要在最上面引用ytdl-core</p>
-<p><img src="https://i.imgur.com/zyCqZa8.png" srcset="/img/loading.gif" lazyload alt="9-4"></p>
-<p>這樣一來，撰寫音樂系統的前置作業都算完成了!<br>那麼接下來就該開始撰寫程式囉?nonono</p>
-<p>實際上我們在撰寫程式前應該先去參考網路上是否有重複的功能可以參考</p>
-<p>既然要寫音樂系統，那當然必需先參考其他人的音樂機器人是怎麼寫的囉!</p>
-<hr>
-<h1 id="音樂系統整理"><a href="#音樂系統整理" class="headerlink" title="音樂系統整理"></a>音樂系統整理</h1><p>Discord 教學 - 如何簡單加音樂機器人進伺服器 (Rythm)<br><a target="_blank" rel="noopener" href="https://fightwennote.blogspot.com/2018/06/discord-rythm.html">https://fightwennote.blogspot.com/2018/06/discord-rythm.html</a></p>
-<p>Rythm是筆者在研究音樂系統前，看過最多次的音樂Bot<br>Rythm的功能非常完善，觀察他的指令對於描繪心目中那個接收音樂指令的Bot架構十分有幫助</p>
-<p><img src="https://i.imgur.com/INTGTOT.png" srcset="/img/loading.gif" lazyload alt="9-5"></p>
-<p><img src="https://i.imgur.com/sIgLCsj.png" srcset="/img/loading.gif" lazyload alt="9-6"></p>
-<p>!play (網址)</p>
-<p>提供youtube音樂的網址，bot需判斷網址是否符合規範，是不是抓得到歌<br>並且判斷使用者是不是在語音頻道，一切都正常無誤後反饋音樂資訊並且播放歌曲</p>
-<p><img src="https://i.imgur.com/XNDlGTj.png" srcset="/img/loading.gif" lazyload alt="9-7"></p>
-<p>!replay</p>
-<p>輸入此指令後，讓歌曲重頭開始播放<br>與play一樣，如果使用者不在音樂頻道中，則此指令失效</p>
-<p><img src="https://i.imgur.com/rHmPN8m.png" srcset="/img/loading.gif" lazyload alt="9-8"></p>
-<p>!np </p>
-<p>顯示當前播放歌曲資訊</p>
-<p><img src="https://i.imgur.com/wqhXg2H.png" srcset="/img/loading.gif" lazyload alt="9-9"></p>
-<p>!queue</p>
-<p>顯示歌曲清單</p>
-<p><img src="https://i.imgur.com/mfzApM9.png" srcset="/img/loading.gif" lazyload alt="9-10"></p>
-<p>!skip</p>
-<p>跳過當前播放曲目</p>
-<hr>
-<p>其他還有循環播放，單曲循環，請機器人退出語音廳等…</p>
-<p>我們大概知道了，一個音樂系統需要<br>前綴詞(!)，表示我現在下的指令是音樂系統</p>
-<p>音樂指令(play)，表示我在音樂系統中要使用哪一個功能</p>
-<p>內容(xxx.com.tw)，不是一定會有，當指定功能需要參數時，我們需要給予他對應的內容</p>
-<p>間隔符號(空格) 用來將音樂指令與內容分隔開的決定性符號</p>
-<p><img src="https://i.imgur.com/J7cWTuc.png" srcset="/img/loading.gif" lazyload alt="9-11"></p>
+<p>這樣，我們的音樂系統的基本教學就告一段落</p>
+<p><img src="https://i.imgur.com/MUI4mAt.png" srcset="/img/loading.gif" lazyload alt="11-4"></p>
+<p><img src="https://i.imgur.com/4i1uqpf.png" srcset="/img/loading.gif" lazyload alt="11-5"></p>
+<p><img src="https://i.imgur.com/HBYoQl6.png" srcset="/img/loading.gif" lazyload alt="11-6"></p>
+<p>其實音樂功能除了本篇教學的基本以外，還有很多花樣可以玩<br>這個寫法有個很大的問題是，有多個群組同時在使用時，機器人的歌單會掛掉</p>
+<p>筆者明天想先說其他主題，音樂系統的教學先告一段落<br>因為繼續完善下去的話，程式的可讀性會降低，現在的音樂系統筆者認為是最純粹，最好理解的了<br>同學們不訪想想該怎麼完善這些問題，我們明天見~</p>
 
             </div>
             <hr>
@@ -287,17 +273,17 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
-                    
                       <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
                       <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
                     
                       <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-                    
-                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                   </div>
                 
@@ -314,9 +300,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay10/">
+                      <a href="/2020/09/12/12thDay12/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day10 - 音樂系統(1)</span>
+                        <span class="hidden-mobile">Day12 - Discord的訊息刪除與更新事件(額外)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -324,8 +310,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay8/">
-                        <span class="hidden-mobile">Day8 - 呃...他會需要更多前綴字</span>
+                      <a href="/2020/09/10/12thDay10/">
+                        <span class="hidden-mobile">Day10 - 音樂系統(1)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

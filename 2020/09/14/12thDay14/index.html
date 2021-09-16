@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day1 - 甚麼是DiscordBot? - 微笑之家</title>
+  <title>Day14 - Heroku與Git，介紹與安裝 - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day1 - 甚麼是DiscordBot?">
+            <span class="h2" id="subtitle" title="Day14 - Heroku與Git，介紹與安裝">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-14 14:10" pubdate>
+        2020年9月14日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      276 字
+      1.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      12
        分钟
     </span>
   
@@ -225,19 +225,73 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day1 - 甚麼是DiscordBot?</h1>
+            <h1 style="display: none">Day14 - Heroku與Git，介紹與安裝</h1>
             
             <div class="markdown-body">
-              <h2 id="DiscordBot-是…"><a href="#DiscordBot-是…" class="headerlink" title="DiscordBot 是…"></a>DiscordBot 是…</h2><p>DiscordBot顧名思義就是在Discord上運作的Bot<br>Discord是平台，Bot是機器人、也就是我們的程式</p>
+              <p>好勒，上禮拜我們終於把基本的音樂系統做好<br>現在你的機器人支援多種功能，加上你自己做的其他系統，已經是一個強大的機器人了!</p>
+<p>之後如果我要使用機器人，只要打開cmd運行node bot，然後電腦一直開著就好</p>
+<ul>
+<li>一直開著就好</li>
+<li>自己不在其他人就沒辦法使用bot</li>
+<li>程序如果掛掉要自已重啟</li>
+</ul>
+<p>其實這就是將自己的電腦做為後端主機在運行bot<br>而這方法對於平常沒有長時間開機習慣的使用者來說是略為有些負擔了<br>就算是順便開著也要擔心程式會不會自己崩潰跳閘</p>
+<p>也因此，今天我們就會來解決這個問題，同時也是終於能提到我們的主題啦</p>
 <hr>
-<h2 id="DiscordBot-可以做到…"><a href="#DiscordBot-可以做到…" class="headerlink" title="DiscordBot 可以做到…"></a>DiscordBot 可以做到…</h2><p>DiscordBot與一般Bot的不同正是他依附於Discord<br>即是說，他的主要目的在於跟Discord的互動<br>我在Discord上的行為被Bot接收-&gt;Bot再回饋結果給我</p>
-<p>聊天，天氣預測，播放音樂，查詢訊息…<br>廣泛來說，只要你是你會寫的東西，都可以塞進去實現(廢話)</p>
-<hr>
-<h2 id="如果我做一隻DiscordBot…"><a href="#如果我做一隻DiscordBot…" class="headerlink" title="如果我做一隻DiscordBot…"></a>如果我做一隻DiscordBot…</h2><p>Discord屬於時下流行的通訊軟體之一，不管是從事商業或是娛樂，Discord絕對是值得你嘗試接觸的</p>
-<p>得益於Discord提供豐富的功能，讓DiscordBot可以以簡單的程式碼做到複雜的事情，不管是為了完成需求亦或是學生想練手，都會是不錯的銜接題目</p>
-<hr>
-<h2 id="製作一隻DiscordBot會很困難嗎…"><a href="#製作一隻DiscordBot會很困難嗎…" class="headerlink" title="製作一隻DiscordBot會很困難嗎…"></a>製作一隻DiscordBot會很困難嗎…</h2><p>完全不會!製作一隻Bot是容易的，有教學更是事半功倍</p>
-<p>接下來30天內、本文會一步步教學各位該如何製作一隻DiscordBot。</p>
+<h1 id="後端0負擔"><a href="#後端0負擔" class="headerlink" title="後端0負擔"></a>後端0負擔</h1><p>一個面向使用者的服務都會有<br>一個前端視覺介面(Discord)<br>一個後端(bot.js)<br>再在後端的後面獨立出一個資料庫主機就更好了(SQL)</p>
+<p>後端0負擔的意思是我們不必再支付運行程序的電費等維護費用<br>那麼該怎麼做才能實現呢?其實也很簡單，我們把程序給其他人的電腦跑，讓他幫你管就好，也就是</p>
+<h3 id="雲端託管"><a href="#雲端託管" class="headerlink" title="雲端託管"></a>雲端託管</h3><p><img src="https://i.imgur.com/7OKEagE.png" srcset="/img/loading.gif" lazyload alt="14-1"></p>
+<p><a target="_blank" rel="noopener" href="https://www.heroku.com/">Heroku官方網站</a></p>
+<p>Heroku是支援多語言的全自動託管平台<br>只要將你的程序放上去並且做好相關設定，程序就會在他們的主機上自動運行</p>
+<h1 id="註冊Heroku帳號"><a href="#註冊Heroku帳號" class="headerlink" title="註冊Heroku帳號"></a>註冊Heroku帳號</h1><p>請先到<a target="_blank" rel="noopener" href="https://signup.heroku.com/login">這個網址</a>註冊帳號資訊</p>
+<p><img src="https://i.imgur.com/7PeESWm.png" srcset="/img/loading.gif" lazyload alt="14-2"></p>
+<p>First name姓<br>Last name名<br>Email Address信箱<br>Role職業<br>Primary Development Language開發語言</p>
+<p>基本上只要信箱跟開發語言沒打錯選錯就好，填好後我們直接送出</p>
+<p><img src="https://i.imgur.com/N7yKXIJ.png" srcset="/img/loading.gif" lazyload alt="14-3"></p>
+<p>到這個步驟就代表前面填的資料ok，請去收信</p>
+<p><img src="https://i.imgur.com/GeRJh01.png" srcset="/img/loading.gif" lazyload alt="14-4"></p>
+<p>點擊信中的連結</p>
+<p><img src="https://i.imgur.com/oVhFOKt.png" srcset="/img/loading.gif" lazyload alt="14-5"></p>
+<p>這邊他要你重複輸入密碼，需8碼，由英數符號組成</p>
+<p><img src="https://i.imgur.com/1PBEoJs.png" srcset="/img/loading.gif" lazyload alt="14-6"></p>
+<p>一路確認後就會來到這裡了<br>這裡是heroku的後台，左側是創建我們的應用程序專案，右側是成立小組</p>
+<p>不過我們通常會透過 Heroku CLI 來操作，所以不用管這兩個東東，我們繼續做</p>
+<h1 id="安裝Heroku-CLI"><a href="#安裝Heroku-CLI" class="headerlink" title="安裝Heroku CLI"></a>安裝Heroku CLI</h1><p>點擊<a target="_blank" rel="noopener" href="https://devcenter.heroku.com/articles/heroku-cli#windows">這個網址</a></p>
+<p>按照你的作業系統安裝對應的版本，通常是Windows 64-bit</p>
+<p><img src="https://i.imgur.com/j8Nhzgo.jpg" srcset="/img/loading.gif" lazyload alt="14-7"></p>
+<p>一路next就好，最後Close</p>
+<p>最後我們開啟終端機(cmd)，注意必須是重新開啟的cmd，安裝前已經開啟的不行<br>在上面輸入heroku<br><img src="https://i.imgur.com/Q5PDR5H.png" srcset="/img/loading.gif" lazyload alt="14-8"></p>
+<p>只要出現類似這樣的畫面就代表安裝成功了<br>如果沒有成功出現，可以先重開機看看，再不然可能是你的安裝版本有錯，電腦不是64位元等</p>
+<p>成功的話我們繼續輸入 heroku login</p>
+<p><img src="https://i.imgur.com/4riBzSS.png" srcset="/img/loading.gif" lazyload alt="14-9"></p>
+<p>在鍵盤上輸入除了q以外的按鍵 = 同意他開啟瀏覽器提供登入</p>
+<p><img src="https://i.imgur.com/hIbxrs0.png" srcset="/img/loading.gif" lazyload alt="14-10"></p>
+<p><img src="https://i.imgur.com/yUICBY3.png" srcset="/img/loading.gif" lazyload alt="14-11"></p>
+<p>chrome會自動打開，因為我們前面剛在heroku註冊，所以網頁還存著登入訊息，直接按Log In，回頭看cmd就會顯示登入成功了!</p>
+<p>這樣Heroku CLI就裝好了，我們再來安裝Git</p>
+<h1 id="Git安裝"><a href="#Git安裝" class="headerlink" title="Git安裝"></a>Git安裝</h1><p>Git是一種提供程式版本控制的語言，最常見的例子是GitHub<br>透過Git語言，我們可以將專案製作成Git專案，然後透過Git將程式推送到雲端，並且保證每個版本間的修改與來源都得到紀錄</p>
+<p>Heroku正是依循Git的規則來上傳下載程式</p>
+<p>點擊<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">這個網址</a></p>
+<p>一樣選擇對應的版本<br>安裝時的選項很多，請跟我底下的圖片選擇一樣</p>
+<p><img src="https://i.imgur.com/DprmCvj.jpg" srcset="/img/loading.gif" lazyload alt="14-12"></p>
+<p><img src="https://i.imgur.com/Y0z1v5M.jpg" srcset="/img/loading.gif" lazyload alt="14-13"></p>
+<p>路徑跟我不一樣沒關係，總之要照他預設給你的，不要改</p>
+<p><img src="https://i.imgur.com/MqCh8g0.jpg" srcset="/img/loading.gif" lazyload alt="14-14"> </p>
+<p><img src="https://i.imgur.com/jsvzoZd.jpg" srcset="/img/loading.gif" lazyload alt="14-15"></p>
+<p><img src="https://i.imgur.com/TlaJ0d8.jpg" srcset="/img/loading.gif" lazyload alt="14-16"></p>
+<p><img src="https://i.imgur.com/ME0BGhq.jpg" srcset="/img/loading.gif" lazyload alt="14-17"></p>
+<p><img src="https://i.imgur.com/NnHcvxN.jpg" srcset="/img/loading.gif" lazyload alt="14-18"></p>
+<p><img src="https://i.imgur.com/EJs2X40.jpg" srcset="/img/loading.gif" lazyload alt="14-19"></p>
+<p><img src="https://i.imgur.com/aw4G31d.jpg" srcset="/img/loading.gif" lazyload alt="14-20"></p>
+<p><img src="https://i.imgur.com/ZJTODzR.jpg" srcset="/img/loading.gif" lazyload alt="14-21"></p>
+<p>這樣就安裝好Git了，跟剛剛一樣，我們開一個新的cmd測試是否安裝成功</p>
+<p><img src="https://i.imgur.com/cG2Rs1B.png" srcset="/img/loading.gif" lazyload alt="14-22"></p>
+<p>失敗的話，除了版本問題以外，有可能是PATH檔不正確，可以拿這個keyword去排除問題試試看</p>
+<p>都沒問題的話，我們輸入以下兩個指令</p>
+<p>git config –global user.name “smile”<br>git config –global user.email “<a href="mailto:&#x61;&#50;&#56;&#x38;&#x32;&#54;&#50;&#53;&#50;&#x32;&#x35;&#x32;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x61;&#50;&#56;&#x38;&#x32;&#54;&#50;&#53;&#50;&#x32;&#x35;&#x32;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a>“</p>
+<p><img src="https://i.imgur.com/VMeScbF.png" srcset="/img/loading.gif" lazyload alt="14-23"></p>
+<p>這是設定你的使用者名稱與信箱<br>我的名稱是smile，你要改成你自己的稱呼，信箱與heroku一樣就可以了</p>
+<p>之後透過git推送時，都會以這個稱呼與信箱來識別<br>這樣Heroku跟Git的前置作業都做好了，明天將專案推上Heroku</p>
 
             </div>
             <hr>
@@ -284,15 +338,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/02/12thDay2/">
+                      <a href="/2020/09/15/12thDay15/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day2 - DiscordBot - 小愛麗絲</span>
+                        <span class="hidden-mobile">Day15 - Heroku架設&細部設定</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2020/09/13/12thDay13/">
+                        <span class="hidden-mobile">Day13 - 嵌入式訊息embed與 bot 的指令表(額外)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

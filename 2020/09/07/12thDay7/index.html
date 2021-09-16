@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day1 - 甚麼是DiscordBot? - 微笑之家</title>
+  <title>Day7 - 你的Bot需要一個前綴字 - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day1 - 甚麼是DiscordBot?">
+            <span class="h2" id="subtitle" title="Day7 - 你的Bot需要一個前綴字">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-07 09:22" pubdate>
+        2020年9月7日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      276 字
+      623 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      8
        分钟
     </span>
   
@@ -225,19 +225,33 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day1 - 甚麼是DiscordBot?</h1>
+            <h1 style="display: none">Day7 - 你的Bot需要一個前綴字</h1>
             
             <div class="markdown-body">
-              <h2 id="DiscordBot-是…"><a href="#DiscordBot-是…" class="headerlink" title="DiscordBot 是…"></a>DiscordBot 是…</h2><p>DiscordBot顧名思義就是在Discord上運作的Bot<br>Discord是平台，Bot是機器人、也就是我們的程式</p>
+              <p>今天接續昨天的主題，進一步修改message方法</p>
+<p>正常我們在Discord上看到別人玩bot的指令都是有一個前綴字，後面附帶著指令的<br>例如: !help $dice</p>
+<p>之類的，今天我們要來完成這個需求，並且把前置防呆做好</p>
+<p><img src="https://i.imgur.com/biTOOUy.png" srcset="/img/loading.gif" lazyload alt="7-1"></p>
+<p>(終於要開始來爆改啦)</p>
+<h2 id="前置判斷"><a href="#前置判斷" class="headerlink" title="前置判斷"></a>前置判斷</h2><p>除了判斷訊息是否是機器人以外，我希望機器人只回應來自群組的消息</p>
+<p><img src="https://i.imgur.com/aDj39xo.png" srcset="/img/loading.gif" lazyload alt="7-2"></p>
+<p>因為message物件屬於discord包好給我們的，擔心有哪一層物件的錯誤導致整個機器人崩潰，我希望在前置判斷增加嚴謹性與try catch</p>
+<p><img src="https://i.imgur.com/Ic1KoYn.png" srcset="/img/loading.gif" lazyload alt="7-3"></p>
+<p>如果這一段出錯的話，可以在catch中log錯誤訊息喔!</p>
+<h2 id="字串分析"><a href="#字串分析" class="headerlink" title="字串分析"></a>字串分析</h2><p>我們希望可以在定義出前置符號後，只接取來自前置符號正確的內容，再判斷後面的內容</p>
+<p><img src="https://i.imgur.com/PJZ8fnf.png" srcset="/img/loading.gif" lazyload alt="7-4"></p>
+<h2 id="功能實作"><a href="#功能實作" class="headerlink" title="功能實作"></a>功能實作</h2><p>最後我們把之前的行為修改一下後放回去實作區</p>
+<p><img src="https://i.imgur.com/kEshR77.png" srcset="/img/loading.gif" lazyload alt="7-5"></p>
+<p>從原本的if改成switch，這樣我們如果要新增新的判斷式就會快速許多<br>原本判斷的msg.content改成了cmd[0]</p>
+<p><img src="https://i.imgur.com/KWR5SHY.png" srcset="/img/loading.gif" lazyload alt="7-6"></p>
+<p>運行一下，結果就跟我們要的一樣了!</p>
+<p>最後再稍微加一些範例</p>
+<p><img src="https://i.imgur.com/Omv4wA5.png" srcset="/img/loading.gif" lazyload alt="7-7"><br><img src="https://i.imgur.com/Q3wnJHS.png" srcset="/img/loading.gif" lazyload alt="7-8"></p>
 <hr>
-<h2 id="DiscordBot-可以做到…"><a href="#DiscordBot-可以做到…" class="headerlink" title="DiscordBot 可以做到…"></a>DiscordBot 可以做到…</h2><p>DiscordBot與一般Bot的不同正是他依附於Discord<br>即是說，他的主要目的在於跟Discord的互動<br>我在Discord上的行為被Bot接收-&gt;Bot再回饋結果給我</p>
-<p>聊天，天氣預測，播放音樂，查詢訊息…<br>廣泛來說，只要你是你會寫的東西，都可以塞進去實現(廢話)</p>
-<hr>
-<h2 id="如果我做一隻DiscordBot…"><a href="#如果我做一隻DiscordBot…" class="headerlink" title="如果我做一隻DiscordBot…"></a>如果我做一隻DiscordBot…</h2><p>Discord屬於時下流行的通訊軟體之一，不管是從事商業或是娛樂，Discord絕對是值得你嘗試接觸的</p>
-<p>得益於Discord提供豐富的功能，讓DiscordBot可以以簡單的程式碼做到複雜的事情，不管是為了完成需求亦或是學生想練手，都會是不錯的銜接題目</p>
-<hr>
-<h2 id="製作一隻DiscordBot會很困難嗎…"><a href="#製作一隻DiscordBot會很困難嗎…" class="headerlink" title="製作一隻DiscordBot會很困難嗎…"></a>製作一隻DiscordBot會很困難嗎…</h2><p>完全不會!製作一隻Bot是容易的，有教學更是事半功倍</p>
-<p>接下來30天內、本文會一步步教學各位該如何製作一隻DiscordBot。</p>
+<p>今天的完整程式碼如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Discord = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;discord.js&#x27;</span>);<br><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Discord.Client();<br><span class="hljs-keyword">const</span> auth = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./auth.json&#x27;</span>);<br><br>client.login(auth.key);<br><br>client.on(<span class="hljs-string">&#x27;ready&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Logged in as <span class="hljs-subst">$&#123;client.user.tag&#125;</span>!`</span>);<br>&#125;);<br><br>client.on(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">msg</span> =&gt;</span> &#123;<br>    <span class="hljs-comment">//前置判斷</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (!msg.guild || !msg.member) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//訊息內不存在guild元素 = 非群組消息(私聊)</span><br>        <span class="hljs-keyword">if</span> (!msg.member.user) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//幫bot值多拉一層，判斷上層物件是否存在</span><br>        <span class="hljs-keyword">if</span> (msg.member.user.bot) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//訊息內bot值為正 = 此消息為bot發送</span><br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-comment">//字串分析</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">const</span> prefix = <span class="hljs-string">&#x27;!&#x27;</span> <span class="hljs-comment">//前綴符號定義</span><br>        <span class="hljs-keyword">if</span> (msg.content.substring(<span class="hljs-number">0</span>, prefix.length) === prefix) <span class="hljs-comment">//如果訊息的開頭~前綴字長度的訊息 = 前綴字</span><br>        &#123;<br>            <span class="hljs-keyword">const</span> cmd = msg.content.substring(prefix.length).split(<span class="hljs-string">&#x27; &#x27;</span>); <span class="hljs-comment">//以空白分割前綴以後的字串</span><br><br>            <span class="hljs-comment">//功能實作</span><br>            <span class="hljs-keyword">switch</span> (cmd[<span class="hljs-number">0</span>]) &#123;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ping&#x27;</span>:<br>                    msg.channel.send(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;老婆&#x27;</span>:<br>                    msg.reply(<span class="hljs-string">&#x27;你沒有老婆!!&#x27;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;myAvatar&#x27;</span>:<br>                    <span class="hljs-keyword">const</span> avatar = GetMyAvatar(msg);<br>                    <span class="hljs-keyword">if</span> (avatar.files) msg.channel.send(<span class="hljs-string">`<span class="hljs-subst">$&#123;msg.author&#125;</span>`</span>, avatar);<br>                    <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;OnMessageError&#x27;</span>, err);<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">//獲取頭像</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetMyAvatar</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-attr">files</span>: [&#123;<br>                <span class="hljs-attr">attachment</span>: msg.author.displayAvatarURL,<br>                <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;avatar.jpg&#x27;</span><br>            &#125;]<br>        &#125;;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;GetMyAvatar,Error&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>完工~!</p>
 
             </div>
             <hr>
@@ -284,15 +298,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/02/12thDay2/">
+                      <a href="/2020/09/08/12thDay8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day2 - DiscordBot - 小愛麗絲</span>
+                        <span class="hidden-mobile">Day8 - 呃...他會需要更多前綴字</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2020/09/06/12thDay6/">
+                        <span class="hidden-mobile">Day6 - 防呆觀念</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day8 - 呃...他會需要更多前綴字 - 微笑之家</title>
+  <title>Day4 - 機器人的家 - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day8 - 呃...他會需要更多前綴字">
+            <span class="h2" id="subtitle" title="Day4 - 機器人的家">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-04 09:03" pubdate>
+        2020年9月4日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      877 字
+      841 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      9
        分钟
     </span>
   
@@ -225,32 +225,46 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day8 - 呃...他會需要更多前綴字</h1>
+            <h1 style="display: none">Day4 - 機器人的家</h1>
             
             <div class="markdown-body">
-              <p>昨天我們對message事件做了完善的前置判斷</p>
-<p>如果你做的跟範例一樣，這時我們可以在 ! 後面加入任何字串，來命令機器人做對應的事情</p>
-<p>假設之後機器人的指令不斷增加，除了單純的文字回覆，可能還會有查表，投票，管理員指令，權限控制與音樂功能等</p>
-<p>這種時候、比起單純的只使用!，機器人支援多種前綴詞顯然是更好的分類手段<br>今天我們進一步修改昨天已經完善的message框架，並且做出音樂功能(假)</p>
+              <p>昨天我們成功創建了自己的機器人並且加入群組</p>
+<p><img src="https://i.imgur.com/4nFmZyM.png" srcset="/img/loading.gif" lazyload alt="4-1"></p>
+<p>可是機器人加入後怎麼都在睡覺，我怎麼找不到地方操作呢?</p>
+<p>那是因為我們昨天做的事情是在Discord申請一個機器人帳戶而已~<br>就像我們的Discord帳戶需要透過Discord登入，Bot其實也需要登入喔</p>
+<p>不過Bot的登入路口是要”自己寫”的，今天我們就來叫機器人起床吧!</p>
 <hr>
-<p>首先，請幫我在DiscordBot資料夾內新增一個JSONHome資料夾，把auth.json放進去，然後新增一個prefix.json檔</p>
-<p><img src="https://i.imgur.com/fW5erlr.png" srcset="/img/loading.gif" lazyload alt="8-1"><br><img src="https://i.imgur.com/0Io1ydQ.png" srcset="/img/loading.gif" lazyload alt="8-2"></p>
-<p>(prefix.json的內容)</p>
-<p>bot.js的最上方幫我加載prefix.json</p>
-<p><img src="https://i.imgur.com/0kIli9N.png" srcset="/img/loading.gif" lazyload alt="8-3"></p>
-<p>(auth.json的路徑記得也要一併修改喔!)</p>
+<h1 id="環境安裝"><a href="#環境安裝" class="headerlink" title="環境安裝"></a>環境安裝</h1><p>首先請確保你已經安裝</p>
+<p>Node.js<br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10199058">安裝教學</a></p>
+<p>Node.js是我們機器人會使用到的後端語言<br>Node.js屬於弱型別語言，相較於其他語言，Node.js編譯前的限制較少，寫起來通常會感到較為自由<br>不過如果對於自己寫的東西不夠了解，弱型別語言並不一定能幫你抓出問題，導致你的問題直到實際運行時才會發生；<br>所以使用Node.js時、知道自己寫的東西具備甚麼效果是重要的</p>
+<p>VSCode<br><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">下載路徑</a><br><a target="_blank" rel="noopener" href="https://wcc723.github.io/development/2019/12/01/vscode-chinese/">中文化教學</a></p>
+<p>VSCode是筆者愛用的編輯器<br>VSCode本身體積很小，同時又支援許多的擴充套件，上面的中文化教學正是其中之一<br>因此VSCode可以輕鬆的做到客製化，且不改變他的體積簡約。</p>
+<p>如果同學們原本就有在使用的編輯器，VSCode可以跳過不安裝</p>
 <hr>
-<p>我們把前綴字整理成了JSONArray物件<br>這樣一來，我們就做到了前綴字的統整，之後不管是新增或調用參數都會方便許多</p>
-<p>然後我們把下面的message事件改成這樣</p>
-<p><img src="https://i.imgur.com/m35t6Db.png" srcset="/img/loading.gif" lazyload alt="8-4"></p>
-<p>簡單來說就是從原本只判斷驚嘆號，變成只要前綴詞符合prefix.json內的任一Value就給過，並且由tempPrefix來接受符合條件的參數<br>同學們可以參考昨天的範例，來比對每一行的作用。</p>
-<p>做到這裡，我們已經可以判斷多種前綴了，不過還沒在實作區判斷成功的是哪一個前綴<br>原本我們打!ping，機器人會回pong<br>現在打@ping也會通過了，如果prefix.json內的值不是@而是#或$$#@#$@甚麼的也一樣，依此類推<br>切割字串的方式也是可以動態化的，不過筆者不在此贅述。<br>我們繼續完善後續判斷</p>
-<p><img src="https://i.imgur.com/wpLUo7R.png" srcset="/img/loading.gif" lazyload alt="8-5"></p>
-<p>這樣，如果使用者輸入!xxx，就會進入上方的文字回應功能<br>輸入@xxx，就會進入下方的音樂指令了</p>
-<p><img src="https://i.imgur.com/xB8Rpkt.png" srcset="/img/loading.gif" lazyload alt="8-6"></p>
-<hr>
-<p>音樂指令的部份我們明天繼續製作，以下是今天的完整程式碼:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Discord = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;discord.js&#x27;</span>);<br><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Discord.Client();<br><span class="hljs-keyword">const</span> auth = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./JSONHome/auth.json&#x27;</span>);<br><span class="hljs-keyword">const</span> prefix = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./JSONHome/prefix.json&#x27;</span>);<br><br>client.login(auth.key);<br><br>client.on(<span class="hljs-string">&#x27;ready&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Logged in as <span class="hljs-subst">$&#123;client.user.tag&#125;</span>!`</span>);<br>&#125;);<br><br>client.on(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">msg</span> =&gt;</span> &#123;<br>    <span class="hljs-comment">//前置判斷</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (!msg.guild || !msg.member) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//訊息內不存在guild元素 = 非群組消息(私聊)</span><br>        <span class="hljs-keyword">if</span> (!msg.member.user) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//幫bot值多拉一層，判斷上層物件是否存在</span><br>        <span class="hljs-keyword">if</span> (msg.member.user.bot) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//訊息內bot值為正 = 此消息為bot發送</span><br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-comment">//字串分析</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">let</span> tempPrefix = <span class="hljs-string">&#x27;-1&#x27;</span>;<br>        <span class="hljs-keyword">const</span> prefixED = <span class="hljs-built_in">Object</span>.keys(prefix); <span class="hljs-comment">//前綴符號定義</span><br>        prefixED.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>            <span class="hljs-keyword">if</span> (msg.content.substring(<span class="hljs-number">0</span>, prefix[element].Value.length) === prefix[element].Value) &#123;<br>                tempPrefix = element;<br>            &#125;<br>        &#125;);<br><br>        <span class="hljs-comment">//實作</span><br>        <span class="hljs-keyword">switch</span> (tempPrefix) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;0&#x27;</span>: <span class="hljs-comment">//文字回應功能</span><br>                <span class="hljs-keyword">const</span> cmd = msg.content.substring(prefix[tempPrefix].Value.length).split(<span class="hljs-string">&#x27; &#x27;</span>); <span class="hljs-comment">//以空白分割前綴以後的字串</span><br>                <span class="hljs-keyword">switch</span> (cmd[<span class="hljs-number">0</span>]) &#123;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ping&#x27;</span>:<br>                        msg.channel.send(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>                        <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;老婆&#x27;</span>:<br>                        msg.reply(<span class="hljs-string">&#x27;你沒有老婆!!&#x27;</span>);<br>                        <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;myAvatar&#x27;</span>:<br>                        <span class="hljs-keyword">const</span> avatar = GetMyAvatar(msg);<br>                        <span class="hljs-keyword">if</span> (avatar.files) msg.channel.send(<span class="hljs-string">`<span class="hljs-subst">$&#123;msg.author&#125;</span>`</span>, avatar).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123; <span class="hljs-built_in">console</span>.log(err) &#125;);<br>                        <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;1&#x27;</span>: <span class="hljs-comment">//音樂指令</span><br>                msg.channel.send(<span class="hljs-string">&#x27;music&#x27;</span>);<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;OnMessageError&#x27;</span>, err);<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">//獲取頭像</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetMyAvatar</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-attr">files</span>: [&#123;<br>                <span class="hljs-attr">attachment</span>: msg.author.displayAvatarURL(<span class="hljs-string">&#x27;png&#x27;</span>, <span class="hljs-literal">true</span>),<br>                <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;avatar.jpg&#x27;</span><br>            &#125;]<br>        &#125;;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;GetMyAvatar,Error&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="蓋一個機器人的家"><a href="#蓋一個機器人的家" class="headerlink" title="蓋一個機器人的家"></a>蓋一個機器人的家</h1><p>首先我們要先替機器人做一個”家”，我們先在自己喜歡的地方建一個資料夾，名字先取作DiscordBot就可以了</p>
+<p><img src="https://i.imgur.com/62P5P4i.png" srcset="/img/loading.gif" lazyload alt="4-2"></p>
+<p>一個機器人的家裡面，我們基本需要…<br>機器人的工具箱(node_modules)<br>機器人與工具箱的說明書(package.json)<br>一隻機器人本體(bot.js)<br>門牌號碼(auth.json)<br><img src="https://i.imgur.com/vohV8ms.png" srcset="/img/loading.gif" lazyload alt="4-3"></p>
+<p>像這樣子<br>(看到package-lock.json是你業障重，別刪掉也別管他)</p>
+<p>其中，node_modules跟package.json是透過node.js自動生成的，要生成這兩個東西，我們需要先在DiscordBot這個資料夾打開vscode</p>
+<p><img src="https://i.imgur.com/WP2M2GQ.png" srcset="/img/loading.gif" lazyload alt="4-4"><br><img src="https://i.imgur.com/FFxXcMQ.png" srcset="/img/loading.gif" lazyload alt="4-5"></p>
+<p>成功的話，左邊的路徑就會顯示資料夾名稱喔!<br>然後選擇上方的開啟終端機-&gt;新增終端<br>確認終端上面顯示的路徑是正確的後，在終端上面鍵入npm init</p>
+<p><img src="https://i.imgur.com/mZhlOAv.png" srcset="/img/loading.gif" lazyload alt="4-6"></p>
+<p>這是node的初始化行為<br>會要你輸入一些關於這個project的基本資料，之後輸出在package.json  </p>
+<p><img src="https://i.imgur.com/d095eIo.png" srcset="/img/loading.gif" lazyload alt="4-7"></p>
+<p>就像這樣!</p>
+<p>然後我們再手動創建bot.js檔與auth.json檔</p>
+<p><img src="https://i.imgur.com/gE4hfc7.png" srcset="/img/loading.gif" lazyload alt="4-8"></p>
+<p><img src="https://i.imgur.com/ObeweYi.png" srcset="/img/loading.gif" lazyload alt="4-9"></p>
+<p>如果說bot.js是機器人的本體，那auth.json就是機器人的內部授權碼<br>auth.json裡面的key代表的是機器人的啟動鑰匙，把鑰匙插進對應的地方才能啟動(有找到bot.js裡面有一行auth.key嗎?)</p>
+<p>這邊我們把昨天在bot頁存下來的key放到your key value裡面，注意不要刪掉””</p>
+<p>兩個檔案都創建好後記得存檔，我們回到終端機輸入<br>npm install discord.js</p>
+<p><img src="https://i.imgur.com/hbEYTK9.png" srcset="/img/loading.gif" lazyload alt="4-10"></p>
+<p><img src="https://i.imgur.com/nIETLkm.png" srcset="/img/loading.gif" lazyload alt="4-11"></p>
+<p>輸入 npm install discord.js後，node.js就會幫我們安裝discord.js這個工具<br>然後把檔案放在node_modules裡面，再到package.json底下紀錄我們使用了哪些工具</p>
+<p>沒問題的話，最後我們在終端機輸入node bot</p>
+<p><img src="https://i.imgur.com/yEANgJU.png" srcset="/img/loading.gif" lazyload alt="4-12"></p>
+<p><img src="https://i.imgur.com/1Q4C2Q4.png" srcset="/img/loading.gif" lazyload alt="4-13"></p>
+<p>成功!明天我們會再針對今天的程式碼做講解</p>
 
             </div>
             <hr>
@@ -270,17 +284,17 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
-                    
                       <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
                       <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
                     
                       <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-                    
-                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                   </div>
                 
@@ -297,9 +311,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay9/">
+                      <a href="/2020/09/05/12thDay5/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day9 - 註解摺疊與音樂系統介紹</span>
+                        <span class="hidden-mobile">Day5 - 函式庫文檔與基本範例講解</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -307,8 +321,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay7/">
-                        <span class="hidden-mobile">Day7 - 你的Bot需要一個前綴字</span>
+                      <a href="/2020/09/03/12thDay3/">
+                        <span class="hidden-mobile">Day3 - 你自己的...他叫甚麼名字?</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

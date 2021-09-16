@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day1 - 甚麼是DiscordBot? - 微笑之家</title>
+  <title>Day9 - 註解摺疊與音樂系統介紹 - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day1 - 甚麼是DiscordBot?">
+            <span class="h2" id="subtitle" title="Day9 - 註解摺疊與音樂系統介紹">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-09 10:21" pubdate>
+        2020年9月9日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      276 字
+      751 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      7
        分钟
     </span>
   
@@ -225,19 +225,49 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day1 - 甚麼是DiscordBot?</h1>
+            <h1 style="display: none">Day9 - 註解摺疊與音樂系統介紹</h1>
             
             <div class="markdown-body">
-              <h2 id="DiscordBot-是…"><a href="#DiscordBot-是…" class="headerlink" title="DiscordBot 是…"></a>DiscordBot 是…</h2><p>DiscordBot顧名思義就是在Discord上運作的Bot<br>Discord是平台，Bot是機器人、也就是我們的程式</p>
+              <p>昨天我們把機器人的架構做了些修改，對功能做了分類<br>今天我們稍微整理一下程式，並且說說音樂系統；<br>如果正在觀看文章的小夥伴不需要音樂系統可以跳過接下來三天的內容，不會影響後續教學的!</p>
+<h1 id="region"><a href="#region" class="headerlink" title="region"></a>region</h1><p><img src="https://i.imgur.com/oZB8tKp.png" srcset="/img/loading.gif" lazyload alt="9-1"></p>
+<p>開始寫音樂前，因為程式碼準備要開始增加了<br>筆者先對所有程式做了分類<br>#region<br>#endregion<br>被這兩段覆蓋的程式碼可以摺疊，摺疊後只看的到region後的字</p>
+<p><img src="https://i.imgur.com/w6UlfLn.png" srcset="/img/loading.gif" lazyload alt="9-2"></p>
+<p>這個功能必須IDE有支援才可以使用，VSCode支援這個好用的收納方法，所以我們就好好利用一下!</p>
 <hr>
-<h2 id="DiscordBot-可以做到…"><a href="#DiscordBot-可以做到…" class="headerlink" title="DiscordBot 可以做到…"></a>DiscordBot 可以做到…</h2><p>DiscordBot與一般Bot的不同正是他依附於Discord<br>即是說，他的主要目的在於跟Discord的互動<br>我在Discord上的行為被Bot接收-&gt;Bot再回饋結果給我</p>
-<p>聊天，天氣預測，播放音樂，查詢訊息…<br>廣泛來說，只要你是你會寫的東西，都可以塞進去實現(廢話)</p>
+<h1 id="函式庫安裝"><a href="#函式庫安裝" class="headerlink" title="函式庫安裝"></a>函式庫安裝</h1><p>那麼我們準備要開始音樂功能了喔!<br>在正式開始撰寫前，我們先開啟終端機<br>依序安裝<br>npm install ffmpeg-static<br>npm install opusscript<br>跟<br>npm install ytdl-core</p>
+<p><img src="https://i.imgur.com/zYAoHnj.png" srcset="/img/loading.gif" lazyload alt="9-3"></p>
+<p>記得路徑要在project的根目錄下</p>
+<p>這些都是discordBot要播放音樂時需要的插件<br>其中ytdl-core是後續抓取youtube歌曲的library，會需要透過程式來調用<br>所以安裝完之後，我們還要在最上面引用ytdl-core</p>
+<p><img src="https://i.imgur.com/zyCqZa8.png" srcset="/img/loading.gif" lazyload alt="9-4"></p>
+<p>這樣一來，撰寫音樂系統的前置作業都算完成了!<br>那麼接下來就該開始撰寫程式囉?nonono</p>
+<p>實際上我們在撰寫程式前應該先去參考網路上是否有重複的功能可以參考</p>
+<p>既然要寫音樂系統，那當然必需先參考其他人的音樂機器人是怎麼寫的囉!</p>
 <hr>
-<h2 id="如果我做一隻DiscordBot…"><a href="#如果我做一隻DiscordBot…" class="headerlink" title="如果我做一隻DiscordBot…"></a>如果我做一隻DiscordBot…</h2><p>Discord屬於時下流行的通訊軟體之一，不管是從事商業或是娛樂，Discord絕對是值得你嘗試接觸的</p>
-<p>得益於Discord提供豐富的功能，讓DiscordBot可以以簡單的程式碼做到複雜的事情，不管是為了完成需求亦或是學生想練手，都會是不錯的銜接題目</p>
+<h1 id="音樂系統整理"><a href="#音樂系統整理" class="headerlink" title="音樂系統整理"></a>音樂系統整理</h1><p>Discord 教學 - 如何簡單加音樂機器人進伺服器 (Rythm)<br><a target="_blank" rel="noopener" href="https://fightwennote.blogspot.com/2018/06/discord-rythm.html">https://fightwennote.blogspot.com/2018/06/discord-rythm.html</a></p>
+<p>Rythm是筆者在研究音樂系統前，看過最多次的音樂Bot<br>Rythm的功能非常完善，觀察他的指令對於描繪心目中那個接收音樂指令的Bot架構十分有幫助</p>
+<p><img src="https://i.imgur.com/INTGTOT.png" srcset="/img/loading.gif" lazyload alt="9-5"></p>
+<p><img src="https://i.imgur.com/sIgLCsj.png" srcset="/img/loading.gif" lazyload alt="9-6"></p>
+<p>!play (網址)</p>
+<p>提供youtube音樂的網址，bot需判斷網址是否符合規範，是不是抓得到歌<br>並且判斷使用者是不是在語音頻道，一切都正常無誤後反饋音樂資訊並且播放歌曲</p>
+<p><img src="https://i.imgur.com/XNDlGTj.png" srcset="/img/loading.gif" lazyload alt="9-7"></p>
+<p>!replay</p>
+<p>輸入此指令後，讓歌曲重頭開始播放<br>與play一樣，如果使用者不在音樂頻道中，則此指令失效</p>
+<p><img src="https://i.imgur.com/rHmPN8m.png" srcset="/img/loading.gif" lazyload alt="9-8"></p>
+<p>!np </p>
+<p>顯示當前播放歌曲資訊</p>
+<p><img src="https://i.imgur.com/wqhXg2H.png" srcset="/img/loading.gif" lazyload alt="9-9"></p>
+<p>!queue</p>
+<p>顯示歌曲清單</p>
+<p><img src="https://i.imgur.com/mfzApM9.png" srcset="/img/loading.gif" lazyload alt="9-10"></p>
+<p>!skip</p>
+<p>跳過當前播放曲目</p>
 <hr>
-<h2 id="製作一隻DiscordBot會很困難嗎…"><a href="#製作一隻DiscordBot會很困難嗎…" class="headerlink" title="製作一隻DiscordBot會很困難嗎…"></a>製作一隻DiscordBot會很困難嗎…</h2><p>完全不會!製作一隻Bot是容易的，有教學更是事半功倍</p>
-<p>接下來30天內、本文會一步步教學各位該如何製作一隻DiscordBot。</p>
+<p>其他還有循環播放，單曲循環，請機器人退出語音廳等…</p>
+<p>我們大概知道了，一個音樂系統需要<br>前綴詞(!)，表示我現在下的指令是音樂系統</p>
+<p>音樂指令(play)，表示我在音樂系統中要使用哪一個功能</p>
+<p>內容(xxx.com.tw)，不是一定會有，當指定功能需要參數時，我們需要給予他對應的內容</p>
+<p>間隔符號(空格) 用來將音樂指令與內容分隔開的決定性符號</p>
+<p><img src="https://i.imgur.com/J7cWTuc.png" srcset="/img/loading.gif" lazyload alt="9-11"></p>
 
             </div>
             <hr>
@@ -284,15 +314,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/02/12thDay2/">
+                      <a href="/2020/09/10/12thDay10/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day2 - DiscordBot - 小愛麗絲</span>
+                        <span class="hidden-mobile">Day10 - 音樂系統(1)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2020/09/08/12thDay8/">
+                        <span class="hidden-mobile">Day8 - 呃...他會需要更多前綴字</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

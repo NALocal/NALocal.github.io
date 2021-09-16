@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day5 - 函式庫文檔與基本範例講解 - 微笑之家</title>
+  <title>Day12 - Discord的訊息刪除與更新事件(額外) - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day5 - 函式庫文檔與基本範例講解">
+            <span class="h2" id="subtitle" title="Day12 - Discord的訊息刪除與更新事件(額外)">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-12 23:26" pubdate>
+        2020年9月12日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      599 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      7
        分钟
     </span>
   
@@ -225,52 +225,28 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day5 - 函式庫文檔與基本範例講解</h1>
+            <h1 style="display: none">Day12 - Discord的訊息刪除與更新事件(額外)</h1>
             
             <div class="markdown-body">
-              <p>昨天我們成功叫醒了自己的兒子/女兒</p>
-<p>在繼續教育小孩(增加功能)前，今天想說說昨天安裝的discord.js這個工具</p>
-<p>該怎麼使用，以及應用後的例子</p>
-<p>discord.js是node.js中的一個library，也就是其他人寫好的程式集<br>我們可以安裝他人發佈的程式並且引用，進而降低開發的難度與作業性</p>
-<p><a target="_blank" rel="noopener" href="https://discord.js.org/#/">https://discord.js.org/#/</a></p>
-<p>這是discord.js的文檔庫，裡面有此庫作者撰寫的使用說明，涵蓋了從以前到現在的發行版本，以及各種小細節</p>
-<p>進來後，我們點擊最下面的Get Started</p>
-<p><img src="https://i.imgur.com/lzlZZCz.png" srcset="/img/loading.gif" lazyload alt="5-1"></p>
-<p>左側是discord.js的可用資源與方法，預設會在welcome頁面，這裡會介紹discord.js的功能與基本知識，我們先往下拉到 Example usage</p>
-<p><img src="https://i.imgur.com/yAsK0m7.png" srcset="/img/loading.gif" lazyload alt="5-2"></p>
-<p>這是discord.js的基本範例，拿來跟昨天的bot.js比對一下，是不是完全一樣呢?<br>只是範例中的 client.login(‘token’); 被我拉上去了；</p>
-<p>這是因為在筆者的腦中，給機器人輸入key值是最優先的事情，再來依次進入ready(登入完成)-&gt;message(訊息接收)…不然各區塊的上下順序在這邊其實是沒有差別的。</p>
-<p><img src="https://i.imgur.com/JJAMzjd.png" srcset="/img/loading.gif" lazyload alt="5-3"></p>
-<p>下面說回來目前bot.js每一行的功效</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">const Discord</span> = require(<span class="hljs-string">&#x27;discord.js&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<p>這行的意思是引用discord.js這個工具，然後賦予到Discord這個常數(const)上<br>之後如果要引用discord.js的程式碼，都可以直接調用Discord來實現!</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Discord.<span class="hljs-built_in"><span class="hljs-built_in">Client</span></span>();<br></code></pre></td></tr></table></figure>
-<p>新宣告一個 Discord(discord.js)下的Client方法，然後將Client方法的結果賦予到client這個常數上<br>之後如果要引用discord.js底下的Client，可以直接呼叫client。</p>
-<p>這邊我們額外從Discord中拉出Client()是因為這個client是要用來當bot本體的，也就是我們的遙控器(x</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">const auth</span> = require(<span class="hljs-string">&#x27;./auth.json&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<p>引用同目錄(./)下的auth.json，賦予給auth這個常數<br>之後想調用auth.json底下的資源，可以直接呼叫auth。</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">client.log<span class="hljs-meta">in(</span>auth.<span class="hljs-meta">key</span>);<br></code></pre></td></tr></table></figure>
-<p>執行client的登入行為，登入的key我們放入bot的key</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">client.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;ready&#x27;</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(`<span class="javascript">Logged <span class="hljs-keyword">in</span> <span class="hljs-keyword">as</span> $&#123;client.user.tag&#125;!</span>`);<br>&#125;);<br></code></pre></td></tr></table></figure>
-<p>執行client的監聽(on)行為，要監聽的事件是ready(準備完成)<br>只要client收到ready事件，就執行右邊的箭頭函式( () =&gt; {} )<br>箭頭函式的內容為</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">console.log(`<span class="hljs-keyword">Logged</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">as</span> $&#123;client.<span class="hljs-keyword">user</span>.tag&#125;!`);<br></code></pre></td></tr></table></figure>
-<p>在控制台打印(console.log) 出字串 Logged in as ${client.user.tag}!<br>Logged in as就是單純的字串<br>其中client.user.tag，我們可以從小數點來了解到，user是client底下的一個可用變數，tag則是user底下的一個可用變數<br>最後輸出的結果就是機器人的名字與id<br>如果要仔細了解client的內容物，可以將console.log裡面的東西改成client看看</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart">client.<span class="hljs-keyword">on</span>(<span class="hljs-string">&#x27;message&#x27;</span>, msg =&gt; &#123;<br>    <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;ping&#x27;</span>) &#123;<br>        msg.reply(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-<p>監聽client的message(收到訊息)事件，觸發後執行箭頭函式 msg =&gt;{}</p>
-<p>這邊的msg是每當client收到message時，discord.js會給予我們的變數，我們將變數稱作msg<br>因為discord.js會回傳的變數是固定的，如果我們這邊像上面一樣寫成() =&gt; {}的話，雖然也可以執行但就不會將discord.js回傳的值再做處理。<br>反過來說，如果我們宣告了msg1跟msg2兩個變數來接回傳值，因為discord.js的message事件並沒有給我們這麼多參數，所以msg2是接收不到東西的</p>
-<p>那麼要怎麼知道message事件下到底回傳了哪些參數呢?<br>這就要用到剛剛說的discord.js使用說明書了</p>
-<p><a target="_blank" rel="noopener" href="https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message">https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message</a></p>
-<p><img src="https://i.imgur.com/mtq2Iqi.png" srcset="/img/loading.gif" lazyload alt="5-4"></p>
-<p>我們監聽message事件的說明在左側元素列表的client分類中的Events中可以找到，可以看到他回傳了 Message Type的變數，而這就是我們接收的內容。</p>
-<p>繼續說箭頭函數內要做的事情</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">if</span> (msg.content === <span class="hljs-string">&#x27;ping&#x27;</span>) &#123;<br>        <span class="hljs-selector-tag">msg</span><span class="hljs-selector-class">.reply</span>(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>    &#125;<br></code></pre></td></tr></table></figure>
-<p>當msg變數底下的content元素，等於ping字串時，執行方法</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">msg</span><span class="hljs-selector-class">.reply</span>(<span class="hljs-string">&#x27;pong&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<p>使用msg底下的replay方法，並傳入pong字串。</p>
-<p>以上的文言文翻譯過來就是<br>機器人(client)接收到訊息(message)的時候，去判斷訊息的內容(content)是不是ping<br>如果是，回傳pong(msg.reply)</p>
-<p><img src="https://i.imgur.com/ZZr9Cqx.png" srcset="/img/loading.gif" lazyload alt="5-5"></p>
-<p>先說到這，今天根據程式一行行做解釋，雖然很基本但對第一次觸碰這部分的人來說應該還是有點艱澀</p>
-<p>請自行斟酌閱讀即可，明天我們說說如何讓機器人變得更聰明。</p>
+              <p>欸…原本接下來想教後台託管與資料庫的教學的<br>但因為筆者禮拜五把文稿跟圖片還有範例程式全都留在公司了…所以這兩天筆者先教一下其他東西</p>
+<p>就當作是惡補前面沒講到的Discord.js功能，我們今天來說說Discord.js的其他事件監聽吧</p>
+<hr>
+<h1 id="刪除與更新事件"><a href="#刪除與更新事件" class="headerlink" title="刪除與更新事件"></a>刪除與更新事件</h1><p>目前我們的所有事件都是建立在<br>使用者發送訊息 -&gt; Discord廣播給機器人 -&gt; 機器人的Message事件觸發</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dart">client.<span class="hljs-keyword">on</span>(<span class="hljs-string">&#x27;message&#x27;</span>, msg =&gt; &#123;&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>我們的 bot 是使用登入了 bot 自身 keyValue 的 client 來監聽 message 事件的</p>
+<p><img src="https://i.imgur.com/qXdmhzO.png" srcset="/img/loading.gif" lazyload alt="12-1"><br><img src="https://i.imgur.com/hbkivnR.png" srcset="/img/loading.gif" lazyload alt="12-2"></p>
+<p>這樣，我們在Client下的Event分類中，就會找的到message的內容</p>
+<p>在程序中Client代表我們機器人本身，他的Event直接表示了他能對那些事情做出反應<br>也因此，Client的Event功能非常的多</p>
+<p>今天我們來說說MessageDelete跟MessageUpdate事件，也就是當有人刪除訊息跟更新訊息的時要做的事情</p>
+<p><img src="https://i.imgur.com/OZ84Nlj.png" srcset="/img/loading.gif" lazyload alt="12-3"><br><img src="https://i.imgur.com/FSfPNZq.png" srcset="/img/loading.gif" lazyload alt="12-4"></p>
+<p>Discord.js的文庫其實也蠻簡單的，不用看那些英文在說甚麼，透過事件名稱跟屬性已經足夠我們知道<br>當有人刪除留言時，Discord會將Message返還給我們<br>當有人更新留言時，Discord會將oldMessage跟newMessage</p>
+<p><img src="https://i.imgur.com/ouPctCU.png" srcset="/img/loading.gif" lazyload alt="12-5"></p>
+<p>請試著用console.log查看Discord分別給了我們甚麼內容吧!</p>
+<p>之後我們把屬性中我們需要的元素拿出來組成字串，發送到原本的頻道去</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//抓刪 刪除事件</span><br>client.on(<span class="hljs-string">&#x27;messageDelete&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">message</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (!message.guild) <span class="hljs-keyword">return</span>; <span class="hljs-comment">//只要是來自群組的訊息</span><br>    <span class="hljs-keyword">let</span> mStr = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-keyword">try</span>&#123;<br>        mStr = mStr+<br>            <span class="hljs-string">`事件 刪除\n`</span>+<br>            <span class="hljs-string">`使用者 <span class="hljs-subst">$&#123;message.member.user.username&#125;</span>\n`</span>+<br>            <span class="hljs-string">`群組 <span class="hljs-subst">$&#123;message.channel.name&#125;</span>\n`</span>+<br>            <span class="hljs-string">`刪除內容 <span class="hljs-subst">$&#123;message.content&#125;</span>`</span>;<br><br>        client.channels.get(message.channel.id).send(mStr);<br>    &#125;<span class="hljs-keyword">catch</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;messageDeleteError&quot;</span>,err);<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">//抓刪 更新事件</span><br>client.on(<span class="hljs-string">&#x27;messageUpdate&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">oldMessage, newMessage</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (!oldMessage.guild || !newMessage.guild) <span class="hljs-keyword">return</span>;<br>    mStr = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        mStr = mStr +<br>            <span class="hljs-string">`事件 更新\n`</span> +<br>            <span class="hljs-string">`使用者 <span class="hljs-subst">$&#123;oldMessage.member.user.username&#125;</span>\n`</span> +<br>            <span class="hljs-string">`群組   <span class="hljs-subst">$&#123;oldMessage.channel.name&#125;</span>\n`</span> +<br>            <span class="hljs-string">`舊對話 <span class="hljs-subst">$&#123;oldMessage.content&#125;</span>\n`</span> +<br>            <span class="hljs-string">`新對話 <span class="hljs-subst">$&#123;newMessage.content&#125;</span>`</span>;<br><br>        client.channels.get(oldMessage.channel.id).send(mStr);<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;messageUpdateError&#x27;</span>, err);<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>這樣，你的bot就會在頻道有人刪除訊息時接收訊息，然後把刪除的內容貼出來玩羞恥play了(</p>
 
             </div>
             <hr>
@@ -290,17 +266,17 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
-                    
                       <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
                       <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
                     
                       <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-                    
-                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                   </div>
                 
@@ -317,9 +293,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay6/">
+                      <a href="/2020/09/13/12thDay13/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day6 - 防呆觀念</span>
+                        <span class="hidden-mobile">Day13 - 嵌入式訊息embed與 bot 的指令表(額外)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -327,8 +303,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay4/">
-                        <span class="hidden-mobile">Day4 - 機器人的家</span>
+                      <a href="/2020/09/11/12thDay11/">
+                        <span class="hidden-mobile">Day11 - 音樂系統(2)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

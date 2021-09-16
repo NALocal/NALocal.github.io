@@ -18,7 +18,7 @@
   <meta name="author" content="NALocal">
   <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd">
   
-  <title>Day6 - 防呆觀念 - 微笑之家</title>
+  <title>Day5 - 函式庫文檔與基本範例講解 - 微笑之家</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Day6 - 防呆觀念">
+            <span class="h2" id="subtitle" title="Day5 - 函式庫文檔與基本範例講解">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-01 14:47" pubdate>
-        2020年9月1日 下午
+      <time datetime="2020-09-05 16:23" pubdate>
+        2020年9月5日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      906 字
+      1.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      13
        分钟
     </span>
   
@@ -225,41 +225,52 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Day6 - 防呆觀念</h1>
+            <h1 style="display: none">Day5 - 函式庫文檔與基本範例講解</h1>
             
             <div class="markdown-body">
-              <p>昨天我們大致說明了關於bot.js的運作<br>今天對library文檔做一些補充，以及程序防呆概念</p>
-<p>昨天我們介紹bot.js時，有提到client在監聽message事件時，會回傳一message物件</p>
-<p><img src="https://i.imgur.com/72h5m9a.png" srcset="/img/loading.gif" lazyload alt="6-1"></p>
-<p>我們將message物件取名為msg，並且從msg中撈出content來檢查訊息內容，用reply來回傳訊息到訊息原本的頻道。</p>
-<p>這些功能都可以從library文檔中找到，我們開啟昨天的discord.js文檔，然後在左側的功能列表中找到Message</p>
-<p><img src="https://i.imgur.com/UUCJ4Zw.png" srcset="/img/loading.gif" lazyload alt="6-2"></p>
-<p>這就是client監聽事件後帶回給我們的物件了，左側是變數，右側是方法<br>可以看到content在左側，在右側可以找到reply</p>
-<p>所以如果要對msg有進一步的調用，我們都必須來看文檔，了解這個library提供了哪些功能給開發者。</p>
-<p>在前面，我多次強調client監聽，獲得message事件這件事情<br>discord.js的功能使用是基於物件，也就是想做到甚麼事情、要先了解這件事情該調用哪個物件合適</p>
-<p><img src="https://i.imgur.com/g7wSDiK.png" srcset="/img/loading.gif" lazyload alt="6-3"></p>
-<p>這是我們昨天使用的回傳訊息的方式，也是discord.js包好給我們的方式</p>
-<p><img src="https://i.imgur.com/qsapj00.png" srcset="/img/loading.gif" lazyload alt="6-4"></p>
-<p>這是透過message物件獲得他所屬的channel(頻道)物件，再指定我要從這個channel底下send(發送)我要發送的訊息。</p>
-<p>除非原本要做的行為很簡單，以及需要tag訊息來源user，這種情況才會使用reply<br>不然正常我們是使用msg.channel.send，這種寫法就不會再在訊息前方自動tag使用者了，且傳入的內容也不局限於文字；<br>之後如果要新增甚麼功能，也都是依這個邏輯下去文檔尋找。</p>
-<hr>
-<p>讓我們回來到今天的主題，我們要稍微的修改一下我們的程式</p>
-<p><img src="https://i.imgur.com/gSQ2dXd.png" srcset="/img/loading.gif" lazyload alt="6-5"></p>
-<p>為了讓bot之後更好修改內容，我們將msg.reply統一改成msg.channel.send</p>
-<p><img src="https://i.imgur.com/rTgjNW0.png" srcset="/img/loading.gif" lazyload alt="6-6"></p>
-<p>眼尖的同學應該注意到了，筆者除了修改reply以外，還把pong改成ping了<br>這是為了後續的測試，同學們可以運行起來，看看效果</p>
-<p><img src="https://i.imgur.com/myPjROx.png" srcset="/img/loading.gif" lazyload alt="6-7"></p>
-<p>機器人的訊息傳送停不下來了!<br>這是因為機器人傳送訊息的同時，也代表著client會再接到一個message事件，這是機器人自己的訊息，同時他也觸發了機器人的下一個訊息回應，這就導致了無限迴圈</p>
-<p>同學們可以先在終端機上面用ctrl+c來強制中止程序<br><img src="https://i.imgur.com/vr8LN0C.png" srcset="/img/loading.gif" lazyload alt="6-8"></p>
-<p>那麼，我們該怎麼迴避這個問題呢?</p>
-<ul>
-<li>讓程序的回應不要跟判斷的句子一樣</li>
-<li>判斷訊息來源</li>
-</ul>
-<p>第一種作法就是說改成像之前一樣ping回pong<br>因為判斷與觸發的句子不一樣，就不會有問題了<br>但如果之後程序變得龐大，或是我們的觸發與回應句可以供其他人添加的話，第一種作法就會比較沒辦法達成我們的需求</p>
-<p>第二種作法就是在client監聽到message事件時，先判斷訊息來源是否符合條件，套在現在的問題的話就是我們要判斷是不是bot<br>這樣做，除了我們的程序不會再因為自己的話無限自閉以外，對於有多機器人的群組，也就不會去理會其他機器人的訊息了，大家各自服務。</p>
-<p><img src="https://i.imgur.com/tKiHz04.png" srcset="/img/loading.gif" lazyload alt="6-9"></p>
-<p>只要msg.member.user.bot這個參數是true，就代表訊息來自於機器人，不會再處理下面的事情，是不是很簡單呢?</p>
+              <p>昨天我們成功叫醒了自己的兒子/女兒</p>
+<p>在繼續教育小孩(增加功能)前，今天想說說昨天安裝的discord.js這個工具</p>
+<p>該怎麼使用，以及應用後的例子</p>
+<p>discord.js是node.js中的一個library，也就是其他人寫好的程式集<br>我們可以安裝他人發佈的程式並且引用，進而降低開發的難度與作業性</p>
+<p><a target="_blank" rel="noopener" href="https://discord.js.org/#/">https://discord.js.org/#/</a></p>
+<p>這是discord.js的文檔庫，裡面有此庫作者撰寫的使用說明，涵蓋了從以前到現在的發行版本，以及各種小細節</p>
+<p>進來後，我們點擊最下面的Get Started</p>
+<p><img src="https://i.imgur.com/lzlZZCz.png" srcset="/img/loading.gif" lazyload alt="5-1"></p>
+<p>左側是discord.js的可用資源與方法，預設會在welcome頁面，這裡會介紹discord.js的功能與基本知識，我們先往下拉到 Example usage</p>
+<p><img src="https://i.imgur.com/yAsK0m7.png" srcset="/img/loading.gif" lazyload alt="5-2"></p>
+<p>這是discord.js的基本範例，拿來跟昨天的bot.js比對一下，是不是完全一樣呢?<br>只是範例中的 client.login(‘token’); 被我拉上去了；</p>
+<p>這是因為在筆者的腦中，給機器人輸入key值是最優先的事情，再來依次進入ready(登入完成)-&gt;message(訊息接收)…不然各區塊的上下順序在這邊其實是沒有差別的。</p>
+<p><img src="https://i.imgur.com/JJAMzjd.png" srcset="/img/loading.gif" lazyload alt="5-3"></p>
+<p>下面說回來目前bot.js每一行的功效</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">const Discord</span> = require(<span class="hljs-string">&#x27;discord.js&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>這行的意思是引用discord.js這個工具，然後賦予到Discord這個常數(const)上<br>之後如果要引用discord.js的程式碼，都可以直接調用Discord來實現!</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Discord.<span class="hljs-built_in"><span class="hljs-built_in">Client</span></span>();<br></code></pre></td></tr></table></figure>
+<p>新宣告一個 Discord(discord.js)下的Client方法，然後將Client方法的結果賦予到client這個常數上<br>之後如果要引用discord.js底下的Client，可以直接呼叫client。</p>
+<p>這邊我們額外從Discord中拉出Client()是因為這個client是要用來當bot本體的，也就是我們的遙控器(x</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">const auth</span> = require(<span class="hljs-string">&#x27;./auth.json&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>引用同目錄(./)下的auth.json，賦予給auth這個常數<br>之後想調用auth.json底下的資源，可以直接呼叫auth。</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">client.log<span class="hljs-meta">in(</span>auth.<span class="hljs-meta">key</span>);<br></code></pre></td></tr></table></figure>
+<p>執行client的登入行為，登入的key我們放入bot的key</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">client.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;ready&#x27;</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(`<span class="javascript">Logged <span class="hljs-keyword">in</span> <span class="hljs-keyword">as</span> $&#123;client.user.tag&#125;!</span>`);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>執行client的監聽(on)行為，要監聽的事件是ready(準備完成)<br>只要client收到ready事件，就執行右邊的箭頭函式( () =&gt; {} )<br>箭頭函式的內容為</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">console.log(`<span class="hljs-keyword">Logged</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">as</span> $&#123;client.<span class="hljs-keyword">user</span>.tag&#125;!`);<br></code></pre></td></tr></table></figure>
+<p>在控制台打印(console.log) 出字串 Logged in as ${client.user.tag}!<br>Logged in as就是單純的字串<br>其中client.user.tag，我們可以從小數點來了解到，user是client底下的一個可用變數，tag則是user底下的一個可用變數<br>最後輸出的結果就是機器人的名字與id<br>如果要仔細了解client的內容物，可以將console.log裡面的東西改成client看看</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart">client.<span class="hljs-keyword">on</span>(<span class="hljs-string">&#x27;message&#x27;</span>, msg =&gt; &#123;<br>    <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;ping&#x27;</span>) &#123;<br>        msg.reply(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>監聽client的message(收到訊息)事件，觸發後執行箭頭函式 msg =&gt;{}</p>
+<p>這邊的msg是每當client收到message時，discord.js會給予我們的變數，我們將變數稱作msg<br>因為discord.js會回傳的變數是固定的，如果我們這邊像上面一樣寫成() =&gt; {}的話，雖然也可以執行但就不會將discord.js回傳的值再做處理。<br>反過來說，如果我們宣告了msg1跟msg2兩個變數來接回傳值，因為discord.js的message事件並沒有給我們這麼多參數，所以msg2是接收不到東西的</p>
+<p>那麼要怎麼知道message事件下到底回傳了哪些參數呢?<br>這就要用到剛剛說的discord.js使用說明書了</p>
+<p><a target="_blank" rel="noopener" href="https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message">https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message</a></p>
+<p><img src="https://i.imgur.com/mtq2Iqi.png" srcset="/img/loading.gif" lazyload alt="5-4"></p>
+<p>我們監聽message事件的說明在左側元素列表的client分類中的Events中可以找到，可以看到他回傳了 Message Type的變數，而這就是我們接收的內容。</p>
+<p>繼續說箭頭函數內要做的事情</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">if</span> (msg.content === <span class="hljs-string">&#x27;ping&#x27;</span>) &#123;<br>        <span class="hljs-selector-tag">msg</span><span class="hljs-selector-class">.reply</span>(<span class="hljs-string">&#x27;pong&#x27;</span>);<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>當msg變數底下的content元素，等於ping字串時，執行方法</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">msg</span><span class="hljs-selector-class">.reply</span>(<span class="hljs-string">&#x27;pong&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>使用msg底下的replay方法，並傳入pong字串。</p>
+<p>以上的文言文翻譯過來就是<br>機器人(client)接收到訊息(message)的時候，去判斷訊息的內容(content)是不是ping<br>如果是，回傳pong(msg.reply)</p>
+<p><img src="https://i.imgur.com/ZZr9Cqx.png" srcset="/img/loading.gif" lazyload alt="5-5"></p>
+<p>先說到這，今天根據程式一行行做解釋，雖然很基本但對第一次觸碰這部分的人來說應該還是有點艱澀</p>
+<p>請自行斟酌閱讀即可，明天我們說說如何讓機器人變得更聰明。</p>
 
             </div>
             <hr>
@@ -279,17 +290,17 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
-                    
                       <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
                     
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
                       <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
                     
                       <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-                    
-                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
                     
                   </div>
                 
@@ -306,9 +317,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay7/">
+                      <a href="/2020/09/06/12thDay6/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day7 - 你的Bot需要一個前綴字</span>
+                        <span class="hidden-mobile">Day6 - 防呆觀念</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -316,8 +327,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/01/12thDay5/">
-                        <span class="hidden-mobile">Day5 - 函式庫文檔與基本範例講解</span>
+                      <a href="/2020/09/04/12thDay4/">
+                        <span class="hidden-mobile">Day4 - 機器人的家</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
