@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>微笑之家</title>
+  
+  <subtitle>札記，心記</subtitle>
+  <link href="https://nalocal.github.io/blog/atom.xml" rel="self"/>
+  
+  <link href="https://nalocal.github.io/blog/"/>
+  <updated>2021-09-16T06:07:09.148Z</updated>
+  <id>https://nalocal.github.io/blog/</id>
+  
+  <author>
+    <name>NALocal</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你好，微笑之家</title>
+    <link href="https://nalocal.github.io/blog/2021/09/16/hello-smile/"/>
+    <id>https://nalocal.github.io/blog/2021/09/16/hello-smile/</id>
+    <published>2021-09-16T05:57:00.000Z</published>
+    <updated>2021-09-16T06:07:09.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="日記" scheme="https://nalocal.github.io/blog/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+    <category term="日記" scheme="https://nalocal.github.io/blog/tags/%E6%97%A5%E8%A8%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>沉沉入睡的回憶小姐，匆匆揚帆的時間先生</title>
+    <link href="https://nalocal.github.io/blog/2020/09/30/12thDayEnd/"/>
+    <id>https://nalocal.github.io/blog/2020/09/30/12thDayEnd/</id>
+    <published>2020-09-30T02:20:37.000Z</published>
+    <updated>2021-09-16T05:58:24.672Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    <category term="日記" scheme="https://nalocal.github.io/blog/categories/%E6%97%A5%E8%A8%98/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="日記" scheme="https://nalocal.github.io/blog/tags/%E6%97%A5%E8%A8%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day30 - tag控管機制(4)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/30/12thDay30/"/>
+    <id>https://nalocal.github.io/blog/2020/09/30/12thDay30/</id>
+    <published>2020-09-30T01:53:30.000Z</published>
+    <updated>2021-09-16T05:55:18.782Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day29 - tag控管機制(3)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/29/12thDay29/"/>
+    <id>https://nalocal.github.io/blog/2020/09/29/12thDay29/</id>
+    <published>2020-09-29T01:27:13.000Z</published>
+    <updated>2021-09-16T05:55:19.726Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day28 - tag控管機制(2)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/28/12thDay28/"/>
+    <id>https://nalocal.github.io/blog/2020/09/28/12thDay28/</id>
+    <published>2020-09-28T01:25:39.000Z</published>
+    <updated>2021-09-16T05:53:38.787Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day27 - tag控管 - 續行方法解說</title>
+    <link href="https://nalocal.github.io/blog/2020/09/27/12thDay27/"/>
+    <id>https://nalocal.github.io/blog/2020/09/27/12thDay27/</id>
+    <published>2020-09-27T07:59:10.000Z</published>
+    <updated>2021-09-16T05:53:15.971Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day26 - tag控管機制(1)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/26/12thDay26/"/>
+    <id>https://nalocal.github.io/blog/2020/09/26/12thDay26/</id>
+    <published>2020-09-26T01:54:26.000Z</published>
+    <updated>2021-09-16T05:52:38.223Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day25 - 權限系統規格</title>
+    <link href="https://nalocal.github.io/blog/2020/09/25/12thDay25/"/>
+    <id>https://nalocal.github.io/blog/2020/09/25/12thDay25/</id>
+    <published>2020-09-25T01:42:13.000Z</published>
+    <updated>2021-09-16T05:51:54.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day24 - 愛麗絲安靜!</title>
+    <link href="https://nalocal.github.io/blog/2020/09/24/12thDay24/"/>
+    <id>https://nalocal.github.io/blog/2020/09/24/12thDay24/</id>
+    <published>2020-09-24T02:58:46.000Z</published>
+    <updated>2021-09-16T05:51:01.088Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day23 - 音樂系統的歌單批量載入(額外)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/23/12thDay23/"/>
+    <id>https://nalocal.github.io/blog/2020/09/23/12thDay23/</id>
+    <published>2020-09-23T07:04:44.000Z</published>
+    <updated>2021-09-16T05:50:45.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day22 - 音樂系統的多群組化(額外)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/22/12thDay22/"/>
+    <id>https://nalocal.github.io/blog/2020/09/22/12thDay22/</id>
+    <published>2020-09-22T02:10:05.000Z</published>
+    <updated>2021-09-16T05:50:05.120Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day21 - 認識GitHub</title>
+    <link href="https://nalocal.github.io/blog/2020/09/21/12thDay21/"/>
+    <id>https://nalocal.github.io/blog/2020/09/21/12thDay21/</id>
+    <published>2020-09-21T01:27:40.000Z</published>
+    <updated>2021-09-16T05:48:46.930Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day20 - GAS抓表(4)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/20/12thDay20/"/>
+    <id>https://nalocal.github.io/blog/2020/09/20/12thDay20/</id>
+    <published>2020-09-20T02:26:24.000Z</published>
+    <updated>2021-09-16T05:48:09.216Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day19 - GAS抓表(3)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/19/12thDay19/"/>
+    <id>https://nalocal.github.io/blog/2020/09/19/12thDay19/</id>
+    <published>2020-09-19T12:00:43.000Z</published>
+    <updated>2021-09-16T05:47:29.088Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day18 - GAS抓表(2)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/18/12thDay18/"/>
+    <id>https://nalocal.github.io/blog/2020/09/18/12thDay18/</id>
+    <published>2020-09-18T01:17:51.000Z</published>
+    <updated>2021-09-16T05:46:32.084Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day17 - GAS抓表(1)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/17/12thDay17/"/>
+    <id>https://nalocal.github.io/blog/2020/09/17/12thDay17/</id>
+    <published>2020-09-17T01:48:31.000Z</published>
+    <updated>2021-09-16T05:45:57.088Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day16 - 選擇你的資料庫</title>
+    <link href="https://nalocal.github.io/blog/2020/09/16/12thDay16/"/>
+    <id>https://nalocal.github.io/blog/2020/09/16/12thDay16/</id>
+    <published>2020-09-16T01:10:15.000Z</published>
+    <updated>2021-09-16T05:44:47.251Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day15 - Heroku架設&amp;細部設定</title>
+    <link href="https://nalocal.github.io/blog/2020/09/15/12thDay15/"/>
+    <id>https://nalocal.github.io/blog/2020/09/15/12thDay15/</id>
+    <published>2020-09-15T10:20:11.000Z</published>
+    <updated>2021-09-16T04:47:33.437Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day14 - Heroku與Git，介紹與安裝</title>
+    <link href="https://nalocal.github.io/blog/2020/09/14/12thDay14/"/>
+    <id>https://nalocal.github.io/blog/2020/09/14/12thDay14/</id>
+    <published>2020-09-14T06:10:55.000Z</published>
+    <updated>2021-09-16T04:47:24.993Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day13 - 嵌入式訊息embed與 bot 的指令表(額外)</title>
+    <link href="https://nalocal.github.io/blog/2020/09/13/12thDay13/"/>
+    <id>https://nalocal.github.io/blog/2020/09/13/12thDay13/</id>
+    <published>2020-09-13T13:37:08.000Z</published>
+    <updated>2021-09-16T04:47:16.414Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+</feed>
