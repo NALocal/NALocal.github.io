@@ -2,5 +2,5 @@
   position: fixed;
   bottom: 20px;
   transition: background-color 0.2s ease-in-out, bottom 0.3s ease;
-  display: none
+  display: none;
 }

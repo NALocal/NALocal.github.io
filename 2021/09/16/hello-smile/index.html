@@ -392,7 +392,7 @@
 	
 	  <div class="col-lg-7 mx-auto nopadding-x-md">
 		<div class="container custom mx-auto">
-		   <script> $(document) .ajaxStart(function () { NProgress.start(); }) .ajaxStop(function () { NProgress.done(); }); $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000}); $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000}); </script> <script> $(document).ready(function(){ $(window).scroll(function(){ if ($(this).scrollTop() > 100) { $(".pagination").fadeIn(); } else { $(".pagination").fadeOut(); } }); }); </script> 
+		   
 		</div>
 	  </div>
 	
@@ -533,6 +533,31 @@
   
 
 
+
+
+<script>
+$(document)
+.ajaxStart(function () {
+NProgress.start();
+})
+.ajaxStop(function () {
+NProgress.done();
+});
+$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+</script>
+
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 50) {
+            $(".pagination").fadeIn();
+        } else {
+            $(".pagination").fadeOut();
+        }
+    });
+});
+</script>
 
 
 
