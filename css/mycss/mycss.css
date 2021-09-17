@@ -2,6 +2,7 @@
   position: fixed;
   bottom: 20px;
   transition: background-color 0.2s ease-in-out, bottom 0.3s ease;
+  background: var(--board-bg-color);
   display: none;
 }
 
