@@ -266,10 +266,12 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/page/4/#board">4</a><a class="extend next" rel="next" href="/archives/2020/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/archives/2020/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-
+  
+    <script type="text/javascript">$(".pagination a").each(function(){$(this)[0].href+="#board";})</script>
+  
 
 
 			  </div>
@@ -456,6 +458,11 @@ NProgress.start();
 })
 .ajaxStop(function () {
 NProgress.done();
+if ($(window).scrollTop() > 50) {
+	$(".pagination").fadeIn();
+} else {
+	$(".pagination").fadeOut();
+}
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
@@ -463,11 +470,6 @@ $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", 
 
 <script>
 $(document).ready(function(){
-	if ($(this).scrollTop() > 50) {
-		$(".pagination").fadeIn();
-	} else {
-		$(".pagination").fadeOut();
-	}
     $(window).scroll(function(){
         if ($(this).scrollTop() > 50) {
             $(".pagination").fadeIn();

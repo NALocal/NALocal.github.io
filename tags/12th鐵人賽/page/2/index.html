@@ -270,10 +270,12 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/page/3/#board">3</a><a class="page-number" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/page/4/#board">4</a><a class="extend next" rel="next" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/page/3/">3</a><a class="page-number" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/page/4/">4</a><a class="extend next" rel="next" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-
+  
+    <script type="text/javascript">$(".pagination a").each(function(){$(this)[0].href+="#board";})</script>
+  
 
 
 			  </div>
@@ -460,6 +462,11 @@ NProgress.start();
 })
 .ajaxStop(function () {
 NProgress.done();
+if ($(window).scrollTop() > 50) {
+	$(".pagination").fadeIn();
+} else {
+	$(".pagination").fadeOut();
+}
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
@@ -467,11 +474,6 @@ $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", 
 
 <script>
 $(document).ready(function(){
-	if ($(this).scrollTop() > 50) {
-		$(".pagination").fadeIn();
-	} else {
-		$(".pagination").fadeOut();
-	}
     $(window).scroll(function(){
         if ($(this).scrollTop() > 50) {
             $(".pagination").fadeIn();
