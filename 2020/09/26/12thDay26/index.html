@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永遠都在的倉庫">
+  <meta name="author" content="NALocal">
+  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd,微笑,微笑之家">
+  
+     <meta name="referrer" content="no-referrer"/> 
+  
+  <title>Day26 - tag控管機制(1) - 微笑之家</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mycss/mycss.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script  src="/js/jquery.min.js" ></script>
+  
+    <script  src="/js/jquery.pjax.min.js" ></script>
+  
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="微笑之家" type="application/atom+xml">
+</head>
+
+<body>
+  <header style="height: 70vh;">
+	<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>微笑之家</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文章
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+	<div class="banner" id="banner" parallax=true
+		 style="background: url('/img/banner2.jpg') no-repeat center center;
+		   background-size: cover;">
+	  <div class="full-bg-img">
+		<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+		  <div class="page-header text-center fade-in-up">
+			<span class="h2" id="subtitle" title="Day26 - tag控管機制(1)">
+			  
+			</span>
+
+			
+			  <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-26 09:54" pubdate>
+        2020年9月26日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+			
+		  </div>
+
+		  
+		</div>
+	  </div>
+	</div>
+  </header>
+
+  <main>
+	
+	  
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Day26 - tag控管機制(1)</h1>
+            
+            <div class="markdown-body">
+              <p>昨天我們描繪了權限系統的架構，今天來建立身份組環境</p>
+<p>打開我們之前的試算表，新增兩個table</p>
+<p><img src="https://i.imgur.com/uoHRTQ9.png" srcset="/img/loading.gif" lazyload alt="26-1"></p>
+<p>UserPower<br>代表成員table</p>
+<p>userID<br>discord的userID，主要用來辨識訊息方是否是此用戶</p>
+<p>userName<br>用處一樣不大，給人看的</p>
+<p>Joins<br>表示此用戶有哪些身份組的權限，筆者打算之後把所有身份都寫在這欄，用分號來做區隔</p>
+<p>IsAdmin<br>管理員開關，開啟後不做任何身份組判斷，可以使用任何功能</p>
+<p>下圖中，筆者的userID有E有+的，這是Excel自動給予的格式，可以在左上角看到實際數值，讀取時仍然是讀取165753385385984000，不用修改</p>
+<p><img src="https://i.imgur.com/2ilbHq9.png" srcset="/img/loading.gif" lazyload alt="26-2"></p>
+<p>PartyPower<br>代表身份組table</p>
+<p>ID<br>該身份組的ID，使用者透過這個ID來判斷自己有哪些權限</p>
+<p>type<br>代表這個身份組的類型<br>目前暫定1是禁言類身份組，2是tag權限身份組</p>
+<p>Power<br>代表實際可行駛的權限，會根據type的不同有不同的含意<br>在tag權限下，Power帶入tagID，代表可以行使此tag<br>這邊帶入Power的是身份組ID</p>
+<p><img src="https://i.imgur.com/uNgxfC1.png" srcset="/img/loading.gif" lazyload alt="26-3"></p>
+<p>教一下手動獲取身份組ID</p>
+<p>把人點開，對身份組右鍵</p>
+<p><img src="https://i.imgur.com/Z2t6akk.png" srcset="/img/loading.gif" lazyload alt="26-4"></p>
+<p>或是先拉出tag，然後在tag前方加上一個反斜線</p>
+<p><img src="https://i.imgur.com/vtlv8pE.png" srcset="/img/loading.gif" lazyload alt="26-5"></p>
+<p><img src="https://i.imgur.com/tlpvlge.png" srcset="/img/loading.gif" lazyload alt="26-6"></p>
+<p>如果以上操作遇到問題，甚至是UserID也抓不到<br>可以看一下<a target="_blank" rel="noopener" href="https://support.discord.com/hc/zh-tw/articles/206346498-%E6%88%91%E5%9C%A8%E5%93%AA%E8%A3%A1%E5%8F%AF%E4%BB%A5%E6%89%BE%E5%88%B0%E6%88%91%E7%9A%84%E7%94%A8%E6%88%B6-%E6%9C%8D%E5%8B%99%E5%99%A8-%E6%B6%88%E6%81%AFID-">這篇文章</a></p>
+<p>或是找找怎麼開啟Discord的開發者模式</p>
+<hr>
+<p>再來我們要新增兩個GAS檔案</p>
+<p><img src="https://i.imgur.com/L7WOiyD.png" srcset="/img/loading.gif" lazyload alt="26-7"></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> <span class="hljs-keyword">do</span><span class="hljs-constructor">Get(<span class="hljs-params">e</span>)</span> &#123;<br>  var id = &#x27;你的ID&#x27;; <span class="hljs-comment">//抓取表單</span><br>  var spreadsheet = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SpreadsheetApp</span>.</span></span><span class="hljs-keyword">open</span><span class="hljs-constructor">ById(<span class="hljs-params">id</span>)</span>; <span class="hljs-comment">// Sheet id</span><br>  var sheet = spreadsheet.get<span class="hljs-constructor">SheetByName(<span class="hljs-string">&quot;UserPower&quot;</span>)</span>; <span class="hljs-comment">// 根據表格名稱取表</span><br>  var rowLength = sheet.get<span class="hljs-constructor">LastRow()</span>-<span class="hljs-number">1</span>; <span class="hljs-comment">//取行長度</span><br>  var columnLength = sheet.get<span class="hljs-constructor">LastColumn()</span>; <span class="hljs-comment">//取列長度</span><br>  var data = sheet.get<span class="hljs-constructor">Range(2,1,<span class="hljs-params">rowLength</span>,<span class="hljs-params">columnLength</span>)</span>.get<span class="hljs-constructor">Values()</span>; <span class="hljs-comment">// 取得的資料</span><br>  <br>  var dataExport = <span class="hljs-literal">[]</span>;<br>  <br>  <span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> data)&#123;<br>    <span class="hljs-keyword">if</span>(data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">0</span>]</span> != <span class="hljs-string">&quot;&quot;</span>)&#123;<br>    dataExport<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = &#123;<br>      userID:     data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">0</span>]</span>,<br>      userName:   data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">1</span>]</span>,<br>      Joins:   data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">2</span>]</span>,<br>      IsAdmin: data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">3</span>]</span><br>      &#125;<br>    &#125;<br>  &#125;<br>  <br>  <br>  var dataExportFormat = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JSON</span>.</span></span>stringify(dataExport);<br>  return <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContentService</span>.</span></span>create<span class="hljs-constructor">TextOutput(<span class="hljs-params">dataExportFormat</span>)</span>.set<span class="hljs-constructor">MimeType(ContentService.MimeType.JSON)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/7P09NvS.png" srcset="/img/loading.gif" lazyload alt="26-8"></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> <span class="hljs-keyword">do</span><span class="hljs-constructor">Get(<span class="hljs-params">e</span>)</span> &#123;<br>  var id = &#x27;你的ID&#x27;; <span class="hljs-comment">//抓取表單</span><br>  var spreadsheet = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SpreadsheetApp</span>.</span></span><span class="hljs-keyword">open</span><span class="hljs-constructor">ById(<span class="hljs-params">id</span>)</span>; <span class="hljs-comment">// Sheet id</span><br>  var sheet = spreadsheet.get<span class="hljs-constructor">SheetByName(<span class="hljs-string">&quot;PartyPower&quot;</span>)</span>; <span class="hljs-comment">// 根據表格名稱取表</span><br>  var rowLength = sheet.get<span class="hljs-constructor">LastRow()</span>-<span class="hljs-number">1</span>; <span class="hljs-comment">//取行長度</span><br>  var columnLength = sheet.get<span class="hljs-constructor">LastColumn()</span>; <span class="hljs-comment">//取列長度</span><br>  var data = sheet.get<span class="hljs-constructor">Range(2,1,<span class="hljs-params">rowLength</span>,<span class="hljs-params">columnLength</span>)</span>.get<span class="hljs-constructor">Values()</span>; <span class="hljs-comment">// 取得的資料</span><br>  <br>  var dataExport = <span class="hljs-literal">[]</span>;<br>  <br>  <span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> data)&#123;<br>    <span class="hljs-keyword">if</span>(data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">0</span>]</span> != <span class="hljs-string">&quot;&quot;</span>)&#123;<br>    dataExport<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = &#123;<br>      ID:     data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">0</span>]</span>,<br>      <span class="hljs-keyword">type</span>:   data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">1</span>]</span>,<br>      Power:   data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-number">2</span>]</span><br>      &#125;<br>    &#125;<br>  &#125;<br>  <br>  <br>  var dataExportFormat = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JSON</span>.</span></span>stringify(dataExport);<br>  return <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContentService</span>.</span></span>create<span class="hljs-constructor">TextOutput(<span class="hljs-params">dataExportFormat</span>)</span>.set<span class="hljs-constructor">MimeType(ContentService.MimeType.JSON)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>記得都要存檔後，發佈成網路應用，獲取URL</p>
+<p><img src="https://i.imgur.com/iohSLWG.png" srcset="/img/loading.gif" lazyload alt="26-9"></p>
+<p>(之前示範JSONArray的[]，可以拿掉)<br>跟baseExcel一樣，我們會希望bot在啟動時就把表都讀取進來，從雲端下載成本地db的感覺，順便做資料二次處理</p>
+<p><img src="https://i.imgur.com/s3bibHM.png" srcset="/img/loading.gif" lazyload alt="26-10"></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs routeros">const userPower = &#123;<br>    <span class="hljs-string">&#x27;method&#x27;</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>    <span class="hljs-string">&#x27;url&#x27;</span>: auth.Gas.<span class="hljs-builtin-name">Get</span>[0].UserPower,<br>    <span class="hljs-string">&#x27;headers&#x27;</span>: &#123;&#125;<br>&#125;;<br><br>const partyPower = &#123;<br>    <span class="hljs-string">&#x27;method&#x27;</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>    <span class="hljs-string">&#x27;url&#x27;</span>: auth.Gas.<span class="hljs-builtin-name">Get</span>[0].PartyPower,<br>    <span class="hljs-string">&#x27;headers&#x27;</span>: &#123;&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/hykI0wE.png" srcset="/img/loading.gif" lazyload alt="26-11"></p>
+<p><img src="https://i.imgur.com/2K8yobJ.png" srcset="/img/loading.gif" lazyload alt="26-12"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">exports</span>.getUserPower = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">callback</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> backValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>    request(userPower, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response</span>) </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getUserPowerError1&#x27;</span>, error);<br>                callback(<span class="hljs-literal">false</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(response.body); <span class="hljs-comment">//接收回傳(response)的body</span><br>                <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> data) &#123;<br>                    backValue.push(data[i]);<br>                    backValue[i].Joins = backValue[i].Joins.split(<span class="hljs-string">&#x27;;&#x27;</span>);<br>                &#125;<br>                callback(backValue);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getUserPowerError2&#x27;</span>, err);<br>            callback(<span class="hljs-literal">false</span>);<br>        &#125;<br>    &#125;);<br>&#125;;<br><br><span class="hljs-built_in">exports</span>.getPartyPower = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">callback</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> backValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>    request(partyPower, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response</span>) </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getPartyPowerError1&#x27;</span>, error);<br>                callback(<span class="hljs-literal">false</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(response.body); <span class="hljs-comment">//接收回傳(response)的body</span><br>                <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> data) &#123;<br>                    backValue.push(data[i]);<br>                    backValue[i].Power = backValue[i].Power.split(<span class="hljs-string">&#x27;;&#x27;</span>);<br>                &#125;<br>                callback(backValue);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getPartyPowerError2&#x27;</span>, err);<br>            callback(<span class="hljs-literal">false</span>);<br>        &#125;<br>    &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/PEI3XAU.png" srcset="/img/loading.gif" lazyload alt="26-13"></p>
+<p>(開始變成callback地獄了)</p>
+<p>資料都接到也處理好了，再來要用這些資料實作功能</p>
+<p>增加指令列表的一個新系統</p>
+<p><img src="https://i.imgur.com/8g2yKAQ.png" srcset="/img/loading.gif" lazyload alt="26-14"></p>
+<p>在message事件新增入口</p>
+<p><img src="https://i.imgur.com/5k6UBOp.png" srcset="/img/loading.gif" lazyload alt="26-15"></p>
+<p>然後做出實際功能</p>
+<p><img src="https://i.imgur.com/f4FEeTh.png" srcset="/img/loading.gif" lazyload alt="26-16"></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//#region tag系統</span><br><span class="hljs-keyword">function</span> <span class="hljs-constructor">TagFunction(<span class="hljs-params">msg</span>, <span class="hljs-params">tempPrefix</span>)</span> &#123;<br>    const cmd = msg.content.substring(prefix<span class="hljs-literal">[<span class="hljs-identifier">tempPrefix</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Value</span>.</span></span>length).split(<span class="hljs-character">&#x27; &#x27;</span>); <span class="hljs-comment">//以空白分割前綴以後的字串</span><br><br>    switch (cmd<span class="hljs-literal">[<span class="hljs-number">0</span>]</span>) &#123;<br>        case &#x27;其餘指令&#x27;:<br>            break;<br>        default: <span class="hljs-comment">//身份組ID</span><br>            <span class="hljs-constructor">CheckID(<span class="hljs-params">msg</span>, <span class="hljs-params">cmd</span>, CheckParty)</span>;<br>            break;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//判斷此人有沒有登記資料</span><br><span class="hljs-keyword">function</span> <span class="hljs-constructor">CheckID(<span class="hljs-params">msg</span>, <span class="hljs-params">cmd</span>, OtherFunction)</span> &#123;<br>    const haveUserData = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">UserPowerData</span>.</span></span>find(element =&gt; &#123;<br>        return element.userID<span class="hljs-operator"> == </span>msg.author.id;<br>    &#125;)<br><br>    <span class="hljs-keyword">if</span> (haveUserData !== undefined) &#123;<br>        <span class="hljs-comment">//有資料</span><br>        <span class="hljs-keyword">if</span> (haveUserData.IsAdmin) &#123;<br>            <span class="hljs-comment">//是管理員，直接做後續事情</span><br>            return <span class="hljs-constructor">SendTagMessage(<span class="hljs-params">msg</span>, `&lt;@&amp;$&#123;<span class="hljs-params">cmd</span>[1]&#125;&gt;\<span class="hljs-params">n</span>來自管理員&lt;@$&#123;<span class="hljs-params">msg</span>.<span class="hljs-params">author</span>.<span class="hljs-params">id</span>&#125;&gt;的指令呼叫`)</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">//不是管理員，先看有甚麼群組</span><br>            return <span class="hljs-constructor">OtherFunction(<span class="hljs-params">msg</span>, <span class="hljs-params">cmd</span>, <span class="hljs-params">haveUserData</span>)</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//根據UserPower獲得Party</span><br><span class="hljs-keyword">function</span> <span class="hljs-constructor">CheckParty(<span class="hljs-params">msg</span>, <span class="hljs-params">cmd</span>, <span class="hljs-params">haveUserData</span>)</span> &#123;<br>    <span class="hljs-keyword">let</span> havePartyPower;<br>    havePartyPower = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PartyPowerData</span>.</span></span>filter(element =&gt; &#123;<br>        <span class="hljs-keyword">if</span> (haveUserData.Joins<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>.index<span class="hljs-constructor">Of(<span class="hljs-params">element</span>.ID)</span> != -<span class="hljs-number">1</span>) &#123;<br>            return element.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Power</span>.</span></span>index<span class="hljs-constructor">Of(<span class="hljs-params">cmd</span>[1])</span> != -<span class="hljs-number">1</span><br>        &#125;<br>    &#125;)<br><br>    <span class="hljs-keyword">if</span> (is<span class="hljs-constructor">EmptyObject(<span class="hljs-params">havePartyPower</span>)</span>) &#123;<br>        <span class="hljs-constructor">SendTagMessage(<span class="hljs-params">msg</span>, &#x27;無權限，請確認參數是否正確&#x27;)</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-constructor">SendTagMessage(<span class="hljs-params">msg</span>, `&lt;@&amp;$&#123;<span class="hljs-params">cmd</span>[1]&#125;&gt;\<span class="hljs-params">n</span>來自&lt;@$&#123;<span class="hljs-params">msg</span>.<span class="hljs-params">author</span>.<span class="hljs-params">id</span>&#125;&gt;的指令呼叫`)</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//傳送訊息單獨實例</span><br><span class="hljs-keyword">function</span> <span class="hljs-constructor">SendTagMessage(<span class="hljs-params">msg</span>, <span class="hljs-params">data</span>)</span> &#123;<br>    msg.channel.send(data);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最後補個判斷Array是不是空集合的小function</p>
+<p><img src="https://i.imgur.com/LWubzzI.png" srcset="/img/loading.gif" lazyload alt="26-17"></p>
+<hr>
+<p>大致解說一下</p>
+<p><img src="https://i.imgur.com/I4egiAN.png" srcset="/img/loading.gif" lazyload alt="26-18"></p>
+<p>Tag系統的入口function<br>跟其他系統一樣，判斷要使用甚麼指令<br>今天先把預設(default)指令，也就是tag身分組做出來</p>
+<p><img src="https://i.imgur.com/leRaRUt.png" srcset="/img/loading.gif" lazyload alt="26-19"></p>
+<p>檢查UserPower中是否有此人資料，以及是否是管理員<br>如果有資料且不是管理員，繼續檢查其所屬身份組權限</p>
+<p><img src="https://i.imgur.com/5u8N8DC.png" srcset="/img/loading.gif" lazyload alt="26-20"></p>
+<p>檢查身份組中是否有權限符合這次要tag的對象id，有的話代表此次指令滿足權限，給予tag</p>
+<p>我們跑看看</p>
+<p><img src="https://i.imgur.com/R4VEGBa.png" srcset="/img/loading.gif" lazyload alt="26-21"></p>
+<p>成功</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+                    
+                      <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> ，轉載請註明出處！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/25/12thDay25/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Day25 - 權限系統規格</span>
+                        <span class="visible-mobile">下一篇</span>
+                      </a>
+                    
+                  </article>
+				  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/27/12thDay27/">
+                        <span class="hidden-mobile">Day27 - tag控管 - 續行方法解說</span>
+                        <span class="visible-mobile">上一篇</span>
+						<i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script>
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css');
+          Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', function() {
+            new DisqusJS({
+              shortname: 'na-local',
+              apikey: ''
+            });
+          });
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+	
+
+	
+	  <a id="scroll-top-button" href="#" role="button">
+		<i class="iconfont icon-arrowup" aria-hidden="true"></i>
+	  </a>
+	
+
+	
+	  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+	
+
+	
+	  <div class="col-lg-7 mx-auto nopadding-x-md">
+		<div class="container custom mx-auto">
+		   
+		</div>
+	  </div>
+	
+  </main>
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>java is a fucking shit</span> <i class="iconfont icon-love"></i> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            文章總共被瀏覽了 
+            <span id="busuanzi_value_site_pv"></span>
+             次喔
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總共有 
+            <span id="busuanzi_value_site_uv"></span>
+             人曾經來過這裡呢
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SWFNWD1RD"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1SWFNWD1RD');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+<script>
+$(document)
+.ajaxStart(function () {
+NProgress.start();
+})
+.ajaxStop(function () {
+NProgress.done();
+});
+$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+</script>
+
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 50) {
+            $(".pagination").fadeIn();
+        } else {
+            $(".pagination").fadeOut();
+        }
+    });
+});
+</script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+</body>
+</html>
