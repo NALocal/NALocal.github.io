@@ -25,20 +25,20 @@
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+<link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+
+
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+
+
+
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
 
 
 
@@ -70,16 +70,13 @@
   
     <script  src="/js/jquery.pjax.min.js" ></script>
   
-  <link rel="stylesheet" href="/dist/APlayer.min.css">
-  <div id="aplayer"></div>
-  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
-  <script type="text/javascript" src="/dist/music.js"></script>
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="微笑之家" type="application/atom+xml">
 </head>
 
-<body>
-  <header style="height: 70vh;">
-	<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+<body id="ajaxD2">
+  <div id="ajaxD">
+	  <header style="height: 70vh;">
+		<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
        href="/">&nbsp;<strong>微笑之家</strong>&nbsp;</a>
@@ -183,18 +180,18 @@
   </div>
 </nav>
 
-	<div class="banner" id="banner" parallax=true
-		 style="background: url('/img/banner2.jpg') no-repeat center center;
-		   background-size: cover;">
-	  <div class="full-bg-img">
-		<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-		  <div class="page-header text-center fade-in-up">
-			<span class="h2" id="subtitle" title="Day22 - 音樂系統的多群組化(額外)">
-			  
-			</span>
+		<div class="banner" id="banner" parallax=true
+			 style="background: url('/img/banner2.jpg') no-repeat center center;
+			   background-size: cover;">
+		  <div class="full-bg-img">
+			<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+			  <div class="page-header text-center fade-in-up">
+				<span class="h2" id="subtitle" title="Day22 - 音樂系統的多群組化(額外)">
+				  
+				</span>
 
-			
-			  <div class="mt-3">
+				
+				  <div class="mt-3">
   
   
     <span class="post-meta">
@@ -230,18 +227,18 @@
   
 </div>
 
-			
+				
+			  </div>
+
+			  
+			</div>
 		  </div>
-
-		  
 		</div>
-	  </div>
-	</div>
-  </header>
+	  </header>
 
-  <main>
-	
-	  
+	  <main>
+		
+		  
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
@@ -423,16 +420,16 @@
 <!-- Custom -->
 
 
-	
+		
 
-	
-	  <a id="scroll-top-button" href="#" role="button">
-		<i class="iconfont icon-arrowup" aria-hidden="true"></i>
-	  </a>
-	
+		
+		  <a id="scroll-top-button" href="#" role="button">
+			<i class="iconfont icon-arrowup" aria-hidden="true"></i>
+		  </a>
+		
 
-	
-	  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+		
+		  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -453,16 +450,32 @@
     </div>
   </div>
 </div>
-	
+		
 
-	
-	  <div class="col-lg-7 mx-auto nopadding-x-md">
-		<div class="container custom mx-auto">
-		   
-		</div>
-	  </div>
-	
-  </main>
+		
+		  <div class="col-lg-7 mx-auto nopadding-x-md">
+			<div class="container custom mx-auto">
+			   
+			</div>
+		  </div>
+		
+	  </main>
+	  <span style="display:none">style將title打字機從scripts移過來，原本在math.ejs上方</span>
+	  <!-- AJAX-SCRIPTS -->
+	  
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+  </div>
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
      <span>java is a fucking shit</span> <i class="iconfont icon-love"></i> 
@@ -551,17 +564,6 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
 
 
 
@@ -610,10 +612,15 @@ if ($(window).scrollTop() > 50) {
 	$(".pagination").fadeOut();
 }
 });
-$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000});
+//$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+//$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+//$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
 
 <script>
 $(document).ready(function(){
