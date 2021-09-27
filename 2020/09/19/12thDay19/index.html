@@ -350,23 +350,23 @@
                   
                 
                 
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    
-      <script>
-        Fluid.utils.loadComments('#disqus_thread', function() {
-          Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqusjs.css');
-          Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js', function() {
-            new DisqusJS({
-              shortname: 'na-local',
-              apikey: ''
-            });
-          });
-        });
-      </script>
-    
-    <noscript>Please enable JavaScript to view the comments</noscript>
-  </div>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"9a33a548232178c23121","clientSecret":"bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6","repo":"nalocal.github.io","owner":"NALocal","admin":["NALocal"],"language":"zh-TW","perPage":50,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true},
+          {
+            id: '9ba8bf2b751b0bd1468181af28e5c2dc'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
               </article>
