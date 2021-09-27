@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -254,15 +254,15 @@
             <h1 style="display: none">Day11 - 音樂系統(2)</h1>
             
             <div class="markdown-body">
-              <p><img src="https://i.imgur.com/0pmzip7.png" srcset="/img/loading.gif" lazyload alt="11-1"></p>
+              <p><img src="https://i.imgur.com/0pmzip7.png" alt="11-1"></p>
 <p>今天我們把剩下的功能做完</p>
 <p>繼續做之前，我們回顧一下音樂播放的其中一小段</p>
-<p><img src="https://i.imgur.com/LxEyK0Q.png" srcset="/img/loading.gif" lazyload alt="11-2"></p>
+<p><img src="https://i.imgur.com/LxEyK0Q.png" alt="11-2"></p>
 <p>在playMusic2這段，我們將音樂網址與相關設定打入connection後，connection開始播放歌曲，並且返還控制項；<br>我們宣告一個dispatcher來接收控制項，並且在下一行監聽finish事件</p>
 <p>從這一段會注意到他解決了一件事情，那就是我們該怎麼監測歌曲播放的狀態?</p>
 <p>dispatcher這個物件在被賦予後，可以直接當成是我們的遙控器<br>不管是監聽歌曲是不是播完了，還是調整音量&amp;咖歌等，都會需要調用dispatcher</p>
 <p>所以如果之後我們要繼續實作咖歌&amp;循環播放等功能，除了需要調用歌曲清單以外，還需要調用到dispatcher</p>
-<p><img src="https://i.imgur.com/pcZSGNK.png" srcset="/img/loading.gif" lazyload alt="11-3"></p>
+<p><img src="https://i.imgur.com/pcZSGNK.png" alt="11-3"></p>
 <p>這邊在音樂系統的最上方，將dispatcher宣告成全域變數<br>並且記得原本宣告dispatcher的const要拿掉!</p>
 <p>觀念說完，那我們繼續:</p>
 <h2 id="中斷歌曲"><a href="#中斷歌曲" class="headerlink" title="中斷歌曲"></a>中斷歌曲</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-comment">//?skip</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">skipMusic</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">//將歌曲關閉，觸發finish事件</span><br>    <span class="hljs-keyword">if</span> (dispatcher !== <span class="hljs-literal">undefined</span>) dispatcher.end();<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -275,9 +275,9 @@
 
 <hr>
 <p>這樣，我們的音樂系統的基本教學就告一段落</p>
-<p><img src="https://i.imgur.com/MUI4mAt.png" srcset="/img/loading.gif" lazyload alt="11-4"></p>
-<p><img src="https://i.imgur.com/4i1uqpf.png" srcset="/img/loading.gif" lazyload alt="11-5"></p>
-<p><img src="https://i.imgur.com/HBYoQl6.png" srcset="/img/loading.gif" lazyload alt="11-6"></p>
+<p><img src="https://i.imgur.com/MUI4mAt.png" alt="11-4"></p>
+<p><img src="https://i.imgur.com/4i1uqpf.png" alt="11-5"></p>
+<p><img src="https://i.imgur.com/HBYoQl6.png" alt="11-6"></p>
 <p>其實音樂功能除了本篇教學的基本以外，還有很多花樣可以玩<br>這個寫法有個很大的問題是，有多個群組同時在使用時，機器人的歌單會掛掉</p>
 <p>筆者明天想先說其他主題，音樂系統的教學先告一段落<br>因為繼續完善下去的話，程式的可讀性會降低，現在的音樂系統筆者認為是最純粹，最好理解的了<br>同學們不訪想想該怎麼完善這些問題，我們明天見~</p>
 
@@ -326,7 +326,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/10/12thDay10/">
+                      <a href="/2020/09/10/12thDay10/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day10 - 音樂系統(1)</span>
                         <span class="visible-mobile">下一篇</span>
@@ -336,7 +336,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/12/12thDay12/">
+                      <a href="/2020/09/12/12thDay12/" class="nextPageButtom">
                         <span class="hidden-mobile">Day12 - Discord的訊息刪除與更新事件(額外)</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -349,7 +349,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -491,10 +491,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -587,6 +583,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>

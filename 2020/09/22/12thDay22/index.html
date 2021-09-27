@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -260,11 +260,11 @@
 <p>不知道當時有沒有小夥伴自己搞定這一塊的?我們今天會再帶過</p>
 <p>程式碼是依照之前的進度，不會重頭開始，如果需要但沒有基礎程式碼的話可以回去看音樂系統的教學</p>
 <hr>
-<h1 id="MusicFunction"><a href="#MusicFunction" class="headerlink" title="MusicFunction"></a>MusicFunction</h1><p><img src="https://i.imgur.com/sKuhlfp.png" srcset="/img/loading.gif" lazyload alt="22-1"></p>
+<h1 id="MusicFunction"><a href="#MusicFunction" class="headerlink" title="MusicFunction"></a>MusicFunction</h1><p><img src="https://i.imgur.com/sKuhlfp.png" alt="22-1"></p>
 <p>首先請把宣告成全域變數的兩個參數，初始化都設為Map()</p>
-<p><img src="https://i.imgur.com/KSRmbTG.png" srcset="/img/loading.gif" lazyload alt="22-2"></p>
+<p><img src="https://i.imgur.com/KSRmbTG.png" alt="22-2"></p>
 <p>再來我們在音樂指令的入口提取guildID，並且放入每一個function內</p>
-<h1 id="playMusic"><a href="#playMusic" class="headerlink" title="playMusic"></a>playMusic</h1><p><img src="https://i.imgur.com/gax5Dun.png" srcset="/img/loading.gif" lazyload alt="22-3"></p>
+<h1 id="playMusic"><a href="#playMusic" class="headerlink" title="playMusic"></a>playMusic</h1><p><img src="https://i.imgur.com/gax5Dun.png" alt="22-3"></p>
 <p>修改了151,155跟171行<br>(可以根據左側顏色判斷)</p>
 <p>第一次進入語音廳的群組需要先以群組ID宣告一個歌曲列表<br>原本歌曲列表放入資料的方法是這樣</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">musicList.push<span class="hljs-comment">(網址)</span><br></code></pre></td></tr></table></figure>
@@ -273,19 +273,19 @@
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">music.<span class="hljs-keyword">get</span>(群組<span class="hljs-built_in">id</span>).push(網址)<br></code></pre></td></tr></table></figure>
 
 <p>也就是根據群組id提取歌曲列表</p>
-<h1 id="playMusic2"><a href="#playMusic2" class="headerlink" title="playMusic2"></a>playMusic2</h1><p><img src="https://i.imgur.com/MpGvBiu.png" srcset="/img/loading.gif" lazyload alt="22-4"></p>
+<h1 id="playMusic2"><a href="#playMusic2" class="headerlink" title="playMusic2"></a>playMusic2</h1><p><img src="https://i.imgur.com/MpGvBiu.png" alt="22-4"></p>
 <p>改了185,195,202,204跟206行<br>(可以根據左側顏色判斷)</p>
 <p>原則上都跟剛剛一樣，注意歌曲清單跟播放遙控器應該是一個群組一個而已</p>
-<h1 id="disconnectMusic"><a href="#disconnectMusic" class="headerlink" title="disconnectMusic"></a>disconnectMusic</h1><p><img src="https://i.imgur.com/GHYrwdz.png" srcset="/img/loading.gif" lazyload alt="22-5"></p>
+<h1 id="disconnectMusic"><a href="#disconnectMusic" class="headerlink" title="disconnectMusic"></a>disconnectMusic</h1><p><img src="https://i.imgur.com/GHYrwdz.png" alt="22-5"></p>
 <p>修改了222行<br>(可以根據左側顏色判斷)</p>
-<h1 id="replayMusic"><a href="#replayMusic" class="headerlink" title="replayMusic"></a>replayMusic</h1><p><img src="https://i.imgur.com/0noksiD.png" srcset="/img/loading.gif" lazyload alt="22-6"></p>
+<h1 id="replayMusic"><a href="#replayMusic" class="headerlink" title="replayMusic"></a>replayMusic</h1><p><img src="https://i.imgur.com/0noksiD.png" alt="22-6"></p>
 <p>改了235,237與240行<br>(可以根據左側顏色判斷)</p>
-<h1 id="skipMusic"><a href="#skipMusic" class="headerlink" title="skipMusic"></a>skipMusic</h1><p><img src="https://i.imgur.com/j3vClrt.png" srcset="/img/loading.gif" lazyload alt="22-7"></p>
+<h1 id="skipMusic"><a href="#skipMusic" class="headerlink" title="skipMusic"></a>skipMusic</h1><p><img src="https://i.imgur.com/j3vClrt.png" alt="22-7"></p>
 <p>只有一行</p>
-<h1 id="nowPlayMusic"><a href="#nowPlayMusic" class="headerlink" title="nowPlayMusic"></a>nowPlayMusic</h1><p><img src="https://i.imgur.com/0mjB6g9.png" srcset="/img/loading.gif" lazyload alt="22-8"></p>
+<h1 id="nowPlayMusic"><a href="#nowPlayMusic" class="headerlink" title="nowPlayMusic"></a>nowPlayMusic</h1><p><img src="https://i.imgur.com/0mjB6g9.png" alt="22-8"></p>
 <p>修改了253,255跟261行<br>(可以根據左側顏色判斷)</p>
 <p>字串串接部分拿的是已經處理好的參數，所以不用修改streamString</p>
-<h1 id="queueShow"><a href="#queueShow" class="headerlink" title="queueShow"></a>queueShow</h1><p><img src="https://i.imgur.com/6ekTspK.png" srcset="/img/loading.gif" lazyload alt="22-9"></p>
+<h1 id="queueShow"><a href="#queueShow" class="headerlink" title="queueShow"></a>queueShow</h1><p><img src="https://i.imgur.com/6ekTspK.png" alt="22-9"></p>
 <p>修改了291,294跟296行<br>(可以根據左側顏色判斷)</p>
 <hr>
 <p>這樣基本就都改好了，我們試著運行看看</p>
@@ -298,13 +298,13 @@
 
 <p>之前應該有提到<br>這是觀察專案在heroku上的託管狀態<br>如果我們要透過heroku來直接跑程序，或是之後出問題都是來這邊看error訊息</p>
 <p>開好訊息後，我們試著測試看看機器人是不是真的可以分群播音樂了</p>
-<p><img src="https://i.imgur.com/BMVGiLi.png" srcset="/img/loading.gif" lazyload alt="22-10"></p>
-<p><img src="https://i.imgur.com/5dS1Qmq.png" srcset="/img/loading.gif" lazyload alt="22-11"></p>
-<p><img src="https://i.imgur.com/7rysBLk.png" srcset="/img/loading.gif" lazyload alt="22-12"></p>
-<p><img src="https://i.imgur.com/GdOBJIn.png" srcset="/img/loading.gif" lazyload alt="22-13"></p>
-<p><img src="https://i.imgur.com/Eu0wFM2.png" srcset="/img/loading.gif" lazyload alt="22-14"></p>
-<p><img src="https://i.imgur.com/FgMco0X.png" srcset="/img/loading.gif" lazyload alt="22-15"></p>
-<p><img src="https://i.imgur.com/3J61doA.png" srcset="/img/loading.gif" lazyload alt="22-16"></p>
+<p><img src="https://i.imgur.com/BMVGiLi.png" alt="22-10"></p>
+<p><img src="https://i.imgur.com/5dS1Qmq.png" alt="22-11"></p>
+<p><img src="https://i.imgur.com/7rysBLk.png" alt="22-12"></p>
+<p><img src="https://i.imgur.com/GdOBJIn.png" alt="22-13"></p>
+<p><img src="https://i.imgur.com/Eu0wFM2.png" alt="22-14"></p>
+<p><img src="https://i.imgur.com/FgMco0X.png" alt="22-15"></p>
+<p><img src="https://i.imgur.com/3J61doA.png" alt="22-16"></p>
 <hr>
 <p>大致如此，我們可以看到，機器人確實在兩個群組收到指令時，不會影響到對方了</p>
 <p>音樂系統的多群組支援教到這<br>明天看看要不要教一些額外的功能，我們明天見</p>
@@ -355,7 +355,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/21/12thDay21/">
+                      <a href="/2020/09/21/12thDay21/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day21 - 認識GitHub</span>
                         <span class="visible-mobile">下一篇</span>
@@ -365,7 +365,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/23/12thDay23/">
+                      <a href="/2020/09/23/12thDay23/" class="nextPageButtom">
                         <span class="hidden-mobile">Day23 - 音樂系統的歌單批量載入(額外)</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -378,7 +378,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -520,10 +520,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -616,6 +612,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>

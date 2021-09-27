@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -272,7 +272,7 @@
 <hr>
 <h2 id="Heroku的資料庫"><a href="#Heroku的資料庫" class="headerlink" title="Heroku的資料庫"></a>Heroku的資料庫</h2><p>我們來介紹Heroku的資料庫吧<br>因為這東西筆者的了解也不深，只是有必要提到<br>如果介紹有錯還望各位指正，以免誤導到人，感謝^^”</p>
 <p>Heroku不只提供軟體&amp;網站的上傳發佈，同時也支援這些程式在Heroku專案的主機上建立專屬的本地資料庫<br>其主要使用PostgreSQL，是一種關聯性資料庫<br>關聯性資料庫是甚麼?你當成MySQL就好，總之就是相對嚴謹(麻煩)的一種資料庫語言</p>
-<p><img src="https://i.imgur.com/COzboBR.png" srcset="/img/loading.gif" lazyload alt="16-1"> </p>
+<p><img src="https://i.imgur.com/COzboBR.png" alt="16-1"> </p>
 <p>免費的Heroku Postgre提供1萬則的資料容量，只要你創建的DB總資料量超過這個數字後便無法寫入，並且會跟你收費以提高額度來支援更多的資料寫入量</p>
 <p>1萬這個數字說大不大說小不小，雖然說對於個人戶是夠用了，但如果長久維運，缺乏資料管理、造成資料堆積<br>又或是資料儲存的方式比較複雜，紀錄一次可能就會占用許多空間的話…實際上筆者覺得1萬行是完全不夠Bot使用的</p>
 <p>而且因為Heroku的操作都必須透過指令，只是程式的操作可能還好，在處理資料庫這種複雜的系統時，不自己寫一個圖形介面真的很難管理</p>
@@ -283,12 +283,12 @@
 </ul>
 <p>筆者Bot的製作訴求是自動、便利、好維護<br>如果使用Heroku資料庫的話還要擔心或許哪天Heroku會忽然想不開，去更新他們的資料庫語法…這與筆者的需求是完全背道而馳的</p>
 <p>因此，我們需要一個替代方案，這個做法就是GoogleAppsScript !</p>
-<p><img src="https://i.imgur.com/w7gmbo5.jpg" srcset="/img/loading.gif" lazyload alt="16-2"> </p>
+<p><img src="https://i.imgur.com/w7gmbo5.jpg" alt="16-2"> </p>
 <p>GoogleAppsScript，簡稱GAS，不是容易爆炸的那個</p>
 <p>GAS是Google提供的一種程式檔，他使用JavaScript語言，並且自動引用Google提供的函式庫</p>
 <p>因為是Google自家產品，理所當然的，GAS可以輕鬆的調用Google旗下產品的資訊(例如Google文件，試算表等)</p>
 <p>並且GAS是一種存於Google雲端的程式，只要他正式發佈便也會是24小時自動運作的程序，不會消耗到筆者一毛錢!(重點)</p>
-<h2 id="GAS的規格"><a href="#GAS的規格" class="headerlink" title="GAS的規格"></a>GAS的規格</h2><p><img src="https://i.imgur.com/wLtCjIq.png" srcset="/img/loading.gif" lazyload alt="16-3"> </p>
+<h2 id="GAS的規格"><a href="#GAS的規格" class="headerlink" title="GAS的規格"></a>GAS的規格</h2><p><img src="https://i.imgur.com/wLtCjIq.png" alt="16-3"> </p>
 <p>在本主題，我們將用試算表來儲存資料<br>藉由GAS來編寫API，供Bot調用&amp;獲取資料</p>
 <p>上圖是GAS提供給使用者做各種操作的具體上限，我們看第一行的基本使用者(gmail.com)即可</p>
 <p>Properties read/write(屬性讀寫)<br>上限50000筆/天</p>
@@ -348,7 +348,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/15/12thDay15/">
+                      <a href="/2020/09/15/12thDay15/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day15 - Heroku架設&細部設定</span>
                         <span class="visible-mobile">下一篇</span>
@@ -358,7 +358,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/17/12thDay17/">
+                      <a href="/2020/09/17/12thDay17/" class="nextPageButtom">
                         <span class="hidden-mobile">Day17 - GAS抓表(1)</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -371,7 +371,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -513,10 +513,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -609,6 +605,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>

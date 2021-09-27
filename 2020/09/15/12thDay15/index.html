@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -256,54 +256,54 @@
             <div class="markdown-body">
               <p>早安<br>昨天我們把Heroku跟Git都安裝好了，今天我們要將我們的專案變成Git專案<br>並且推上Heroku</p>
 <h1 id="第一次推送專案"><a href="#第一次推送專案" class="headerlink" title="第一次推送專案"></a>第一次推送專案</h1><p>首先，跟之前一樣<br>我們先用VSCode開啟專案資料夾</p>
-<p><img src="https://i.imgur.com/ACltFP5.png" srcset="/img/loading.gif" lazyload alt="15-1"></p>
+<p><img src="https://i.imgur.com/ACltFP5.png" alt="15-1"></p>
 <p>確定終端機路徑正確後，輸入<br>git init</p>
-<p><img src="https://i.imgur.com/7aVXFF2.png" srcset="/img/loading.gif" lazyload alt="15-2"></p>
+<p><img src="https://i.imgur.com/7aVXFF2.png" alt="15-2"></p>
 <p>左側的檔案都變得綠綠的<br>如果你有看的到隱藏資料夾的話，在專案底下還會看到一個.git的隱藏資料夾<br>那就是用來識別git專案的檔案，也是執行git語言時的依據</p>
 <p>這樣專案就轉換成git專案了，然後我們接下來要在heroku上創建一個專案庫<br>專案名稱的命名方式大多為 aaa-bbb-ccc<br>第一個字必須為小寫，且不能與其他在heroku上的專案撞名，所以越獨特越好<br>這邊筆者的專案名稱取做 the-bot-alice-on-heroku<br>我們輸入<br>heroku create 你的專案名稱</p>
-<p><img src="https://i.imgur.com/rpv8elG.png" srcset="/img/loading.gif" lazyload alt="15-3"></p>
+<p><img src="https://i.imgur.com/rpv8elG.png" alt="15-3"></p>
 <p>這時候如果到這裡看，成功的話就會看到剛剛創建的專案了<br><a target="_blank" rel="noopener" href="https://dashboard.heroku.com/">https://dashboard.heroku.com/</a></p>
-<p><img src="https://i.imgur.com/KXLt0MO.png" srcset="/img/loading.gif" lazyload alt="15-4"></p>
+<p><img src="https://i.imgur.com/KXLt0MO.png" alt="15-4"></p>
 <p>我們繼續輸入</p>
 <p>git add .<br>git commit -m init<br>git push heroku master</p>
-<p><img src="https://i.imgur.com/FJAbH1V.png" srcset="/img/loading.gif" lazyload alt="15-5"></p>
+<p><img src="https://i.imgur.com/FJAbH1V.png" alt="15-5"></p>
 <p>最後有看到Build succeeded就是成功了!<br>這三個指令的意思依序是</p>
 <p>git add .<br>將目錄下的所有檔案加入git控管</p>
 <p>git commit -m init<br>將git控管下的檔案全部加入本次要推送的版本，因為是第一次推送所以是init，之後第n次推送的話程式碼要改成 git commit -m ‘版本說明’</p>
 <p>git push heroku master<br>將commit起來的版本推送(上傳)到heroku的主分支，總之就是上傳檔案</p>
 <p>所以之後如果要更新程式，都是依序使用這三個命令來上傳機器人</p>
 <p>接著我們運行看看<br>heroku logs –t</p>
-<p><img src="https://i.imgur.com/BezAjQn.png" srcset="/img/loading.gif" lazyload alt="15-6"></p>
+<p><img src="https://i.imgur.com/BezAjQn.png" alt="15-6"></p>
 <p>這是呼叫heroku的控制後台，相當於在看遠端主機運行程序時的終端機<br>要退出時按ctrl+c退出</p>
 <p>可以看到對方也接收到我們上傳的檔案，有一個Build succeeded<br>但是後面都是npm ERR<br>以及可以看到他嘗試使用 npm start 來運行我們的專案<br>還記得我們的程序啟動試透過甚麼方式嗎?<br>沒錯，node bot!</p>
 <h1 id="平台設定"><a href="#平台設定" class="headerlink" title="平台設定"></a>平台設定</h1><p>我們在專案的根目錄新增一個檔案，取名叫做Procfile</p>
-<p><img src="https://i.imgur.com/4Xl8BEd.png" srcset="/img/loading.gif" lazyload alt="15-7"></p>
+<p><img src="https://i.imgur.com/4Xl8BEd.png" alt="15-7"></p>
 <p>裡面只有一行，寫上<br>worker: node bot</p>
 <p>可以看到，檔案在取名為Procfile後，icon會變成Heroku的標誌<br>這是Heroku可以辨識的檔案，作用是指定Heroku的啟動命令<br>worker是代表我們要運行的啟動命令是worker(程序)<br>heroku預設的啟動命令屬於web(網頁)</p>
 <p>寫好後，我們再做一次推送<br>git add .<br>git commit -m ‘npm bot’<br>git push heroku master</p>
-<p><img src="https://i.imgur.com/foAIKIR.png" srcset="/img/loading.gif" lazyload alt="15-8"></p>
+<p><img src="https://i.imgur.com/foAIKIR.png" alt="15-8"></p>
 <p>push完，我們打開網頁，回到heroku控制台，進入我們的專案</p>
-<p><img src="https://i.imgur.com/gLPqwGs.png" srcset="/img/loading.gif" lazyload alt="15-9"></p>
+<p><img src="https://i.imgur.com/gLPqwGs.png" alt="15-9"></p>
 <p>會看到，紅框處是我們的推送日誌，這也是用git來控管程式時的日誌檔</p>
 <p>藍框就顯示了我們程序的啟動方式，可以看到node bot已經出現在上面了，但是沒有開啟</p>
 <p>我們點擊紫框的Resources</p>
-<p><img src="https://i.imgur.com/s2C5V61.png" srcset="/img/loading.gif" lazyload alt="15-10"></p>
+<p><img src="https://i.imgur.com/s2C5V61.png" alt="15-10"></p>
 <p>將 npm start給關閉，node bot開啟，這樣回去主頁面看node bot也會是開啟的狀態了</p>
 <p>最後我們在終端機輸入 heroku restart</p>
-<p><img src="https://i.imgur.com/10oZqCf.png" srcset="/img/loading.gif" lazyload alt="15-11"></p>
+<p><img src="https://i.imgur.com/10oZqCf.png" alt="15-11"></p>
 <p>這是重啟專案的指令，當程序崩潰或是遇到任何問題時，都可以重啟看看</p>
 <p>heroku logs -t</p>
-<p><img src="https://i.imgur.com/ZVirlHw.png" srcset="/img/loading.gif" lazyload alt="15-12"> </p>
-<p><img src="https://i.imgur.com/SrXdjRa.png" srcset="/img/loading.gif" lazyload alt="15-13"></p>
+<p><img src="https://i.imgur.com/ZVirlHw.png" alt="15-12"> </p>
+<p><img src="https://i.imgur.com/SrXdjRa.png" alt="15-13"></p>
 <p>成功!<br>到此為止，我們成功將Bot推送到Heroku上，以後不用我們自己運行<br>機器人也會是24小時運行了，給做到這邊的自己一個鼓勵吧^^</p>
 <h1 id="其他設定"><a href="#其他設定" class="headerlink" title="其他設定"></a>其他設定</h1><p>Heroku的免費時數預設是550小時/月，如果說是自己幾個朋友使用是沒關係<br>當機器人在一個人數比較多的群組時，550小時是沒辦法支撐1個月的，每到月底、機器人就會想休息幾天</p>
 <p>但是!如果你有在Heroku的帳戶綁定信用卡的話，他會免費再給你450小時，每個月的免費時數會變成1000小時，運行機器人是完全足夠的!不用擔心會扣款</p>
 <p>我們點選右上角的設定</p>
-<p><img src="https://i.imgur.com/84iDGli.png" srcset="/img/loading.gif" lazyload alt="15-14"></p>
+<p><img src="https://i.imgur.com/84iDGli.png" alt="15-14"></p>
 <p>點Billing，然後點Add credit card</p>
-<p><img src="https://i.imgur.com/Rqh5IfU.png" srcset="/img/loading.gif" lazyload alt="15-15"></p>
+<p><img src="https://i.imgur.com/Rqh5IfU.png" alt="15-15"></p>
 <p>再來就是綁卡流程，相信這部份不用截圖，各位自己會的</p>
-<p><img src="https://i.imgur.com/A1PkaAG.png" srcset="/img/loading.gif" lazyload alt="15-16"></p>
+<p><img src="https://i.imgur.com/A1PkaAG.png" alt="15-16"></p>
 <p>綁完後，底下原本的550小時就會變成有1000小時的扣打了~</p>
 
             </div>
@@ -351,7 +351,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/14/12thDay14/">
+                      <a href="/2020/09/14/12thDay14/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day14 - Heroku與Git，介紹與安裝</span>
                         <span class="visible-mobile">下一篇</span>
@@ -361,7 +361,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/16/12thDay16/">
+                      <a href="/2020/09/16/12thDay16/" class="nextPageButtom">
                         <span class="hidden-mobile">Day16 - 選擇你的資料庫</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -374,7 +374,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -516,10 +516,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -612,6 +608,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>

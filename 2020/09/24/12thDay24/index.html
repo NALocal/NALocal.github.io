@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -258,7 +258,7 @@
 <h1 id="情境描述"><a href="#情境描述" class="headerlink" title="情境描述"></a>情境描述</h1><p>機器人需要有個控制是否啟動的開關<br>可設定在該群組 or 頻道是否可以接收指令</p>
 <p>因為我們的機器人會有多組系統(文字回答&amp;音樂系統)<br>會希望再額外設定可以在指定的群組 or 頻道是否可以接收特定系統的指令</p>
 <h1 id="實作開始"><a href="#實作開始" class="headerlink" title="實作開始"></a>實作開始</h1><p>首先請先幫我新建一個JSON檔案，叫做shup.json…或是你喜歡的名字xD</p>
-<p><img src="https://i.imgur.com/A3FgZSp.png" srcset="/img/loading.gif" lazyload alt="24-1"></p>
+<p><img src="https://i.imgur.com/A3FgZSp.png" alt="24-1"></p>
 <p>記得JSON檔案都要放在JSONHome喔</p>
 <p>type<br>型態，代表這一筆JSONObject是甚麼類型<br>目前還用不到，都設1就好</p>
 <p>GroupID<br>群組ID，主要給後續判定的部份</p>
@@ -266,21 +266,21 @@
 <p>Power<br>代表不可使用的權限，後面會一邊寫一邊解說</p>
 <p>禁言指令，顧名思義、希望機器人是否被禁言的開關<br>這開關需要放在所有指令之前，這樣才可以判斷出內容是否需要被禁止</p>
 <p>老樣子，我們要先引入json</p>
-<p><img src="https://i.imgur.com/P7TjmyD.png" srcset="/img/loading.gif" lazyload alt="24-2"></p>
+<p><img src="https://i.imgur.com/P7TjmyD.png" alt="24-2"></p>
 <p>放在message事件的上方，當判斷權限為false，就停止後續行為</p>
-<p><img src="https://i.imgur.com/Ijtpyyk.png" srcset="/img/loading.gif" lazyload alt="24-3"></p>
+<p><img src="https://i.imgur.com/Ijtpyyk.png" alt="24-3"></p>
 <p>接著我們實作IsShut<br>IsShut根據shup.json，先判斷訊息群組&amp;訊息有沒有資料，再來判斷資料中存不存在tempPrefix，存在的話就要禁用功能，因為默認不存在時文檔中不會有資料，自然就不該設限</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//禁言系統判斷</span><br><span class="hljs-keyword">function</span> <span class="hljs-constructor">IsShut(<span class="hljs-params">msg</span>, <span class="hljs-params">tempPrefix</span>)</span> &#123;<br>    <span class="hljs-comment">//群組id</span><br>    const guildID = msg.guild.id;<br>    <span class="hljs-comment">//頻道id</span><br>    const channelID = msg.channel.id;<br>    <span class="hljs-comment">//當前狀態</span><br>    <span class="hljs-keyword">let</span> status = <span class="hljs-literal">true</span>;<br><br>    <span class="hljs-comment">//先判斷群組，群組判斷完判斷頻道(頻道權限優先於群組)</span><br>    const guildIF = shup.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Group</span>.</span></span>find(element =&gt; &#123;<br>        <span class="hljs-keyword">if</span> (element.GroupID<span class="hljs-operator"> == </span>guildID) &#123;<br>            return element.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Power</span>.</span></span>index<span class="hljs-constructor">Of(<span class="hljs-params">tempPrefix</span>)</span> !== -<span class="hljs-number">1</span>;<br>        &#125;<br>        return <span class="hljs-literal">false</span>;<br>    &#125;)<br><br>    <span class="hljs-comment">//找到資料 = 此群組存在Group中且Power存在此次指令代碼</span><br>    <span class="hljs-keyword">if</span> (guildIF !== undefined) &#123;<br>        status = <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">//頻道</span><br>    const channelIF = shup.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Channel</span>.</span></span>find(element =&gt; &#123;<br>        <span class="hljs-keyword">if</span> (element.ChannelID<span class="hljs-operator"> == </span>channelID) &#123;<br>            return <span class="hljs-literal">true</span>;<br>        &#125;<br>        return <span class="hljs-literal">false</span>;<br>    &#125;)<br><br>    <span class="hljs-comment">//找到資料 = 此頻道存在Channel中</span><br>    <span class="hljs-keyword">if</span> (channelIF !== undefined) &#123;<br>        <span class="hljs-comment">//Power有此資料=&gt;禁用功能 無資料=&gt;不設限</span><br>        <span class="hljs-keyword">if</span> (channelIF.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Power</span>.</span></span>index<span class="hljs-constructor">Of(<span class="hljs-params">tempPrefix</span>)</span> !== -<span class="hljs-number">1</span>) &#123;<br>            status = <span class="hljs-literal">false</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            status = <span class="hljs-literal">true</span>;<br>        &#125;<br>    &#125;<br><br>    return status;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>接著我們將資料實際key入shup.json看看</p>
-<p><img src="https://i.imgur.com/r2YX14O.png" srcset="/img/loading.gif" lazyload alt="24-4"></p>
+<p><img src="https://i.imgur.com/r2YX14O.png" alt="24-4"></p>
 <p>不知道同學有沒有看出Power的判斷依據了?</p>
-<p><img src="https://i.imgur.com/IQw9uKQ.png" srcset="/img/loading.gif" lazyload alt="24-5"></p>
+<p><img src="https://i.imgur.com/IQw9uKQ.png" alt="24-5"></p>
 <p>沒錯，就是依據prefix時設置的各系統代表ID</p>
 <p>我們試著跑看看</p>
-<p><img src="https://i.imgur.com/fPPlTwE.png" srcset="/img/loading.gif" lazyload alt="24-6"></p>
+<p><img src="https://i.imgur.com/fPPlTwE.png" alt="24-6"></p>
 <p>另一個頻道</p>
-<p><img src="https://i.imgur.com/uV9zJ4q.png" srcset="/img/loading.gif" lazyload alt="24-7"></p>
+<p><img src="https://i.imgur.com/uV9zJ4q.png" alt="24-7"></p>
 <p>大成功~<br>這樣就做到各頻道各功能權限設置了</p>
 <p>不過存在一些問題<br>例如放在預設(default)的資料庫文字比對功能要怎麼判，應該是預設的-1吧<br>如果是-1要怎麼判斷呢?</p>
 <p>以及目前這樣的做法只做到判斷禁言功能的實作，還沒有辦法在前台讓使用者手動新增</p>
@@ -331,7 +331,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/23/12thDay23/">
+                      <a href="/2020/09/23/12thDay23/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day23 - 音樂系統的歌單批量載入(額外)</span>
                         <span class="visible-mobile">下一篇</span>
@@ -341,7 +341,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/25/12thDay25/">
+                      <a href="/2020/09/25/12thDay25/" class="nextPageButtom">
                         <span class="hidden-mobile">Day25 - 權限系統規格</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -354,7 +354,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -496,10 +496,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -592,6 +588,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>

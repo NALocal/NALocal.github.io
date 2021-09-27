@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -255,18 +255,18 @@
             
             <div class="markdown-body">
               <p>昨天我們的程式成功抓到API的資料並且對他做分析了<br>現在要串回主程序(bot.js)上</p>
-<p><img src="https://i.imgur.com/lLXAqcN.png" srcset="/img/loading.gif" lazyload alt="19-1"></p>
+<p><img src="https://i.imgur.com/lLXAqcN.png" alt="19-1"></p>
 <p>請幫我在bot.js引用GetGas.js</p>
-<p><img src="https://i.imgur.com/mwE3NRg.png" srcset="/img/loading.gif" lazyload alt="19-2"></p>
-<p><img src="https://i.imgur.com/xMGI9Fa.png" srcset="/img/loading.gif" lazyload alt="19-3"> </p>
+<p><img src="https://i.imgur.com/mwE3NRg.png" alt="19-2"></p>
+<p><img src="https://i.imgur.com/xMGI9Fa.png" alt="19-3"> </p>
 <p>然後之前的文字回應系統，跟音樂系統一樣用一個function包起來，比較好看</p>
-<p><img src="https://i.imgur.com/uvfVZ2Q.png" srcset="/img/loading.gif" lazyload alt="19-4"></p>
+<p><img src="https://i.imgur.com/uvfVZ2Q.png" alt="19-4"></p>
 <p>我們希望當訊息不符合任一前綴系統的情況，就要拿字串跟資料庫比對<br>所以我們把function放在default(默認)，只要前面的case都沒進去就會到default</p>
-<p><img src="https://i.imgur.com/N0R0NAW.png" srcset="/img/loading.gif" lazyload alt="19-5"> </p>
+<p><img src="https://i.imgur.com/N0R0NAW.png" alt="19-5"> </p>
 <p>之後新增BaseExcelFunction方法<br>內容是執行GetGas底下的getBaseExcel元素</p>
-<p><img src="https://i.imgur.com/lg1t1wq.png" srcset="/img/loading.gif" lazyload alt="19-6"></p>
+<p><img src="https://i.imgur.com/lg1t1wq.png" alt="19-6"></p>
 <p>回來看GetGas的getBaseExcel<br>getBaseExcel元素指向一callback方法<br>帶了一個參數userTalk，callback方法使用callback代表方法的結束，呼叫方會在callback欄位宣告function，其帶回參數(messageED)就是getBaseExcel的方法中callback的值</p>
-<p><img src="https://i.imgur.com/XXBAW5u.png" srcset="/img/loading.gif" lazyload alt="19-7"></p>
+<p><img src="https://i.imgur.com/XXBAW5u.png" alt="19-7"></p>
 <p>這樣寫完，機器人就能做簡單的回話了!</p>
 <hr>
 <p>雖然功能做好了，但有許多問題</p>
@@ -326,7 +326,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/18/12thDay18/">
+                      <a href="/2020/09/18/12thDay18/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day18 - GAS抓表(2)</span>
                         <span class="visible-mobile">下一篇</span>
@@ -336,7 +336,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/20/12thDay20/">
+                      <a href="/2020/09/20/12thDay20/" class="nextPageButtom">
                         <span class="hidden-mobile">Day20 - GAS抓表(4)</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -349,7 +349,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -491,10 +491,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -587,6 +583,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>

@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -255,36 +255,36 @@
             
             <div class="markdown-body">
               <p>昨天我們把機器人的架構做了些修改，對功能做了分類<br>今天我們稍微整理一下程式，並且說說音樂系統；<br>如果正在觀看文章的小夥伴不需要音樂系統可以跳過接下來三天的內容，不會影響後續教學的!</p>
-<h1 id="region"><a href="#region" class="headerlink" title="region"></a>region</h1><p><img src="https://i.imgur.com/oZB8tKp.png" srcset="/img/loading.gif" lazyload alt="9-1"></p>
+<h1 id="region"><a href="#region" class="headerlink" title="region"></a>region</h1><p><img src="https://i.imgur.com/oZB8tKp.png" alt="9-1"></p>
 <p>開始寫音樂前，因為程式碼準備要開始增加了<br>筆者先對所有程式做了分類<br>#region<br>#endregion<br>被這兩段覆蓋的程式碼可以摺疊，摺疊後只看的到region後的字</p>
-<p><img src="https://i.imgur.com/w6UlfLn.png" srcset="/img/loading.gif" lazyload alt="9-2"></p>
+<p><img src="https://i.imgur.com/w6UlfLn.png" alt="9-2"></p>
 <p>這個功能必須IDE有支援才可以使用，VSCode支援這個好用的收納方法，所以我們就好好利用一下!</p>
 <hr>
 <h1 id="函式庫安裝"><a href="#函式庫安裝" class="headerlink" title="函式庫安裝"></a>函式庫安裝</h1><p>那麼我們準備要開始音樂功能了喔!<br>在正式開始撰寫前，我們先開啟終端機<br>依序安裝<br>npm install ffmpeg-static<br>npm install opusscript<br>跟<br>npm install ytdl-core</p>
-<p><img src="https://i.imgur.com/zYAoHnj.png" srcset="/img/loading.gif" lazyload alt="9-3"></p>
+<p><img src="https://i.imgur.com/zYAoHnj.png" alt="9-3"></p>
 <p>記得路徑要在project的根目錄下</p>
 <p>這些都是discordBot要播放音樂時需要的插件<br>其中ytdl-core是後續抓取youtube歌曲的library，會需要透過程式來調用<br>所以安裝完之後，我們還要在最上面引用ytdl-core</p>
-<p><img src="https://i.imgur.com/zyCqZa8.png" srcset="/img/loading.gif" lazyload alt="9-4"></p>
+<p><img src="https://i.imgur.com/zyCqZa8.png" alt="9-4"></p>
 <p>這樣一來，撰寫音樂系統的前置作業都算完成了!<br>那麼接下來就該開始撰寫程式囉?nonono</p>
 <p>實際上我們在撰寫程式前應該先去參考網路上是否有重複的功能可以參考</p>
 <p>既然要寫音樂系統，那當然必需先參考其他人的音樂機器人是怎麼寫的囉!</p>
 <hr>
 <h1 id="音樂系統整理"><a href="#音樂系統整理" class="headerlink" title="音樂系統整理"></a>音樂系統整理</h1><p>Discord 教學 - 如何簡單加音樂機器人進伺服器 (Rythm)<br><a target="_blank" rel="noopener" href="https://fightwennote.blogspot.com/2018/06/discord-rythm.html">https://fightwennote.blogspot.com/2018/06/discord-rythm.html</a></p>
 <p>Rythm是筆者在研究音樂系統前，看過最多次的音樂Bot<br>Rythm的功能非常完善，觀察他的指令對於描繪心目中那個接收音樂指令的Bot架構十分有幫助</p>
-<p><img src="https://i.imgur.com/INTGTOT.png" srcset="/img/loading.gif" lazyload alt="9-5"></p>
-<p><img src="https://i.imgur.com/sIgLCsj.png" srcset="/img/loading.gif" lazyload alt="9-6"></p>
+<p><img src="https://i.imgur.com/INTGTOT.png" alt="9-5"></p>
+<p><img src="https://i.imgur.com/sIgLCsj.png" alt="9-6"></p>
 <p>!play (網址)</p>
 <p>提供youtube音樂的網址，bot需判斷網址是否符合規範，是不是抓得到歌<br>並且判斷使用者是不是在語音頻道，一切都正常無誤後反饋音樂資訊並且播放歌曲</p>
-<p><img src="https://i.imgur.com/XNDlGTj.png" srcset="/img/loading.gif" lazyload alt="9-7"></p>
+<p><img src="https://i.imgur.com/XNDlGTj.png" alt="9-7"></p>
 <p>!replay</p>
 <p>輸入此指令後，讓歌曲重頭開始播放<br>與play一樣，如果使用者不在音樂頻道中，則此指令失效</p>
-<p><img src="https://i.imgur.com/rHmPN8m.png" srcset="/img/loading.gif" lazyload alt="9-8"></p>
+<p><img src="https://i.imgur.com/rHmPN8m.png" alt="9-8"></p>
 <p>!np </p>
 <p>顯示當前播放歌曲資訊</p>
-<p><img src="https://i.imgur.com/wqhXg2H.png" srcset="/img/loading.gif" lazyload alt="9-9"></p>
+<p><img src="https://i.imgur.com/wqhXg2H.png" alt="9-9"></p>
 <p>!queue</p>
 <p>顯示歌曲清單</p>
-<p><img src="https://i.imgur.com/mfzApM9.png" srcset="/img/loading.gif" lazyload alt="9-10"></p>
+<p><img src="https://i.imgur.com/mfzApM9.png" alt="9-10"></p>
 <p>!skip</p>
 <p>跳過當前播放曲目</p>
 <hr>
@@ -293,7 +293,7 @@
 <p>音樂指令(play)，表示我在音樂系統中要使用哪一個功能</p>
 <p>內容(xxx.com.tw)，不是一定會有，當指定功能需要參數時，我們需要給予他對應的內容</p>
 <p>間隔符號(空格) 用來將音樂指令與內容分隔開的決定性符號</p>
-<p><img src="https://i.imgur.com/J7cWTuc.png" srcset="/img/loading.gif" lazyload alt="9-11"></p>
+<p><img src="https://i.imgur.com/J7cWTuc.png" alt="9-11"></p>
 
             </div>
             <hr>
@@ -340,7 +340,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/08/12thDay8/">
+                      <a href="/2020/09/08/12thDay8/" class="nextPageButtom">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Day8 - 呃...他會需要更多前綴字</span>
                         <span class="visible-mobile">下一篇</span>
@@ -350,7 +350,7 @@
 				  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/10/12thDay10/">
+                      <a href="/2020/09/10/12thDay10/" class="nextPageButtom">
                         <span class="hidden-mobile">Day10 - 音樂系統(1)</span>
                         <span class="visible-mobile">上一篇</span>
 						<i class="iconfont icon-arrowright"></i>
@@ -363,7 +363,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -505,10 +505,6 @@
 <!-- Plugins -->
 
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
 
 
   
@@ -601,6 +597,7 @@ if ($(window).scrollTop() > 50) {
 });
 $(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 $(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 </script>
 
 <script>
