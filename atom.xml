@@ -6,7 +6,7 @@
   <link href="https://nalocal.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://nalocal.github.io/blog/"/>
-  <updated>2021-09-27T06:38:53.250Z</updated>
+  <updated>2021-09-27T06:41:38.627Z</updated>
   <id>https://nalocal.github.io/blog/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://nalocal.github.io/blog/2021/09/27/aboutDiscordJs13/"/>
     <id>https://nalocal.github.io/blog/2021/09/27/aboutDiscordJs13/</id>
     <published>2021-09-27T05:47:20.000Z</published>
-    <updated>2021-09-27T06:38:53.250Z</updated>
+    <updated>2021-09-27T06:41:38.627Z</updated>
     
     
       
@@ -34,6 +34,8 @@
     
     
     
+    <category term="BaseDiscordBot" scheme="https://nalocal.github.io/blog/categories/BaseDiscordBot/"/>
+    
     
     <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
     
@@ -42,8 +44,6 @@
     <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
     
     <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
-    
-    <category term="日記" scheme="https://nalocal.github.io/blog/tags/%E6%97%A5%E8%A8%98/"/>
     
   </entry>
   
