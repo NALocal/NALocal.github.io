@@ -91,6 +91,8 @@ Fluid.events = {
       var bodyWidth = document.body.offsetWidth;
       var right = bodyWidth - boardRight;
       posDisplay = right >= 50;
+	  //console.log('test');
+	  //console.log(topArrow);
       topArrow.css({
         'bottom': posDisplay && scrollDisplay ? '20px' : '-60px',
         'right' : right - 64 + 'px'
@@ -154,7 +156,7 @@ Fluid.events = {
 |     ________  __            _        __      |
 |    |_   __  |[  |          (_)      |  ]     |
 |      | |_ \\_| | | __   _   __   .--.| |      |
-|      |  _|    | |[  | | | [  |/ /'\`\\' |      |
+|      |  _|    | |[  | | | [  |/ /'\\\' |      |
 |     _| |_     | | | \\_/ |, | || \\__/  |      |
 |    |_____|   [___]'.__.'_/[___]'.__.;__]     |
 |                                              |
