@@ -5,7 +5,6 @@ HTMLElement.prototype.wrap = function(wrapper) {
   this.parentNode.removeChild(this);
   wrapper.appendChild(this);
 };
-
 Fluid.plugins = {
   typing: function(text) {
     if (!('Typed' in window)) { return; }
@@ -35,10 +34,7 @@ Fluid.plugins = {
     if (toc.length === 0 || !window.tocbot) { return; }
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
-	var tocLet;
-
-    tocLet = tocbot;
-	tocLet.init({
+	window.tocbot.init({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
       headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
@@ -56,7 +52,7 @@ Fluid.plugins = {
     }
   },
   delTocBot: function() {
-    tocLet.destroy();
+    window.tocbot.destroy();
   },
 
   initFancyBox: function() {
