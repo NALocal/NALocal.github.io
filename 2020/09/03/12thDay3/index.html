@@ -33,7 +33,7 @@
 
 
   
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
 
 
 
@@ -64,7 +64,7 @@
 
 <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   
   <script  src="/js/utils.js" ></script>
@@ -258,22 +258,22 @@
 <p>建立DiscordBot，首先要有一個Discord帳號</p>
 <p>到<a target="_blank" rel="noopener" href="https://discordapp.com/developers/applications/">這個網站</a></p>
 <p>登入帳號後，右上角會有一個[ New Application ]</p>
-<p><img src="https://i.imgur.com/QeKQ4fK.png" alt="NewApplication"></p>
+<p><img src="https://i.imgur.com/QeKQ4fK.png" srcset="/img/loading.gif" lazyload alt="NewApplication"></p>
 <p>這邊的名字是”應用名稱”<br>同時也會是預設的機器人名稱，仔細想好後就送出吧~</p>
-<p><img src="https://i.imgur.com/kXSwy3I.png" alt="basicUI"></p>
+<p><img src="https://i.imgur.com/kXSwy3I.png" srcset="/img/loading.gif" lazyload alt="basicUI"></p>
 <p>送出後就會進來應用介面了</p>
 <p>點擊頭像可替換應用的大頭貼，名字就是你剛剛取的</p>
 <p>都設定好之後，我們點選左邊列表第三排的Bot</p>
-<p><img src="https://i.imgur.com/r1NSe8O.png" alt="BotUI"></p>
+<p><img src="https://i.imgur.com/r1NSe8O.png" srcset="/img/loading.gif" lazyload alt="BotUI"></p>
 <p>第一次點應該會問你是否要建立，點選是<br>這樣Discord就會幫你的機器人實際創建一個帳戶<br>點擊右邊TOKEN底下的Copy，他會給你一組很長的亂碼</p>
 <h2 id="先存在記事本，我們明天會用到"><a href="#先存在記事本，我們明天會用到" class="headerlink" title="先存在記事本，我們明天會用到"></a><strong>先存在記事本，我們明天會用到</strong></h2><hr>
 <p>接下來我們點左邊的OAuth2</p>
-<p><img src="https://i.imgur.com/o5eSFy6.png" alt="Oauth2UI"></p>
+<p><img src="https://i.imgur.com/o5eSFy6.png" srcset="/img/loading.gif" lazyload alt="Oauth2UI"></p>
 <p>這是創建邀請連結的地方，SCOPES欄的部份點Bot，這樣下面就會出現第二欄<br>下面是要給予機器人在群組內的權限，需要根據Bot實際上具備哪些功能，來判斷需要給予哪些權限<br>如果不知道怎麼用，先選Administrator就可以了。</p>
 <p>都做完後，中間的就會有完整的邀請連結，請複製後輸入在瀏覽器上</p>
-<p><img src="https://i.imgur.com/9oCUzUZ.png" alt="url"></p>
+<p><img src="https://i.imgur.com/9oCUzUZ.png" srcset="/img/loading.gif" lazyload alt="url"></p>
 <p>使用此連結，就可以把Bot拉入你的群組內，前提是你在此群組有管理者權限喔</p>
-<p><img src="https://i.imgur.com/nJ3jUuW.png" alt="su"></p>
+<p><img src="https://i.imgur.com/nJ3jUuW.png" srcset="/img/loading.gif" lazyload alt="su"></p>
 <p>喔耶，成功了!</p>
 
             </div>
@@ -344,7 +344,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments">
+              <article class="comments" id="comments" lazyload>
                 
                   
                 
@@ -450,6 +450,10 @@
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
@@ -586,7 +590,7 @@ $(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000
 //$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 //$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 document.addEventListener('pjax:complete', function() {
-        
+        $.getScript("/js/lazyload.js");
     });
 </script>
 <link rel="stylesheet" href="/dist/APlayer.min.css">

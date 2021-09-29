@@ -33,7 +33,7 @@
 
 
   
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
 
 
 
@@ -64,7 +64,7 @@
 
 <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   
   <script  src="/js/utils.js" ></script>
@@ -256,18 +256,18 @@
             <div class="markdown-body">
               <p>昨天我們把音樂系統的多群組支援做好了<br>今天想講一下怎麼直接導入歌單</p>
 <p>首先請在專案目錄下的終端機安裝</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> ytpl<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> ytpl<br></code></pre></div></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/Ugc2fg4.png" alt="23-1"> </p>
+<p><img src="https://i.imgur.com/Ugc2fg4.png" srcset="/img/loading.gif" lazyload alt="23-1"> </p>
 <p>安裝完成後，我們打開看package.json</p>
-<p><img src="https://i.imgur.com/BZIUj5U.png" alt="23-2"> </p>
+<p><img src="https://i.imgur.com/BZIUj5U.png" srcset="/img/loading.gif" lazyload alt="23-2"> </p>
 <p>最後一行出現了ytpl<br>請到這個網站比對ytpl的版本，如果像筆者一樣版本過低的話，請將package.json內的ytpl版本拉高，然後更新一次ytpl<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/ytpl">https://www.npmjs.com/package/ytpl</a></p>
-<p><img src="https://i.imgur.com/prueQ8r.png" alt="23-3"> </p>
+<p><img src="https://i.imgur.com/prueQ8r.png" srcset="/img/loading.gif" lazyload alt="23-3"> </p>
 <p>官方文檔版本1.0.1</p>
-<p><img src="https://i.imgur.com/zDoQ0ox.png" alt="23-4"> </p>
+<p><img src="https://i.imgur.com/zDoQ0ox.png" srcset="/img/loading.gif" lazyload alt="23-4"> </p>
 <p>手動把0.3.0改成1.0.1然後下指令</p>
-<p><img src="https://i.imgur.com/XAAeYn1.png" alt="23-5"> </p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> update ytpl<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/XAAeYn1.png" srcset="/img/loading.gif" lazyload alt="23-5"> </p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> update ytpl<br></code></pre></div></td></tr></table></figure>
 
 <p>這樣就會更新你的ytpl函式庫</p>
 <hr>
@@ -275,29 +275,29 @@
 <p>原因不明，但這道理可以套到ytdl-core上，之後同學們有任何問題都可以先更新版本看看</p>
 <hr>
 <p>更新好後，我們在bot.js引用ytpl</p>
-<p><img src="https://i.imgur.com/saOcdBI.png" alt="23-6"> </p>
+<p><img src="https://i.imgur.com/saOcdBI.png" srcset="/img/loading.gif" lazyload alt="23-6"> </p>
 <p>在音樂指令底下加入歌單載入功能</p>
-<p><img src="https://i.imgur.com/r8rRLh7.png" alt="23-7">  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//?playList</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">playListMusic</span>(<span class="hljs-params">guildID, msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//沒在音樂廳不能使用此功能</span><br>        <span class="hljs-keyword">if</span> (!client.voice.connections.get(guildID)) &#123;<br>            msg.channel.send(<span class="hljs-string">`請先正常啟用音樂指令後，再使用歌單載入喔`</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">//網址</span><br>        <span class="hljs-keyword">const</span> valueED = msg.content.split(<span class="hljs-string">&#x27; &#x27;</span>);<br>        <span class="hljs-comment">//先用library自帶的方式檢查一次能不能用</span><br>        <span class="hljs-keyword">const</span> canPlay = <span class="hljs-keyword">await</span> ytpl.validateID(valueED[<span class="hljs-number">1</span>]);<br>        <span class="hljs-comment">//讀取到幾首歌，上限默認100首</span><br>        <span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">//幾首成功放入歌單</span><br>        <span class="hljs-keyword">let</span> b = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> (canPlay) &#123;<br>            <span class="hljs-keyword">const</span> listED = <span class="hljs-keyword">await</span> ytpl(valueED[<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">await</span> listED.items.forEach(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element</span>) </span>&#123;<br>                a = a + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span> (element.title !== <span class="hljs-string">&#x27;[Deleted video]&#x27;</span>) &#123;<br>                    canPlay2 = <span class="hljs-keyword">await</span> ytdl.validateURL(element.url_simple);<br>                    <span class="hljs-keyword">if</span> (canPlay2) &#123;<br>                        b = b + <span class="hljs-number">1</span>;<br>                        musicList.get(guildID).push(element.url_simple);<br>                    &#125;<br>                &#125;<br>            &#125;);<br>            <span class="hljs-comment">//回傳統計資訊</span><br>            msg.channel.send(<span class="hljs-string">`歌單 <span class="hljs-subst">$&#123;listED.title&#125;</span>\n共載入<span class="hljs-subst">$&#123;b&#125;</span>首歌曲\n<span class="hljs-subst">$&#123;a-b&#125;</span>首載入失敗`</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            msg.channel.send(<span class="hljs-string">`This Url isn&#x27;t working in function.`</span>);<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;playListMusicError&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/r8rRLh7.png" srcset="/img/loading.gif" lazyload alt="23-7">  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//?playList</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">playListMusic</span>(<span class="hljs-params">guildID, msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//沒在音樂廳不能使用此功能</span><br>        <span class="hljs-keyword">if</span> (!client.voice.connections.get(guildID)) &#123;<br>            msg.channel.send(<span class="hljs-string">`請先正常啟用音樂指令後，再使用歌單載入喔`</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">//網址</span><br>        <span class="hljs-keyword">const</span> valueED = msg.content.split(<span class="hljs-string">&#x27; &#x27;</span>);<br>        <span class="hljs-comment">//先用library自帶的方式檢查一次能不能用</span><br>        <span class="hljs-keyword">const</span> canPlay = <span class="hljs-keyword">await</span> ytpl.validateID(valueED[<span class="hljs-number">1</span>]);<br>        <span class="hljs-comment">//讀取到幾首歌，上限默認100首</span><br>        <span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">//幾首成功放入歌單</span><br>        <span class="hljs-keyword">let</span> b = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> (canPlay) &#123;<br>            <span class="hljs-keyword">const</span> listED = <span class="hljs-keyword">await</span> ytpl(valueED[<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">await</span> listED.items.forEach(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element</span>) </span>&#123;<br>                a = a + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span> (element.title !== <span class="hljs-string">&#x27;[Deleted video]&#x27;</span>) &#123;<br>                    canPlay2 = <span class="hljs-keyword">await</span> ytdl.validateURL(element.url_simple);<br>                    <span class="hljs-keyword">if</span> (canPlay2) &#123;<br>                        b = b + <span class="hljs-number">1</span>;<br>                        musicList.get(guildID).push(element.url_simple);<br>                    &#125;<br>                &#125;<br>            &#125;);<br>            <span class="hljs-comment">//回傳統計資訊</span><br>            msg.channel.send(<span class="hljs-string">`歌單 <span class="hljs-subst">$&#123;listED.title&#125;</span>\n共載入<span class="hljs-subst">$&#123;b&#125;</span>首歌曲\n<span class="hljs-subst">$&#123;a-b&#125;</span>首載入失敗`</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            msg.channel.send(<span class="hljs-string">`This Url isn&#x27;t working in function.`</span>);<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;playListMusicError&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>由上而下依序說明…</p>
-<p><img src="https://i.imgur.com/06WUq7e.png" alt="23-8"> </p>
+<p><img src="https://i.imgur.com/06WUq7e.png" srcset="/img/loading.gif" lazyload alt="23-8"> </p>
 <p>因為歌單功能僅提供將yt歌單放入bot歌單的功能<br>正常使用play指令，不在語音廳的情況下是會直接進入語音廳並開始播放歌曲<br>筆者這邊寫成不能從歌單指令開始播歌</p>
-<p><img src="https://i.imgur.com/v9gRPGn.png" alt="23-9"> </p>
+<p><img src="https://i.imgur.com/v9gRPGn.png" srcset="/img/loading.gif" lazyload alt="23-9"> </p>
 <p>宣告了四份參數</p>
 <p>valueED<br>第一個單純是使用空白做字串分割，valueED[0]是前綴字+playList<br>valueED[1]則是一格空白後加上網址</p>
 <p>canPlay<br>使用ytpl自帶的檢查語法，會根據帶入的url回傳布林</p>
 <p>a<br>載入迴圈的每一次都會+1，代表著載入幾首歌</p>
 <p>b<br>載入迴圈的每一次，當成功將歌曲加入歌單時+1，表示成功抓取幾首歌</p>
-<p><img src="https://i.imgur.com/dBhEpU2.png" alt="23-10"> </p>
+<p><img src="https://i.imgur.com/dBhEpU2.png" srcset="/img/loading.gif" lazyload alt="23-10"> </p>
 <p>當canPlay等於ture後，正式查詢歌單並且將資料回傳給listED<br>listED底下有一items為JSONArray，他就是歌單的集合<br>對他使用迴圈，並在迴圈內用ytdl驗證一次網址是否可用<br>驗證全部通過後將歌曲加入該群組歌單<br>最後統計數字</p>
 <hr>
 <p>因為加入批量歌曲載入的緣故，當機器人在列出queueShow時，極有可能回傳大量文字<br>discord單封文字的上限數是2000，我們取1900就好</p>
-<p><img src="https://i.imgur.com/fdzjXHy.png" alt="23-11"> </p>
+<p><img src="https://i.imgur.com/fdzjXHy.png" srcset="/img/loading.gif" lazyload alt="23-11"> </p>
 <p>都好了後，試著運行看看</p>
-<p><img src="https://i.imgur.com/G0vZbae.png" alt="23-12"> </p>
-<p><img src="https://i.imgur.com/06dEnP9.png" alt="23-13"> </p>
-<p><img src="https://i.imgur.com/qSyICGj.png" alt="23-14"> </p>
+<p><img src="https://i.imgur.com/G0vZbae.png" srcset="/img/loading.gif" lazyload alt="23-12"> </p>
+<p><img src="https://i.imgur.com/06dEnP9.png" srcset="/img/loading.gif" lazyload alt="23-13"> </p>
+<p><img src="https://i.imgur.com/qSyICGj.png" srcset="/img/loading.gif" lazyload alt="23-14"> </p>
 <p>這樣音樂系統也能做到批量載入音樂了<br>其餘還剩一些瑕疵，如歌單功能有限制，歌曲詳細資訊載入偏慢，沒有過濾私人影片還有更多可能的問題等…就讓各位自己嘗試看看吧</p>
 <p>那音樂系統就教到這，我們明天見</p>
 
@@ -369,7 +369,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments">
+              <article class="comments" id="comments" lazyload>
                 
                   
                 
@@ -475,6 +475,10 @@
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
@@ -611,7 +615,7 @@ $(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000
 //$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 //$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 document.addEventListener('pjax:complete', function() {
-        
+        $.getScript("/js/lazyload.js");
     });
 </script>
 <link rel="stylesheet" href="/dist/APlayer.min.css">

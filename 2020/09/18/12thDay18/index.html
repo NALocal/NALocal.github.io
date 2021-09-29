@@ -33,7 +33,7 @@
 
 
   
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
 
 
 
@@ -64,7 +64,7 @@
 
 <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   
   <script  src="/js/utils.js" ></script>
@@ -265,23 +265,23 @@
 <p>由此可知，我們應該要將這個方法添加在所有功能的最底層<br>只有當前綴字都不符合時，才會來辨識表格資料</p>
 <p>觀念大致帶過，我們開始動手</p>
 <p>先幫我在專案目錄下建立一個Script資料夾，在裡面放一個GetGas.js</p>
-<p><img src="https://i.imgur.com/OJB3z4l.png" alt="18-1"></p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs autoit">//<span class="hljs-meta">#<span class="hljs-meta-keyword">region</span> 全域引用</span><br><span class="hljs-keyword">const</span> auth = require(<span class="hljs-string">&#x27;../JSONHome/auth.json&#x27;</span>)<span class="hljs-comment">;</span><br><span class="hljs-keyword">const</span> request = require(<span class="hljs-string">&#x27;request&#x27;</span>)<span class="hljs-comment">;</span><br><br>//<span class="hljs-meta">#<span class="hljs-meta-keyword">endregion</span></span><br><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/OJB3z4l.png" srcset="/img/loading.gif" lazyload alt="18-1"></p>
+<figure class="highlight autoit"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs autoit">//<span class="hljs-meta">#<span class="hljs-meta-keyword">region</span> 全域引用</span><br><span class="hljs-keyword">const</span> auth = require(<span class="hljs-string">&#x27;../JSONHome/auth.json&#x27;</span>)<span class="hljs-comment">;</span><br><span class="hljs-keyword">const</span> request = require(<span class="hljs-string">&#x27;request&#x27;</span>)<span class="hljs-comment">;</span><br><br>//<span class="hljs-meta">#<span class="hljs-meta-keyword">endregion</span></span><br><br></code></pre></div></td></tr></table></figure>
 
 <p>裡面請先幫我引用auth.json跟request</p>
 <p>auth目前只有存放機器人的key，跟key一樣，我們不希望自己與GAS串接的API暴露&amp;寫死在程式裡面，所以之後要把連結寫在auth，之後透過auth來讀取連結<br>務必注意引用auth的路徑比bot.js多了一個點，這是因為GetGas.js要先從Script路徑出來才找的到JSONHome。</p>
 <p>request是提供給js的網路請求library，我們之後都會透過他來傳遞Get方法</p>
-<p><img src="https://i.imgur.com/pwcJ7OJ.png" alt="18-2"></p>
+<p><img src="https://i.imgur.com/pwcJ7OJ.png" srcset="/img/loading.gif" lazyload alt="18-2"></p>
 <p>auth.json目前的樣子</p>
 <p>在原本的Key後面加上一個逗號，然後新增Gas參數，內涵一個JsonObject{}<br>{}裡面再包一個Get參數，內涵一個JsonArray[]<br>第一個JsonObject內包一個baseExcel參數<br>baseExcel參數會帶回我們昨天做的API連結</p>
 <p>包三層是為了增加程式含意，方便之後閱讀<br>跟Get同一層之後可以再添加post等<br>不過Get原本是包JsonObject就好，這邊為了多介紹JsonArray所以用了，原本就會的同學可以少包Array</p>
 <p>這種架構下，如果我們要獲取Url就會是<br>auth.Gas.Get[0].baseExcel</p>
-<p><img src="https://i.imgur.com/YcsHJpa.png" alt="18-3"></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span><span class="hljs-comment">#region 宣告請求</span><br>const baseExcel = &#123;<br>    <span class="hljs-string">&#x27;method&#x27;</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>    <span class="hljs-string">&#x27;url&#x27;</span>: auth.Gas.Get[<span class="hljs-number">0</span>].baseExcel,<br>    <span class="hljs-string">&#x27;headers&#x27;</span>: &#123;&#125;<br>&#125;;<br><br><span class="hljs-regexp">//</span><span class="hljs-comment">#endregion</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/YcsHJpa.png" srcset="/img/loading.gif" lazyload alt="18-3"></p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">//</span><span class="hljs-comment">#region 宣告請求</span><br>const baseExcel = &#123;<br>    <span class="hljs-string">&#x27;method&#x27;</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>    <span class="hljs-string">&#x27;url&#x27;</span>: auth.Gas.Get[<span class="hljs-number">0</span>].baseExcel,<br>    <span class="hljs-string">&#x27;headers&#x27;</span>: &#123;&#125;<br>&#125;;<br><br><span class="hljs-regexp">//</span><span class="hljs-comment">#endregion</span><br></code></pre></div></td></tr></table></figure>
 
 <p>再來我們宣告一個baseExcel常數，將http請求需要的參數帶給他<br>method表示我們使用的是Get方法<br>url就帶我們剛剛寫好的url<br>headers是傳送時的表頭，這邊放空值就好</p>
-<p><img src="https://i.imgur.com/8v4kmCE.png" alt="18-4"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//#region 傳送請求</span><br><span class="hljs-built_in">exports</span>.getBaseExcel = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">userTalk, callback</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> backValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>    request(baseExcel, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response</span>) </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                callback(error);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(response.body); <span class="hljs-comment">//接收回傳(response)的body</span><br>                <span class="hljs-keyword">const</span> keysValue = <span class="hljs-built_in">Object</span>.keys(data); <span class="hljs-comment">//將JsonObject的key值輸出成Array</span><br>                <span class="hljs-comment">//迴圈判斷是否符合</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; keysValue.length; i++) &#123;<br>                    <span class="hljs-keyword">if</span> (data[keysValue[i]].NAME === userTalk) &#123;<br>                        callback(data[keysValue[i]].VALUE); <span class="hljs-comment">//正確回傳結果</span><br>                    &#125;<br>                &#125;<br>                callback(<span class="hljs-literal">false</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getBaseExcelError&#x27;</span>, err);<br>            callback(<span class="hljs-string">&#x27;getBaseExcelError&#x27;</span>);<br>        &#125;<br>    &#125;);<br>&#125;;<br><br><span class="hljs-comment">//#endregion</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/8v4kmCE.png" srcset="/img/loading.gif" lazyload alt="18-4"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//#region 傳送請求</span><br><span class="hljs-built_in">exports</span>.getBaseExcel = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">userTalk, callback</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> backValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>    request(baseExcel, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response</span>) </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                callback(error);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(response.body); <span class="hljs-comment">//接收回傳(response)的body</span><br>                <span class="hljs-keyword">const</span> keysValue = <span class="hljs-built_in">Object</span>.keys(data); <span class="hljs-comment">//將JsonObject的key值輸出成Array</span><br>                <span class="hljs-comment">//迴圈判斷是否符合</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; keysValue.length; i++) &#123;<br>                    <span class="hljs-keyword">if</span> (data[keysValue[i]].NAME === userTalk) &#123;<br>                        callback(data[keysValue[i]].VALUE); <span class="hljs-comment">//正確回傳結果</span><br>                    &#125;<br>                &#125;<br>                callback(<span class="hljs-literal">false</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;getBaseExcelError&#x27;</span>, err);<br>            callback(<span class="hljs-string">&#x27;getBaseExcelError&#x27;</span>);<br>        &#125;<br>    &#125;);<br>&#125;;<br><br><span class="hljs-comment">//#endregion</span><br></code></pre></div></td></tr></table></figure>
 
 <p>最後我們實際創建一個callback方法，供外部調用<br>http請求後，將回傳值定義為JSON給data<br>之後讓data跑迴圈，判斷message是否與表格的NAME欄相符<br>叫到名字的話，機器人就要回傳VALUE值</p>
 <p>這樣我們就把GetGas.js做好了，剩下bot.js呼叫與傳送訊息的部分<br>我們明天繼續</p>
@@ -354,7 +354,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments">
+              <article class="comments" id="comments" lazyload>
                 
                   
                 
@@ -460,6 +460,10 @@
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
@@ -596,7 +600,7 @@ $(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000
 //$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 //$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 document.addEventListener('pjax:complete', function() {
-        
+        $.getScript("/js/lazyload.js");
     });
 </script>
 <link rel="stylesheet" href="/dist/APlayer.min.css">
