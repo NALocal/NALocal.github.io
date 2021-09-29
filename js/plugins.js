@@ -7,7 +7,6 @@ HTMLElement.prototype.wrap = function(wrapper) {
 };
 
 Fluid.plugins = {
-
   typing: function(text) {
     if (!('Typed' in window)) { return; }
 
@@ -36,8 +35,10 @@ Fluid.plugins = {
     if (toc.length === 0 || !window.tocbot) { return; }
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
+	var tocLet;
 
-    window.tocbot.init({
+    tocLet = tocbot;
+	tocLet.init({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
       headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
@@ -53,6 +54,9 @@ Fluid.plugins = {
     if (jQuery('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
+  },
+  delTocBot: function() {
+    tocLet.destroy();
   },
 
   initFancyBox: function() {

@@ -271,38 +271,6 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
@@ -356,6 +324,36 @@
 
   <!-- SCRIPTS -->
   
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
 
 
 
@@ -408,9 +406,22 @@ $(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000
 //$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 //$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
 //$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-document.addEventListener('pjax:complete', function() {
-        $.getScript("/js/lazyload.js");
-    });
+</script>
+<script>
+$.getScript("https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js");
+//加載修復區
+$(document).on('pjax:send',function(){
+  //destroy()方法
+  if ($('.toc').length) Fluid.plugins.delTocBot();
+})
+$(document).on('pjax:complete', function() {
+	$("script[data-pjax], .pjax-reload script").each(function () {
+	  $(this).parent().append($(this).remove());
+	});
+	Fluid.plugins.initTocBot();
+	Fluid.events.registerScrollTopArrowEvent()
+    $.getScript("/js/img-lazyload.js");
+});
 </script>
 <link rel="stylesheet" href="/dist/APlayer.min.css">
 <div id="aplayer"></div>
