@@ -651,17 +651,17 @@ $.getScript("https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js");
 //加載修復區
 $(document).on('pjax:send',function(){
   //destroy()方法
-  if ($('.toc').length) Fluid.plugins.delTocBot();
+  if ($('.toc').length) Fluid.plugins.delTocBot(); //文章目錄重載
 })
 $(document).on('pjax:complete', function() {
 	$("script[data-pjax], .pjax-reload script").each(function () {
-	  $(this).parent().append($(this).remove());
+	  $(this).parent().append($(this).remove()); //所有符合標籤物件重載(目前:0)
 	});
-	Fluid.plugins.initTocBot();
-	Fluid.plugins.initCopyCode();
-	Fluid.events.registerScrollTopArrowEvent();
-	Fluid.events.registerScrollDownArrowEvent();
-    $.getScript("/js/img-lazyload.js");
+	Fluid.plugins.initTocBot(); //文章目錄重載
+	Fluid.plugins.initCopyCode(); //highlight copy功能重載
+	Fluid.events.registerScrollTopArrowEvent(); //往上按鈕重載
+	Fluid.events.registerScrollDownArrowEvent(); //往下
+    $.getScript("/js/img-lazyload.js"); //懶加載
 });
 </script>
 <link rel="stylesheet" href="/dist/APlayer.min.css">

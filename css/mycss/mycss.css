@@ -42,3 +42,6 @@ tr{
 td{
 	display: block;
 }
+table {
+	overflow-x:hidden;
+}
