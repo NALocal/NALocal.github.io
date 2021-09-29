@@ -281,7 +281,7 @@
 <p>然後我們新增一個.gitignore，注意沒有副檔名喔</p>
 <p><img src="https://i.imgur.com/HWtBE6s.png" srcset="/img/loading.gif" lazyload alt="21-9"></p>
 <p><img src="https://i.imgur.com/JbUJatt.png" srcset="/img/loading.gif" lazyload alt="21-10"></p>
-<figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus">auth<span class="hljs-selector-class">.json</span><br><span class="hljs-selector-class">.gitignore</span><br>Herokugit<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus">auth<span class="hljs-selector-class">.json</span><br><span class="hljs-selector-class">.gitignore</span><br>Herokugit<br></code></pre></div></td></tr></table></figure>
 
 <p>這是給GitHub看的文件，可以讓GitHub在將專案commit前，選擇要忽略哪些檔案<br>我們的私密資料都在auth.json，所以auth.json自然不能推到任何人都能看得GitHub上<br>Herokugit是讓GitHub不會上傳到Heroku的.git檔案</p>
 <p><img src="https://i.imgur.com/CeXOZni.png" srcset="/img/loading.gif" lazyload alt="21-11"></p>
@@ -625,6 +625,7 @@ $(document).on('pjax:complete', function() {
 	  $(this).parent().append($(this).remove());
 	});
 	Fluid.plugins.initTocBot();
+	Fluid.plugins.initCopyCode();
 	Fluid.events.registerScrollTopArrowEvent();
 	Fluid.events.registerScrollDownArrowEvent();
     $.getScript("/js/img-lazyload.js");

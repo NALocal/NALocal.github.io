@@ -629,6 +629,7 @@ $(document).on('pjax:complete', function() {
 	  $(this).parent().append($(this).remove());
 	});
 	Fluid.plugins.initTocBot();
+	Fluid.plugins.initCopyCode();
 	Fluid.events.registerScrollTopArrowEvent();
 	Fluid.events.registerScrollDownArrowEvent();
     $.getScript("/js/img-lazyload.js");

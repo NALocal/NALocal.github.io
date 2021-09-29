@@ -211,7 +211,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      724 字
+      723 字
     </span>
   
 
@@ -277,7 +277,7 @@
 <p><img src="https://i.imgur.com/lif9ZJN.png" srcset="/img/loading.gif" lazyload alt="20-7"></p>
 <p>處理好上面後，做字串比對</p>
 <p><img src="https://i.imgur.com/xSzaxE8.png" srcset="/img/loading.gif" lazyload alt="20-8"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//BaseExcel字串比對</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetBaseExcelData</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (BaseExcelData) &#123;<br>            <span class="hljs-keyword">const</span> userMessage = msg.content;<br><br>            e = BaseExcelData.filter(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>                <span class="hljs-keyword">return</span> element.NAME === userMessage;<br>            &#125;)<br><br>            <span class="hljs-keyword">if</span> (e) <span class="hljs-keyword">return</span> e[<span class="hljs-number">0</span>].VALUE;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;GetBaseExcelDataError&#x27;</span>, err);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//BaseExcel字串比對</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetBaseExcelData</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (BaseExcelData) &#123;<br>            <span class="hljs-keyword">const</span> userMessage = msg.content;<br><br>            e = BaseExcelData.filter(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>                <span class="hljs-keyword">return</span> element.NAME === userMessage;<br>            &#125;)<br><br>            <span class="hljs-keyword">if</span> (e) <span class="hljs-keyword">return</span> e[<span class="hljs-number">0</span>].VALUE;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;GetBaseExcelDataError&#x27;</span>, err);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>然後將字串比對的function拉到原本請求API的地方</p>
 <p><img src="https://i.imgur.com/jnV3w2k.png" srcset="/img/loading.gif" lazyload alt="20-9"></p>
@@ -615,6 +615,7 @@ $(document).on('pjax:complete', function() {
 	  $(this).parent().append($(this).remove());
 	});
 	Fluid.plugins.initTocBot();
+	Fluid.plugins.initCopyCode();
 	Fluid.events.registerScrollTopArrowEvent();
 	Fluid.events.registerScrollDownArrowEvent();
     $.getScript("/js/img-lazyload.js");

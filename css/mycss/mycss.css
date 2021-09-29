@@ -28,3 +28,17 @@
   position: absolute;
   width: 12px;
 }
+
+.highlight table tbody tr td pre code{
+	white-space: normal;
+}
+
+tbody{
+	display: block;
+}
+tr{
+	display: block;
+}
+td{
+	display: block;
+}

@@ -235,12 +235,12 @@
           
           昨天我們把音樂系統的多群組支援做好了今天想講一下怎麼直接導入歌單
 首先請在專案目錄下的終端機安裝
-1npm install ytpl
+npm install ytpl
 
  
 安裝完成後，我們打開看package.json
  
-最後一行出現了ytpl請到這個網站比對ytpl的版本，如果像筆者一樣版本過低的話，請將package.json內的ytpl版本拉高，然後更新一次ytplhttps://www.npmjs.com/packag
+最後一行出現了ytpl請到這個網站比對ytpl的版本，如果像筆者一樣版本過低的話，請將package.json內的ytpl版本拉高，然後更新一次ytplhttps://www.npmjs.com/package
         </a>
       </p>
 
@@ -1128,6 +1128,7 @@ $(document).on('pjax:complete', function() {
 	  $(this).parent().append($(this).remove());
 	});
 	Fluid.plugins.initTocBot();
+	Fluid.plugins.initCopyCode();
 	Fluid.events.registerScrollTopArrowEvent();
 	Fluid.events.registerScrollDownArrowEvent();
     $.getScript("/js/img-lazyload.js");

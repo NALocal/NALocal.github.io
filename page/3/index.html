@@ -307,7 +307,7 @@ embed宣告後，透過其文檔底下的各個方法(methods)來賦予嵌入式
 就當作是惡補前面沒講到的Discord.js功能，我們今天來說說Discord.js的其他事件監聽吧
 
 刪除與更新事件目前我們的所有事件都是建立在使用者發送訊息 -&gt; Discord廣播給機器人 -&gt; 機器人的Message事件觸發
-1client.on(&
+client.on(&#
         </a>
       </p>
 
@@ -440,7 +440,7 @@ dispatcher這個物件在被賦予後，可
           昨天我們把架構很籠統的說了大概今天的內容會專注在編程為主，discord.js的元素不會再多贅述可能會比較枯燥一點萬里長路始於足下，同學們加油~
 音樂總方法
 新增一個音樂系統的分類，然後在底下創建MusicFunction方法一併把OnMessage事件下的音樂指令導向這個方法這樣Message事件就不會因為我們的程式碼肥大，進而影響閱讀
-12345678910111213141516171819
+function MusicFunction(msg) &
         </a>
       </p>
 
@@ -1114,6 +1114,7 @@ $(document).on('pjax:complete', function() {
 	  $(this).parent().append($(this).remove());
 	});
 	Fluid.plugins.initTocBot();
+	Fluid.plugins.initCopyCode();
 	Fluid.events.registerScrollTopArrowEvent();
 	Fluid.events.registerScrollDownArrowEvent();
     $.getScript("/js/img-lazyload.js");

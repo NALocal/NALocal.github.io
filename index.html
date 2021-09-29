@@ -435,7 +435,7 @@
 
 創建實例
 
-1234567891011121314151617181920212223//從權限組中刪除使用者 OR 刪除權限組function DeleteTag(msg) &#123;    try &#123;        if (DoUserID === &#x27;&#x27;)
+//從權限組中刪除使用者 OR 刪除權限組function DeleteTag(msg) &#123;    try &#123;        if (DoUserID === &#x27;&#x27;) &#123;            tempIsAdmin = Chec
         </a>
       </p>
 
@@ -500,7 +500,7 @@
           昨天我們做好了 將使用者加入身份組指令今天把 創建身分組的指令做好
 跟昨天一樣，請先開啟GAS，身分組的GAS叫做getPartyPower新增以下
 
-1234567891011121314151617181920212223242526272829303132333435function doPost(e)&#123;  var para = e.parameter; // 存放 post 所有
+function doPost(e)&#123;  var para = e.parameter; // 存放 post 所有傳送的參數    var id = &#x27;1mQ6qTJfOs3Gv5--K9r87w56wmDc3hUcpHm5h
         </a>
       </p>
 
@@ -566,7 +566,7 @@
 請打開之前再google雲端上創建的GAS ， getUserPower
 
 原本的程式寫在doGet方法，我們在doGet方法下新增一個doPost方法，然後寫上這些東西
-12345678910111213141516171819202122232425262728293031323334353637function doPost(
+function doPost(e)&#123;  var para = e.parameter; // 存放 post 所有傳送的參數    var id = 
         </a>
       </p>
 
@@ -1111,6 +1111,7 @@ $(document).on('pjax:complete', function() {
 	  $(this).parent().append($(this).remove());
 	});
 	Fluid.plugins.initTocBot();
+	Fluid.plugins.initCopyCode();
 	Fluid.events.registerScrollTopArrowEvent();
 	Fluid.events.registerScrollDownArrowEvent();
     $.getScript("/js/img-lazyload.js");
