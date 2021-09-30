@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永恆的願望">
+  <meta name="author" content="NALocal">
+  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd,微笑,微笑之家">
+  
+     <meta name="referrer" content="no-referrer"/> 
+  
+  <title>Day22 - 音樂系統的多群組化(額外) - 微笑之家</title>
+
+  
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+<link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+
+
+
+  
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
+
+
+
+
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mycss/mycss.css">
+
+
+
+<script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script  src="/js/jquery.min.js" ></script>
+  
+    <script  src="/js/jquery.pjax.min.js" ></script>
+  
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="微笑之家" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="ajaxD">
+	  <header style="height: 70vh;">
+		<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>微笑之家</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文章
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+		<div class="banner" id="banner" parallax=true
+			 style="background: url('/img/banner2.jpg') no-repeat center center;
+			   background-size: cover;">
+		  <div class="full-bg-img">
+			<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+			  <div class="page-header text-center fade-in-up">
+				<span class="h2" id="subtitle" title="Day22 - 音樂系統的多群組化(額外)">
+				  
+				</span>
+
+				
+				  <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-22 10:10" pubdate>
+        2020年9月22日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+				
+			  </div>
+
+			  
+			</div>
+		  </div>
+		</div>
+	  </header>
+
+	  <main>
+		
+		  
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Day22 - 音樂系統的多群組化(額外)</h1>
+            
+            <div class="markdown-body">
+              <p>這兩天來把音樂系統教完好了</p>
+<p>目前為止的音樂系統只支援一隻機器人 for 一個群組的模式<br>如果有多群組同時要使用音樂系統，會導致歌單列表共用</p>
+<p>這是因為機器人的系統中，並沒有將群組納入判斷<br>要改起來並不難，但邏輯要清晰</p>
+<p>不知道當時有沒有小夥伴自己搞定這一塊的?我們今天會再帶過</p>
+<p>程式碼是依照之前的進度，不會重頭開始，如果需要但沒有基礎程式碼的話可以回去看音樂系統的教學</p>
+<hr>
+<h1 id="MusicFunction"><a href="#MusicFunction" class="headerlink" title="MusicFunction"></a>MusicFunction</h1><p><img src="https://i.imgur.com/sKuhlfp.png" srcset="/img/loading.gif" lazyload alt="22-1"></p>
+<p>首先請把宣告成全域變數的兩個參數，初始化都設為Map()</p>
+<p><img src="https://i.imgur.com/KSRmbTG.png" srcset="/img/loading.gif" lazyload alt="22-2"></p>
+<p>再來我們在音樂指令的入口提取guildID，並且放入每一個function內</p>
+<h1 id="playMusic"><a href="#playMusic" class="headerlink" title="playMusic"></a>playMusic</h1><p><img src="https://i.imgur.com/gax5Dun.png" srcset="/img/loading.gif" lazyload alt="22-3"></p>
+<p>修改了151,155跟171行<br>(可以根據左側顏色判斷)</p>
+<p>第一次進入語音廳的群組需要先以群組ID宣告一個歌曲列表<br>原本歌曲列表放入資料的方法是這樣</p>
+<figure class="highlight gcode"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gcode">musicList.push<span class="hljs-comment">(網址)</span><br></code></pre></div></td></tr></table></figure>
+
+<p>現在變成</p>
+<figure class="highlight applescript"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs applescript">music.<span class="hljs-keyword">get</span>(群組<span class="hljs-built_in">id</span>).push(網址)<br></code></pre></div></td></tr></table></figure>
+
+<p>也就是根據群組id提取歌曲列表</p>
+<h1 id="playMusic2"><a href="#playMusic2" class="headerlink" title="playMusic2"></a>playMusic2</h1><p><img src="https://i.imgur.com/MpGvBiu.png" srcset="/img/loading.gif" lazyload alt="22-4"></p>
+<p>改了185,195,202,204跟206行<br>(可以根據左側顏色判斷)</p>
+<p>原則上都跟剛剛一樣，注意歌曲清單跟播放遙控器應該是一個群組一個而已</p>
+<h1 id="disconnectMusic"><a href="#disconnectMusic" class="headerlink" title="disconnectMusic"></a>disconnectMusic</h1><p><img src="https://i.imgur.com/GHYrwdz.png" srcset="/img/loading.gif" lazyload alt="22-5"></p>
+<p>修改了222行<br>(可以根據左側顏色判斷)</p>
+<h1 id="replayMusic"><a href="#replayMusic" class="headerlink" title="replayMusic"></a>replayMusic</h1><p><img src="https://i.imgur.com/0noksiD.png" srcset="/img/loading.gif" lazyload alt="22-6"></p>
+<p>改了235,237與240行<br>(可以根據左側顏色判斷)</p>
+<h1 id="skipMusic"><a href="#skipMusic" class="headerlink" title="skipMusic"></a>skipMusic</h1><p><img src="https://i.imgur.com/j3vClrt.png" srcset="/img/loading.gif" lazyload alt="22-7"></p>
+<p>只有一行</p>
+<h1 id="nowPlayMusic"><a href="#nowPlayMusic" class="headerlink" title="nowPlayMusic"></a>nowPlayMusic</h1><p><img src="https://i.imgur.com/0mjB6g9.png" srcset="/img/loading.gif" lazyload alt="22-8"></p>
+<p>修改了253,255跟261行<br>(可以根據左側顏色判斷)</p>
+<p>字串串接部分拿的是已經處理好的參數，所以不用修改streamString</p>
+<h1 id="queueShow"><a href="#queueShow" class="headerlink" title="queueShow"></a>queueShow</h1><p><img src="https://i.imgur.com/6ekTspK.png" srcset="/img/loading.gif" lazyload alt="22-9"></p>
+<p>修改了291,294跟296行<br>(可以根據左側顏色判斷)</p>
+<hr>
+<p>這樣基本就都改好了，我們試著運行看看</p>
+<p>運行前，因為之前我們已經上傳機器人到heroku上，理論上現在機器人是在運行狀態的<br>這時候如果我們使用node bot，雖然不會有bug，但會造成bot裡面同時有兩隻程序登入，會造成很有趣的現象，各位有興趣可以試試</p>
+<p>那這邊筆者為了繞過這問題，想直接上傳至heroku，這樣就可以只跑一個程序，也剛好介紹怎麼用heroku瀏覽程序歷程</p>
+<h1 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h1><p>我們先回到專案資料夾底下，將.git改名gitHub，然後將gitHeroku改回.git</p>
+<p>回到vsCode，將專案推上heroku</p>
+<p>推完看到Build succeeded後幫我下</p>
+<figure class="highlight excel"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs excel">heroku <span class="hljs-built_in">log</span> -<span class="hljs-built_in">t</span><br></code></pre></div></td></tr></table></figure>
+
+<p>之前應該有提到<br>這是觀察專案在heroku上的託管狀態<br>如果我們要透過heroku來直接跑程序，或是之後出問題都是來這邊看error訊息</p>
+<p>開好訊息後，我們試著測試看看機器人是不是真的可以分群播音樂了</p>
+<p><img src="https://i.imgur.com/BMVGiLi.png" srcset="/img/loading.gif" lazyload alt="22-10"></p>
+<p><img src="https://i.imgur.com/5dS1Qmq.png" srcset="/img/loading.gif" lazyload alt="22-11"></p>
+<p><img src="https://i.imgur.com/7rysBLk.png" srcset="/img/loading.gif" lazyload alt="22-12"></p>
+<p><img src="https://i.imgur.com/GdOBJIn.png" srcset="/img/loading.gif" lazyload alt="22-13"></p>
+<p><img src="https://i.imgur.com/Eu0wFM2.png" srcset="/img/loading.gif" lazyload alt="22-14"></p>
+<p><img src="https://i.imgur.com/FgMco0X.png" srcset="/img/loading.gif" lazyload alt="22-15"></p>
+<p><img src="https://i.imgur.com/3J61doA.png" srcset="/img/loading.gif" lazyload alt="22-16"></p>
+<hr>
+<p>大致如此，我們可以看到，機器人確實在兩個群組收到指令時，不會影響到對方了</p>
+<p>音樂系統的多群組支援教到這<br>明天看看要不要教一些額外的功能，我們明天見</p>
+<h1 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h1><figure class="highlight javascript"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//#region 音樂系統</span><br><span class="hljs-comment">//歌曲控制器</span><br><span class="hljs-keyword">let</span> dispatcher = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br><span class="hljs-comment">//歌曲清單</span><br><span class="hljs-keyword">let</span> musicList = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MusicFunction</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-comment">//將訊息內的前綴字截斷，後面的字是我們要的</span><br>    <span class="hljs-keyword">const</span> content = msg.content.substring(prefix[<span class="hljs-number">1</span>].Value.length);<br>    <span class="hljs-comment">//指定我們的間隔符號</span><br>    <span class="hljs-keyword">const</span> splitText = <span class="hljs-string">&#x27; &#x27;</span>;<br>    <span class="hljs-comment">//用間隔符號隔開訊息 contents[0] = 指令,contents[1] = 參數</span><br>    <span class="hljs-keyword">const</span> contents = content.split(splitText);<br>    <span class="hljs-comment">//因為會持續使用到，將群組ID獨立成參數</span><br>    <span class="hljs-keyword">const</span> guildID = msg.guild.id;<br><br>    <span class="hljs-keyword">switch</span> (contents[<span class="hljs-number">0</span>]) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;play&#x27;</span>:<br>            <span class="hljs-comment">//點歌&amp;播放歌曲功能</span><br>            playMusic(guildID, msg, contents);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;replay&#x27;</span>:<br>            <span class="hljs-comment">//重播當前歌曲</span><br>            replayMusic(guildID);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;np&#x27;</span>:<br>            <span class="hljs-comment">//當前歌曲資訊</span><br>            nowPlayMusic(guildID, msg.channel.id);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;queue&#x27;</span>:<br>            <span class="hljs-comment">//歌曲清單</span><br>            queueShow(guildID, msg.channel.id);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;skip&#x27;</span>:<br>            <span class="hljs-comment">//中斷歌曲</span><br>            skipMusic(guildID);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;disconnect&#x27;</span>:<br>            <span class="hljs-comment">//退出語音頻道並且清空歌曲清單</span><br>            disconnectMusic(guildID, msg.channel.id);<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//?play</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">playMusic</span>(<span class="hljs-params">guildID, msg, contents</span>) </span>&#123;<br>    <span class="hljs-comment">//定義我們的第一個參數必需是網址</span><br>    <span class="hljs-keyword">const</span> urlED = contents[<span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//第一個參數不是連結就要篩選掉</span><br>        <span class="hljs-keyword">if</span> (urlED.substring(<span class="hljs-number">0</span>, <span class="hljs-number">4</span>) !== <span class="hljs-string">&#x27;http&#x27;</span>) <span class="hljs-keyword">return</span> msg.reply(<span class="hljs-string">&#x27;The link is not working.1&#x27;</span>);<br><br>        <span class="hljs-comment">//透過library判斷連結是否可運行</span><br>        <span class="hljs-keyword">const</span> validate = <span class="hljs-keyword">await</span> ytdl.validateURL(urlED);<br>        <span class="hljs-keyword">if</span> (!validate) <span class="hljs-keyword">return</span> msg.reply(<span class="hljs-string">&#x27;The link is not working.2&#x27;</span>);<br><br>        <span class="hljs-comment">//獲取歌曲資訊</span><br>        <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> ytdl.getInfo(urlED);<br>        <span class="hljs-comment">//判斷資訊是否正常</span><br>        <span class="hljs-keyword">if</span> (info.videoDetails) &#123;<br>            <span class="hljs-comment">//指令下達者是否在語音頻道</span><br>            <span class="hljs-keyword">if</span> (msg.member.voice.channel) &#123;<br>                <span class="hljs-comment">//判斷bot是否已經連到語音頻道 是:將歌曲加入歌單 不是:進入語音頻道並且播放歌曲</span><br>                <span class="hljs-keyword">if</span> (!client.voice.connections.get(msg.guild.id)) &#123;<br>                    <span class="hljs-comment">//因為是第一次加入，宣告新的歌曲列表</span><br>                    musicList.set(guildID, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>());<br><br>                    <span class="hljs-comment">//將歌曲加入歌單</span><br>                    musicList.get(guildID).push(urlED);<br>                    <span class="hljs-comment">//進入語音頻道</span><br>                    msg.member.voice.channel.join()<br>                        .then(<span class="hljs-function"><span class="hljs-params">connection</span> =&gt;</span> &#123;<br>                            msg.reply(<span class="hljs-string">&#x27;來了~&#x27;</span>);<br>                            <span class="hljs-comment">//const guildID = msg.guild.id;</span><br>                            <span class="hljs-keyword">const</span> channelID = msg.channel.id;<br>                            <span class="hljs-comment">//播放歌曲</span><br>                            playMusic2(connection, guildID, channelID);<br>                        &#125;)<br>                        .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>                            msg.reply(<span class="hljs-string">&#x27;bot進入語音頻道時發生錯誤，請再試一次&#x27;</span>);<br>                            <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;playMusicError2&#x27;</span>);<br>                        &#125;)<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-comment">//將歌曲加入歌單</span><br>                    musicList.get(guildID).push(urlED);<br>                    msg.reply(<span class="hljs-string">&#x27;已將歌曲加入歌單!&#x27;</span>);<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> msg.reply(<span class="hljs-string">&#x27;請先進入頻道:3...&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> msg.reply(<span class="hljs-string">&#x27;The link is not working.3&#x27;</span>);<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;playMusicError&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//?play 遞迴函式</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">playMusic2</span>(<span class="hljs-params">connection, guildID, channelID</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//播放前歌曲清單不能沒有網址</span><br>        <span class="hljs-keyword">if</span> (musicList.get(guildID).length &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//設定音樂相關參數</span><br>            <span class="hljs-keyword">const</span> streamOptions = &#123;<br>                <span class="hljs-attr">seek</span>: <span class="hljs-number">0</span>,<br>                <span class="hljs-attr">volume</span>: <span class="hljs-number">0.5</span>,<br>                <span class="hljs-attr">Bitrate</span>: <span class="hljs-number">192000</span>,<br>                <span class="hljs-attr">Passes</span>: <span class="hljs-number">1</span>,<br>                <span class="hljs-attr">highWaterMark</span>: <span class="hljs-number">1</span><br>            &#125;;<br>            <span class="hljs-comment">//讀取清單第一位網址</span><br>            <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">await</span> ytdl(musicList.get(guildID)[<span class="hljs-number">0</span>], &#123;<br>                <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;audioonly&#x27;</span>,<br>                <span class="hljs-attr">quality</span>: <span class="hljs-string">&#x27;highestaudio&#x27;</span>,<br>                <span class="hljs-attr">highWaterMark</span>: <span class="hljs-number">26214400</span> <span class="hljs-comment">//25ms</span><br>            &#125;)<br><br>            <span class="hljs-comment">//播放歌曲，並且存入dispatcher</span><br>            dispatcher.set(guildID, connection.play(stream, streamOptions));<br>            <span class="hljs-comment">//監聽歌曲播放結束事件</span><br>            dispatcher.get(guildID).on(<span class="hljs-string">&quot;finish&quot;</span>, <span class="hljs-function"><span class="hljs-params">finish</span> =&gt;</span> &#123;<br>                <span class="hljs-comment">//將清單中第一首歌清除</span><br>                <span class="hljs-keyword">if</span> (musicList.get(guildID).length &gt; <span class="hljs-number">0</span>) musicList.get(guildID).shift();<br>                <span class="hljs-comment">//播放歌曲</span><br>                playMusic2(connection, guildID, channelID);<br>            &#125;)<br>        &#125; <span class="hljs-keyword">else</span> disconnectMusic(guildID, channelID); <span class="hljs-comment">//清空歌單並且退出語音頻道</span><br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;playMusic2Error&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//?disconnect</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">disconnectMusic</span>(<span class="hljs-params">guildID, channelID</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//判斷bot是否在此群組的語音頻道</span><br>        <span class="hljs-keyword">if</span> (client.voice.connections.get(guildID)) &#123;<br>            <span class="hljs-comment">//清空歌曲清單</span><br>            musicList.set(guildID, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>());<br>            <span class="hljs-comment">//退出語音頻道</span><br>            client.voice.connections.get(guildID).disconnect();<br><br>            client.channels.fetch(channelID).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(<span class="hljs-string">&#x27;晚安~&#x27;</span>));<br>        &#125; <span class="hljs-keyword">else</span> client.channels.fetch(channelID).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(<span class="hljs-string">&#x27;可是..我還沒進來:3&#x27;</span>))<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;disconnectMusicError&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//?replay</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replayMusic</span>(<span class="hljs-params">guildID</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (musicList.get(guildID).length &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">//把當前曲目再推一個到最前面</span><br>        musicList.get(guildID).unshift(musicList[<span class="hljs-number">0</span>]);<br>        <span class="hljs-comment">//將歌曲關閉，觸發finish事件</span><br>        <span class="hljs-comment">//finish事件將清單第一首歌排出，然後繼續播放下一首</span><br>        <span class="hljs-keyword">if</span> (dispatcher.get(guildID) !== <span class="hljs-literal">undefined</span>) dispatcher.get(guildID).end();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//?skip</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">skipMusic</span>(<span class="hljs-params">guildID</span>) </span>&#123;<br>    <span class="hljs-comment">//將歌曲關閉，觸發finish事件</span><br>    <span class="hljs-keyword">if</span> (dispatcher.get(guildID) !== <span class="hljs-literal">undefined</span>) dispatcher.get(guildID).end();<br>&#125;<br><br><span class="hljs-comment">//?np</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nowPlayMusic</span>(<span class="hljs-params">guildID, channelID</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (dispatcher.get(guildID) !== <span class="hljs-literal">undefined</span> &amp;&amp; musicList.get(guildID).length &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//從連結中獲取歌曲資訊 標題 總長度等</span><br>            <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> ytdl.getInfo(musicList.get(guildID)[<span class="hljs-number">0</span>]);<br>            <span class="hljs-comment">//歌曲標題</span><br>            <span class="hljs-keyword">const</span> title = info.videoDetails.title;<br>            <span class="hljs-comment">//歌曲全長(s)</span><br>            <span class="hljs-keyword">const</span> songLength = info.videoDetails.lengthSeconds;<br>            <span class="hljs-comment">//當前播放時間(ms)</span><br>            <span class="hljs-keyword">const</span> nowSongLength = <span class="hljs-built_in">Math</span>.floor(dispatcher.get(guildID).streamTime / <span class="hljs-number">1000</span>);<br>            <span class="hljs-comment">//串字串</span><br>            <span class="hljs-keyword">const</span> message = <span class="hljs-string">`<span class="hljs-subst">$&#123;title&#125;</span>\n<span class="hljs-subst">$&#123;streamString(songLength,nowSongLength)&#125;</span>`</span>;<br>            client.channels.fetch(channelID).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(message))<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;nowPlayMusicError&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//▬▬▬▬▬▬▬▬▬?▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">streamString</span>(<span class="hljs-params">songLength, nowSongLength</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> mainText = <span class="hljs-string">&#x27;?&#x27;</span>;<br>    <span class="hljs-keyword">const</span> secondText = <span class="hljs-string">&#x27;▬&#x27;</span>;<br>    <span class="hljs-keyword">const</span> whereMain = <span class="hljs-built_in">Math</span>.floor((nowSongLength / songLength) * <span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">let</span> message = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">30</span>; i++) &#123;<br>        <span class="hljs-keyword">if</span> (i * <span class="hljs-number">3.3</span> + <span class="hljs-number">1</span> &gt;= whereMain) &#123;<br>            message = message + mainText;<br>            mainText = secondText;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            message = message + secondText;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> message;<br>&#125;<br><br><span class="hljs-comment">//?queue</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queueShow</span>(<span class="hljs-params">guildID, channelID</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (musicList.get(guildID).length &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">let</span> info;<br>            <span class="hljs-keyword">let</span> message = <span class="hljs-string">&#x27;&#x27;</span>;<br>            <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; musicList.get(guildID).length; i++) &#123;<br>                <span class="hljs-comment">//從連結中獲取歌曲資訊 標題 總長度等</span><br>                info = <span class="hljs-keyword">await</span> ytdl.getInfo(musicList.get(guildID)[i]);<br>                <span class="hljs-comment">//歌曲標題</span><br>                title = info.videoDetails.title;<br>                <span class="hljs-comment">//串字串</span><br>                message = message + <span class="hljs-string">`\n<span class="hljs-subst">$&#123;i+<span class="hljs-number">1</span>&#125;</span>. <span class="hljs-subst">$&#123;title&#125;</span>`</span>;<br>            &#125;<br>            <span class="hljs-comment">//把最前面的\n拿掉</span><br>            message = message.substring(<span class="hljs-number">1</span>, message.length);<br>            client.channels.fetch(channelID).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(message))<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">&#x27;queueShowError&#x27;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//#endregion</span><br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+                    
+                      <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> ，轉載請註明出處！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/21/12thDay21/" class="nextPageButtom">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Day21 - 認識GitHub</span>
+                        <span class="visible-mobile">下一篇</span>
+                      </a>
+                    
+                  </article>
+				  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/23/12thDay23/" class="nextPageButtom">
+                        <span class="hidden-mobile">Day23 - 音樂系統的歌單批量載入(額外)</span>
+                        <span class="visible-mobile">上一篇</span>
+						<i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"9a33a548232178c23121","clientSecret":"bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6","repo":"nalocal.github.io","owner":"NALocal","admin":["NALocal"],"language":"zh-TW","perPage":50,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":false},
+          {
+            id: 'e0e4d51f31a834349170dd8dbeb4be1f'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+		
+
+		
+		  <a id="scroll-top-button" href="#" role="button">
+			<i class="iconfont icon-arrowup" aria-hidden="true"></i>
+		  </a>
+		
+
+		
+		  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+		
+
+		
+		  <div class="col-lg-7 mx-auto nopadding-x-md">
+			<div class="container custom mx-auto">
+			   
+			</div>
+		  </div>
+		
+	  </main>
+	  <span style="display:none">style將title打字機從scripts移過來，原本在math.ejs上方</span>
+	  <!-- AJAX-SCRIPTS -->
+	  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script defer>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+  </div>
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>java is a fucking shit</span> <i class="iconfont icon-love"></i> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            文章總共被瀏覽了 
+            <span id="busuanzi_value_site_pv"></span>
+             次喔
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總共有 
+            <span id="busuanzi_value_site_uv"></span>
+             人曾經來過這裡呢
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SWFNWD1RD"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1SWFNWD1RD');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+<script>
+$(document)
+.ajaxStart(function () {
+NProgress.start();
+})
+.ajaxStop(function () {
+NProgress.done();
+if ($(window).scrollTop() > 50) {
+	$(".pagination").fadeIn();
+} else {
+	$(".pagination").fadeOut();
+}
+});
+$(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000});
+//$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+//$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+//$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+</script>
+<script>
+$.getScript("https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js");
+//加載修復區
+$(document).on('pjax:send',function(){
+  //destroy()方法
+  if ($('.toc').length) Fluid.plugins.delTocBot(); 
+})
+$(document).on('pjax:complete', function() {
+	$("script[data-pjax], .pjax-reload script").each(function () {
+	  $(this).parent().append($(this).remove()); //所有符合標籤物件重載(目前:0)
+	});
+	Fluid.plugins.initAnchor(); //錨點重載
+	Fluid.plugins.initTocBot(); //文章目錄重載
+	Fluid.plugins.initCopyCode(); //highlight copy功能重載
+	Fluid.events.registerNavbarEvent(); //導覽頁css重載
+	Fluid.events.registerScrollTopArrowEvent(); //往上按鈕重載
+	Fluid.events.registerScrollDownArrowEvent(); //往下
+    $.getScript("/js/img-lazyload.js"); //懶加載
+    $.getScript("/js/color-schema.js"); //切換主題黑白
+});
+</script>
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 50) {
+            $(".pagination").fadeIn();
+        } else {
+            $(".pagination").fadeOut();
+        }
+    });
+});
+</script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+</body>
+</html>
