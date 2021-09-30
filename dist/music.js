@@ -17,7 +17,7 @@ const ap = new APlayer({
 		{
             name: '最近在聽的歌',
             artist: 'Fullmetal Alchemist Brotherhood',
-            url: '/music/Fullmetal Alchemist Brotherhood.mp3',
+            url: '/music/Fullmetal-Alchemist-Brotherhood.mp3',
             cover: '/img/avatar.png',
         }
     ]
