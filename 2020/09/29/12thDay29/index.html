@@ -609,6 +609,8 @@ $(document).on('pjax:complete', function() {
     $.getScript("/js/img-lazyload.js"); //懶加載
     $.getScript("/js/color-schema.js"); //切換主題黑白
 });
+//懶加載
+$(document).ready(function(){$.getScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"); })
 </script>
 <link rel="stylesheet" href="/dist/APlayer.min.css">
 <div id="aplayer"></div>
