@@ -584,10 +584,10 @@
 <script>
 $(document)
 .ajaxStart(function () {
-NProgress.start();
+//NProgress.start();
 })
 .ajaxStop(function () {
-NProgress.done();
+//NProgress.done();
 if ($(window).scrollTop() > 50) {
 	$(".pagination").fadeIn();
 } else {
@@ -618,6 +618,7 @@ $(document).on('pjax:complete', function() {
 	Fluid.events.registerScrollDownArrowEvent(); //往下
     $.getScript("/js/img-lazyload.js"); //懶加載
     $.getScript("/js/color-schema.js"); //切換主題黑白
+	window.NProgress.done(); //關閉進度條
 });
 //懶加載
 $(document).ready(function(){$.getScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"); })
