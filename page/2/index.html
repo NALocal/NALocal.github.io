@@ -222,6 +222,154 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/09/25/12thDay25/" target="_self">
+          Day25 - 權限系統規格
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/25/12thDay25/" target="_self">
+          
+          
+            
+          
+          最近在編寫群組權限相關的功能，就說說這個吧
+先說明此功能需求情境:
+群組人數過多，管理層不希望群組人員可以使用 every 或 身分組 或 頻道等會群體呼叫的tag
+但又希望在必要的時候，其他人可以使用此功能
+因此希望將此權限關閉，並且給予機器人此權限透過機器人做二次權限管理，並且對使用人與時間等進行紀錄
+
+為了完成需求，我們假設機器人權限是admin，我們需要…
+三層身份組群主-&gt;管理員-
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-25 09:42" pubdate>
+              2020-09-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+		
+		  <div class="post-meta">
+		  <i class="iconfont icon-comment"></i>
+          <span class="commentCount">test</span>
+          </div>
+		
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/24/12thDay24/" target="_self">
+          Day24 - 愛麗絲安靜!
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/24/12thDay24/" target="_self">
+          
+          
+            
+          
+          今天想教怎麼讓機器人安靜/啟動這樣才能說之後想教的東西
+情境描述機器人需要有個控制是否啟動的開關可設定在該群組 or 頻道是否可以接收指令
+因為我們的機器人會有多組系統(文字回答&amp;音樂系統)會希望再額外設定可以在指定的群組 or 頻道是否可以接收特定系統的指令
+實作開始首先請先幫我新建一個JSON檔案，叫做shup.json…或是你喜歡的名字xD
+
+記得JSON檔案都要放在JSONHome
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-24 10:58" pubdate>
+              2020-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            
+              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+            
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node-js/">node.js</a>
+            
+              <a href="/tags/bot/">bot</a>
+            
+              <a href="/tags/discord/">discord</a>
+            
+              <a href="/tags/discord-js/">discord.js</a>
+            
+              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+            
+              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+            
+          </div>
+        
+		
+		  <div class="post-meta">
+		  <i class="iconfont icon-comment"></i>
+          <span class="commentCount">test</span>
+          </div>
+		
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/09/23/12thDay23/" target="_self">
           Day23 - 音樂系統的歌單批量載入(額外)
         </a>
@@ -774,155 +922,6 @@ GitHub是基於Git語言的開源專案庫他提供任何
             <i class="iconfont icon-date"></i>
             <time datetime="2020-09-16 09:10" pubdate>
               2020-09-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
-            
-              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
-            
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/node-js/">node.js</a>
-            
-              <a href="/tags/bot/">bot</a>
-            
-              <a href="/tags/discord/">discord</a>
-            
-              <a href="/tags/discord-js/">discord.js</a>
-            
-              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
-            
-              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-            
-          </div>
-        
-		
-		  <div class="post-meta">
-		  <i class="iconfont icon-comment"></i>
-          <span class="commentCount">test</span>
-          </div>
-		
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/09/15/12thDay15/" target="_self">
-          Day15 - Heroku架設&amp;細部設定
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/15/12thDay15/" target="_self">
-          
-          
-            
-          
-          早安昨天我們把Heroku跟Git都安裝好了，今天我們要將我們的專案變成Git專案並且推上Heroku
-第一次推送專案首先，跟之前一樣我們先用VSCode開啟專案資料夾
-
-確定終端機路徑正確後，輸入git init
-
-左側的檔案都變得綠綠的如果你有看的到隱藏資料夾的話，在專案底下還會看到一個.git的隱藏資料夾那就是用來識別git專案的檔案，也是執行git語言時的依據
-這樣專案就轉換成git專案了
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-15 18:20" pubdate>
-              2020-09-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
-            
-              <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
-            
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/node-js/">node.js</a>
-            
-              <a href="/tags/bot/">bot</a>
-            
-              <a href="/tags/discord/">discord</a>
-            
-              <a href="/tags/discord-js/">discord.js</a>
-            
-              <a href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
-            
-              <a href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-            
-          </div>
-        
-		
-		  <div class="post-meta">
-		  <i class="iconfont icon-comment"></i>
-          <span class="commentCount">test</span>
-          </div>
-		
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/09/14/12thDay14/" target="_self">
-          Day14 - Heroku與Git，介紹與安裝
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/14/12thDay14/" target="_self">
-          
-          
-            
-          
-          好勒，上禮拜我們終於把基本的音樂系統做好現在你的機器人支援多種功能，加上你自己做的其他系統，已經是一個強大的機器人了!
-之後如果我要使用機器人，只要打開cmd運行node bot，然後電腦一直開著就好
-
-一直開著就好
-自己不在其他人就沒辦法使用bot
-程序如果掛掉要自已重啟
-
-其實這就是將自己的電腦做為後端主機在運行bot而這方法對於平常沒有長時間開機習慣的使用者來說是略為有些負擔了就算是順便開著
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-14 14:10" pubdate>
-              2020-09-14
             </time>
           </div>
         
