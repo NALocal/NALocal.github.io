@@ -37,9 +37,7 @@
 
 
 
-
 <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-
 
 
 
@@ -550,9 +548,7 @@
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
+<script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
   <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
@@ -642,6 +638,7 @@ $(document).on('pjax:complete', function() {
 	Fluid.events.registerScrollDownArrowEvent(); //往下
     $.getScript("/js/img-lazyload.js"); //懶加載
     $.getScript("/js/color-schema.js"); //切換主題黑白
+	Fluid.plugins.initFancyBox(); //圖片加載
 	window.NProgress.done(); //關閉進度條
 });
 //懶加載
