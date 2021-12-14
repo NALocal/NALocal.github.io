@@ -6,7 +6,7 @@
   <link href="https://nalocal.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://nalocal.github.io/blog/"/>
-  <updated>2021-11-16T04:14:38.926Z</updated>
+  <updated>2021-12-14T08:01:11.914Z</updated>
   <id>https://nalocal.github.io/blog/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>競速疊屍腳本 - 台版彈射世界</title>
+    <link href="https://nalocal.github.io/blog/2021/12/14/racingScript-worldFlipper/"/>
+    <id>https://nalocal.github.io/blog/2021/12/14/racingScript-worldFlipper/</id>
+    <published>2021-12-14T04:00:00.000Z</published>
+    <updated>2021-12-14T08:01:11.914Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+    <category term="彈射世界" scheme="https://nalocal.github.io/blog/tags/%E5%BD%88%E5%B0%84%E4%B8%96%E7%95%8C/"/>
+    
+    <category term="遊戲" scheme="https://nalocal.github.io/blog/tags/%E9%81%8A%E6%88%B2/"/>
+    
+    <category term="腳本" scheme="https://nalocal.github.io/blog/tags/%E8%85%B3%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>fluid支持pjax主題源碼分享</title>
     <link href="https://nalocal.github.io/blog/2021/11/16/fluidThemeShare/"/>
     <id>https://nalocal.github.io/blog/2021/11/16/fluidThemeShare/</id>
     <published>2021-11-16T04:00:00.000Z</published>
-    <updated>2021-11-16T04:14:38.926Z</updated>
+    <updated>2021-12-14T06:33:40.615Z</updated>
     
     
       
@@ -650,43 +679,6 @@
     <id>https://nalocal.github.io/blog/2020/09/17/12thDay17/</id>
     <published>2020-09-17T01:48:31.000Z</published>
     <updated>2021-09-16T05:45:57.088Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
-    
-    
-    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
-    
-    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
-    
-    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
-    
-    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
-    
-    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
-    
-    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Day16 - 選擇你的資料庫</title>
-    <link href="https://nalocal.github.io/blog/2020/09/16/12thDay16/"/>
-    <id>https://nalocal.github.io/blog/2020/09/16/12thDay16/</id>
-    <published>2020-09-16T01:10:15.000Z</published>
-    <updated>2021-09-16T05:44:47.251Z</updated>
     
     
       
