@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永恆的願望">
+  <meta name="author" content="NALocal">
+  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd,後端,hexo,fluid,pjax,微笑,微笑之家,微笑家">
+  
+     <meta name="referrer" content="no-referrer"/> 
+  
+  <title>Day20 - GAS抓表(4) - 微笑家</title>
+
+  
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+<link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+
+
+
+  
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
+
+
+
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mycss/mycss.css">
+
+
+
+<script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script  src="/js/jquery.min.js" ></script>
+  
+    <script  src="/js/jquery.pjax.min.js" ></script>
+  
+  <meta name="google-site-verification" content="CFZ1Qdei7aIe9DPeh0Mz3WqNQASscW51bUq7v1F3Tb0" />
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="微笑家" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="ajaxD">
+	  <header style="height: 70vh;">
+		<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>微笑の家</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文章
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+		<div class="banner" id="banner" parallax=true
+			 style="background: url('/img/banner2.jpg') no-repeat center center;
+			   background-size: cover;">
+		  <div class="full-bg-img">
+			<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+			  <div class="page-header text-center fade-in-up">
+				<span class="h2" id="subtitle" title="Day20 - GAS抓表(4)">
+				  
+				</span>
+
+				
+				  <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-20 10:26" pubdate>
+        2020年9月20日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      723 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+				
+			  </div>
+
+			  
+			</div>
+		  </div>
+		</div>
+	  </header>
+
+	  <main>
+		
+		  
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Day20 - GAS抓表(4)</h1>
+            
+            <div class="markdown-body">
+              <p>昨天我們成功把API跟程式做了連結，並且可以在dc使用</p>
+<p>但從GAS到程序寫法都存在問題，今天筆者會一一修正</p>
+<p><img src="https://i.imgur.com/fR5A15o.png" srcset="/img/loading.gif" lazyload alt="20-1"></p>
+<p>首先請開啟GAS，這是我們目前的樣子</p>
+<p>為了讓搜尋方式從JSONObject轉成JSONArray，第9~19行請改寫如下</p>
+<p><img src="https://i.imgur.com/T9RPJMS.png" srcset="/img/loading.gif" lazyload alt="20-2"></p>
+<p>重點在於宣告dataExport的時候，從{}變成了[]<br>這就是JSONObject跟JSONArray的差別了<br>{}表示JSONObject，而[]表示JSONArray</p>
+<p>做好後我們跟上次一樣發布成網頁應用程式</p>
+<p><img src="https://i.imgur.com/ilA3YVL.png" srcset="/img/loading.gif" lazyload alt="20-3"></p>
+<p>以後要記得，只要想修改GAS，修改完就一定要發布，然後版本一定要+1<br>版本只會越來越高，如果選擇舊的版號的話，API是抓不到你最新的修改的喔!</p>
+<p>成功改成JSONArray後，原本的寫法就不適用了，不過我們也不打算繼續使用舊的邏輯<br>先來整理目前程序接收到API後的邏輯</p>
+<p>discord訊息事件觸發 -&gt; 沒有前綴字，進入API字串比對 -&gt; 比對完成，反饋結果 -&gt; 將結果反饋回discord</p>
+<p>這樣做最明顯的問題就是每有一個訊息事件，bot就要打一次API上去<br>花費的時間過長，容易增加bot錯誤<br>且沒有考量過GAS每日免費額度問題</p>
+<p>那麼該怎麼解決這問題呢?其實也很簡單，只要讓抓取API的行為只要執行一次就好</p>
+<p>整個DiscordBot，唯一只會執行一次的地方就在ready事件</p>
+<p><img src="https://i.imgur.com/XBnoUg1.png" srcset="/img/loading.gif" lazyload alt="20-4"></p>
+<p>當程序啟動，程序自動執行login方法，login成功就會收到唯一一次的ready</p>
+<p><img src="https://i.imgur.com/xRZkc3k.png" srcset="/img/loading.gif" lazyload alt="20-5"></p>
+<p>將原本在下面的API事件拉上ready，並且將messageED改成dataED<br>我們之後就不讓GetGas做字串比對了，只要幫我們打API並且整理好資料後反饋就好</p>
+<p><img src="https://i.imgur.com/Tcb5HJq.png" srcset="/img/loading.gif" lazyload alt="20-6"></p>
+<p><img src="https://i.imgur.com/lif9ZJN.png" srcset="/img/loading.gif" lazyload alt="20-7"></p>
+<p>處理好上面後，做字串比對</p>
+<p><img src="https://i.imgur.com/xSzaxE8.png" srcset="/img/loading.gif" lazyload alt="20-8"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//BaseExcel字串比對</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetBaseExcelData</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (BaseExcelData) &#123;<br>            <span class="hljs-keyword">const</span> userMessage = msg.content;<br><br>            e = BaseExcelData.filter(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>                <span class="hljs-keyword">return</span> element.NAME === userMessage;<br>            &#125;)<br><br>            <span class="hljs-keyword">if</span> (e) <span class="hljs-keyword">return</span> e[<span class="hljs-number">0</span>].VALUE;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;GetBaseExcelDataError&#x27;</span>, err);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>然後將字串比對的function拉到原本請求API的地方</p>
+<p><img src="https://i.imgur.com/jnV3w2k.png" srcset="/img/loading.gif" lazyload alt="20-9"></p>
+<p>都完成後，我們試著執行看看</p>
+<p><img src="https://i.imgur.com/Y4k84C8.png" srcset="/img/loading.gif" lazyload alt="20-10"></p>
+<p>成了!<br>這樣我們的bot只在執行時會去取API<br>解決了GAS限制的問題，並且每次的讀寫速度也提升許多</p>
+<p>到此，DiscordBot後台0負擔這個主題的基本設置大致說完了<br>這邊附上完整的教學專案<br><a target="_blank" rel="noopener" href="https://supr.link/MePIY">https://supr.link/MePIY</a></p>
+<p>剩下十天會教一些額外的內容，例如昨天提到GAS的訊息應該是分群組的，音樂系統如何分群使用等，以及GitHub使用….如果讀者有想看的也可以留言給筆者知道，筆者會的話再做安排</p>
+<p>最後我們將檔案推上Heroku，記得怎麼推嗎?</p>
+<p>git add .<br>git commit -m ‘版本說明’<br>git push heroku master</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord/">discord</a>
+                    
+                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
+                    
+                      <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> ，轉載請註明出處！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/19/12thDay19/" class="nextPageButtom">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Day19 - GAS抓表(3)</span>
+                        <span class="visible-mobile">下一篇</span>
+                      </a>
+                    
+                  </article>
+				  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/21/12thDay21/" class="nextPageButtom">
+                        <span class="hidden-mobile">Day21 - 認識GitHub</span>
+                        <span class="visible-mobile">上一篇</span>
+						<i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"9a33a548232178c23121","clientSecret":"bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6","repo":"nalocal.github.io","owner":"NALocal","admin":["NALocal"],"language":"zh-TW","perPage":50,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":false},
+          {
+            id: 'd8639a20693a59bcc3af7f716bc917d1'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+		
+
+		
+		  <a id="scroll-top-button" href="#" role="button">
+			<i class="iconfont icon-arrowup" aria-hidden="true"></i>
+		  </a>
+		
+
+		
+		  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+		
+
+		
+		  <div class="col-lg-7 mx-auto nopadding-x-md">
+			<div class="container custom mx-auto">
+			   
+			</div>
+		  </div>
+		
+	  </main>
+	  <!-- AJAX-SCRIPTS -->
+	  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script defer>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+  </div>
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <span>java is a fucking shit</span> <i class="iconfont icon-love"></i> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            文章總共被瀏覽了 
+            <span id="busuanzi_value_site_pv"></span>
+             次喔
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            有 
+            <span id="busuanzi_value_site_uv"></span>
+             人曾經來過這裡呢
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SWFNWD1RD"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1SWFNWD1RD');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+<script>
+$(document)
+.ajaxStart(function () {
+//NProgress.start();
+})
+.ajaxStop(function () {
+//NProgress.done();
+if ($(window).scrollTop() > 50) {
+	$(".pagination").fadeIn();
+} else {
+	$(".pagination").fadeOut();
+}
+});
+$(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000});
+//$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+//$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+//$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
+</script>
+<script>
+$.getScript("https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js");
+//加載修復區
+$(document).on('pjax:send',function(){
+  //destroy()方法
+  if ($('.toc').length) Fluid.plugins.delTocBot(); 
+})
+$(document).on('pjax:complete', function() {
+	$("script[data-pjax], .pjax-reload script").each(function () {
+	  $(this).parent().append($(this).remove()); //所有符合標籤物件重載(目前:0)
+	});
+	Fluid.plugins.initAnchor(); //錨點重載
+	Fluid.plugins.initTocBot(); //文章目錄重載
+	Fluid.plugins.initCopyCode(); //highlight copy功能重載
+	Fluid.events.registerNavbarEvent(); //導覽頁css重載
+	Fluid.events.registerScrollTopArrowEvent(); //往上按鈕重載
+	Fluid.events.registerScrollDownArrowEvent(); //往下
+    $.getScript("/js/img-lazyload.js"); //懶加載
+    $.getScript("/js/color-schema.js"); //切換主題黑白
+	Fluid.plugins.initFancyBox(); //圖片加載
+	window.NProgress.done(); //關閉進度條
+});
+//懶加載
+$(document).ready(function(){$.getScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"); })
+</script>
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 50) {
+            $(".pagination").fadeIn();
+        } else {
+            $(".pagination").fadeOut();
+        }
+    });
+});
+</script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
