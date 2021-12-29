@@ -1,543 +1,570 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>分類: 用Node.js製作後台零負擔的DiscordBot - 微笑家</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="微笑家"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="微笑家"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="程式教學 C#&amp;#x2F;JAVA&amp;#x2F;HTML5&amp;#x2F;NODE.JS，永恆的願望"><meta property="og:type" content="blog"><meta property="og:title" content="微笑の家"><meta property="og:url" content="https://nalocal.github.io/"><meta property="og:site_name" content="微笑の家"><meta property="og:description" content="程式教學 C#&amp;#x2F;JAVA&amp;#x2F;HTML5&amp;#x2F;NODE.JS，永恆的願望"><meta property="og:locale" content="zh_TW"><meta property="og:image" content="https://avatars.githubusercontent.com/u/62000156"><meta property="article:author" content="NALocal"><meta property="article:tag" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd,後端,hexo,fluid,pjax,微笑,微笑之家,微笑家"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://avatars.githubusercontent.com/u/62000156"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://nalocal.github.io/blog"},"headline":"微笑家","image":["https://nalocal.github.io/img/og_image.png"],"author":{"@type":"Person","name":"NALocal"},"description":"程式教學 C#&#x2F;JAVA&#x2F;HTML5&#x2F;NODE.JS，永恆的願望"}</script><link rel="icon" href="/img/favicon.png"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><link rel="stylesheet" href="/live2d/waifu.css"><script type="text/javascript" async src="/live2d/autoload.js"></script><meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="微笑家" type="application/atom+xml">
+</head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="微笑家" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a><a class="navbar-item" href="/album">Album</a><a class="navbar-item" href="/friend">Friend</a><a class="navbar-item" href="/message">Message</a><a class="navbar-item" href="/self-talking">Self-talking</a><a class="navbar-item" href="/music">Music</a><a class="navbar-item" href="/media">Media</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Join Gitter" href="https://gitter.im/hexo-theme-amazing/community"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/removeif/hexo-theme-amazing"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/categories">分類</a></li><li><a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a></li><li class="is-active"><a href="#" aria-current="page">用Node.js製作後台零負擔的DiscordBot</a></li></ul></nav></div></div><!--!--><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-21  <a class="commentCountImg" href="/2020/09/21/12thDay21/#comment-container"><span class="display-none-class">766f6ab503070f85cf34379a0178960e</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="766f6ab503070f85cf34379a0178960e">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>8 分鐘  <i class="fas fa-pencil-alt"> </i>1.2 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/21/12thDay21/">Day21 - 認識GitHub</a></h1><div class="content"><p>今天想先說該怎麼把專案推上github，可以順便複習與heroku配套的git指令</p>
+<p>heroku會用到git是因為heroku推程序這個動作跟github一樣，都是將專案推到網路上某個地方，推到github或heroku的差別而已</p>
+<p>既然如此，heroku理所當然也可以做到跟github一樣的事情<br>那又為什麼還要額外放在github呢?</p>
+<h1 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h1><p><img src="https://i.imgur.com/J0tiaEH.png" alt="21-1"></p>
+<p>GitHub是基於Git語言的開源專案庫<br>他提供任何人將自己的程序打包成專案，透過Git推上GitHub進行開發&amp;版本紀錄<br>GitHub對開源有著良好的圖形介面支持，所有人都可以在GitHub上看到對方的專案，並且提出協作要求、讓多位工程師來協同完成一件專案</p>
+<p>一言以蔽之、將我們的機器人推上GitHub就像是展示你自己的作品，讓所有人都看的到你做過哪些東西，又是何時更新、更新了甚麼，是資訊人要讓人了解自己最快速的一步</p>
+<p>推GitHub專案雖然也要使用Git語言，但因為GitHub是圍繞著Git開發的網站，其對Git語言的支援十分強大，除了網站本身按一按就能把專案推上去以外，他還推出了專案管理的圖形使用者介面</p>
+<h1 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h1><p><a target="_blank" rel="noopener" href="https://desktop.github.com/">https://desktop.github.com/</a><br>請點擊連結並且下載GitHub Desktop</p>
+<p><img src="https://i.imgur.com/rIGrdAg.png" alt="21-2"></p>
+<p>安裝完開啟後會要求你登入，請直接登入<br>可以選擇亮或暗主題<br>一開始會問你要不要直接新增專案，請拒絕，想辦法進到這個畫面 </p>
+<p><img src="https://i.imgur.com/1YNrkrT.png" alt="21-3"></p>
+<p>點擊左上角，拉出Add下拉框，點開後有個Create new repository</p>
+<p><img src="https://i.imgur.com/ZAwEqcQ.png" alt="21-4"></p>
+<p>這是新增一個新專案，點下去後他會先要你選擇本機上的路徑</p>
+<p><img src="https://i.imgur.com/bj3clLV.png" alt="21-5"></p>
+<p>第一個是資料夾名稱，我們取DiscordBot<br>第二個是專案簡介，可以隨便寫、但注意不要太多，一行就好<br>第三個是路徑，請放在原專案外面<br>Initialize this repository with a README記得打勾<br>下面兩個是使用語言之類的，這部份GitHub上傳後會自動判斷，可以不管</p>
+<p>都好了之後我們按…..不對!還不能按Create repository!<br>我們先進到專案資料夾</p>
+<p><img src="https://i.imgur.com/G02dXTW.png" alt="21-6"></p>
+<p>我們把.git資料夾改名成Herokugit<br>如果看不到.git資料夾請上網查一下怎麼看到隱藏資料夾</p>
+<p><img src="https://i.imgur.com/g4EsJIR.png" alt="21-7"></p>
+<p>好了之後我們回去按Create repository<br>按完會發現資料夾內多了</p>
+<p>README.md<br>.gitattributes<br>.git</p>
+<p><img src="https://i.imgur.com/r8bUU7S.png" alt="21-8"></p>
+<p>記得我們一開始建Heroku有提到嗎，只要是Git專案都會有.git檔案<br>因為使用Heroku的同時，他就是屬於Heroku的專案了，我們如果也要推上GitHub的話，就要先讓他不是Heroku的專案，不然會覆蓋掉!</p>
+<p>然後我們新增一個.gitignore，注意沒有副檔名喔</p>
+<p><img src="https://i.imgur.com/HWtBE6s.png" alt="21-9"></p>
+<p><img src="https://i.imgur.com/JbUJatt.png" alt="21-10"></p>
+<pre><code>auth.json
+.gitignore
+Herokugit
+</code></pre>
+<p>這是給GitHub看的文件，可以讓GitHub在將專案commit前，選擇要忽略哪些檔案<br>我們的私密資料都在auth.json，所以auth.json自然不能推到任何人都能看得GitHub上<br>Herokugit是讓GitHub不會上傳到Heroku的.git檔案</p>
+<p><img src="https://i.imgur.com/CeXOZni.png" alt="21-11"></p>
+<p>這時我們回到GitHubDesktop，可以看到左下角告訴你，專案commit好了，並且版號是init(初始化)</p>
+<p>在宣告一個新專案庫時，相當於他幫你下了</p>
+<p>git add .<br>git commit init</p>
+<p>這兩個指令，我們可以點左上角的history看到我們有哪些檔案被commit，只要等等再下push就會被推上網際網路</p>
+<p>那我們點一下右上角的Publish repository</p>
+<p><img src="https://i.imgur.com/8oMDTIu.png" alt="21-12"></p>
+<p>第一次push時會有像這樣的提示框，他會二次確認你在GitHub上的專案要叫甚麼名字</p>
+<p>Keep this code private打勾的話，這個專案就會是私人的，只有你登錄帳號時看的見<br>我們希望程序是可以被人看見的，所以我們要把打勾取消掉</p>
+<p>好了之後我們點Publish repository，他就會開始上傳專案，第一次比較久，我們等一下，可以去到杯水再回來看看</p>
+<p><img src="https://i.imgur.com/2UQueAh.png" alt="21-13"></p>
+<p>畫面長這樣就是成功了，左下角的commit消失(被推上去)</p>
+<p><img src="https://i.imgur.com/RZ42yiU.png" alt="21-14"></p>
+<p>History可以看到我們的歷史版本，以及做了那些變動</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-20  <a class="commentCountImg" href="/2020/09/20/12thDay20/#comment-container"><span class="display-none-class">ff67db25badcbe5596c683c81ae116f7</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="ff67db25badcbe5596c683c81ae116f7">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>5 分鐘  <i class="fas fa-pencil-alt"> </i>0.8 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/20/12thDay20/">Day20 - GAS抓表(4)</a></h1><div class="content"><p>昨天我們成功把API跟程式做了連結，並且可以在dc使用</p>
+<p>但從GAS到程序寫法都存在問題，今天筆者會一一修正</p>
+<p><img src="https://i.imgur.com/fR5A15o.png" alt="20-1"></p>
+<p>首先請開啟GAS，這是我們目前的樣子</p>
+<p>為了讓搜尋方式從JSONObject轉成JSONArray，第9~19行請改寫如下</p>
+<p><img src="https://i.imgur.com/T9RPJMS.png" alt="20-2"></p>
+<p>重點在於宣告dataExport的時候，從{}變成了[]<br>這就是JSONObject跟JSONArray的差別了<br>{}表示JSONObject，而[]表示JSONArray</p>
+<p>做好後我們跟上次一樣發布成網頁應用程式</p>
+<p><img src="https://i.imgur.com/ilA3YVL.png" alt="20-3"></p>
+<p>以後要記得，只要想修改GAS，修改完就一定要發布，然後版本一定要+1<br>版本只會越來越高，如果選擇舊的版號的話，API是抓不到你最新的修改的喔!</p>
+<p>成功改成JSONArray後，原本的寫法就不適用了，不過我們也不打算繼續使用舊的邏輯<br>先來整理目前程序接收到API後的邏輯</p>
+<p>discord訊息事件觸發 -&gt; 沒有前綴字，進入API字串比對 -&gt; 比對完成，反饋結果 -&gt; 將結果反饋回discord</p>
+<p>這樣做最明顯的問題就是每有一個訊息事件，bot就要打一次API上去<br>花費的時間過長，容易增加bot錯誤<br>且沒有考量過GAS每日免費額度問題</p>
+<p>那麼該怎麼解決這問題呢?其實也很簡單，只要讓抓取API的行為只要執行一次就好</p>
+<p>整個DiscordBot，唯一只會執行一次的地方就在ready事件</p>
+<p><img src="https://i.imgur.com/XBnoUg1.png" alt="20-4"></p>
+<p>當程序啟動，程序自動執行login方法，login成功就會收到唯一一次的ready</p>
+<p><img src="https://i.imgur.com/xRZkc3k.png" alt="20-5"></p>
+<p>將原本在下面的API事件拉上ready，並且將messageED改成dataED<br>我們之後就不讓GetGas做字串比對了，只要幫我們打API並且整理好資料後反饋就好</p>
+<p><img src="https://i.imgur.com/Tcb5HJq.png" alt="20-6"></p>
+<p><img src="https://i.imgur.com/lif9ZJN.png" alt="20-7"></p>
+<p>處理好上面後，做字串比對</p>
+<p><img src="https://i.imgur.com/xSzaxE8.png" alt="20-8"></p>
+<pre><code>//BaseExcel字串比對
+function GetBaseExcelData(msg) &amp;#123;
+    try &amp;#123;
+        if (BaseExcelData) &amp;#123;
+            const userMessage = msg.content;
 
+            e = BaseExcelData.filter(element =&gt; &amp;#123;
+                return element.NAME === userMessage;
+            &amp;#125;)
 
-<!DOCTYPE html>
-<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+            if (e) return e[0].VALUE;
+            else return false;
+        &amp;#125;
+    &amp;#125; catch (err) &amp;#123;
+        console.log(&#39;GetBaseExcelDataError&#39;, err);
+    &amp;#125;
+&amp;#125;
+</code></pre>
+<p>然後將字串比對的function拉到原本請求API的地方</p>
+<p><img src="https://i.imgur.com/jnV3w2k.png" alt="20-9"></p>
+<p>都完成後，我們試著執行看看</p>
+<p><img src="https://i.imgur.com/Y4k84C8.png" alt="20-10"></p>
+<p>成了!<br>這樣我們的bot只在執行時會去取API<br>解決了GAS限制的問題，並且每次的讀寫速度也提升許多</p>
+<p>到此，DiscordBot後台0負擔這個主題的基本設置大致說完了<br>這邊附上完整的教學專案<br><a target="_blank" rel="noopener" href="https://supr.link/MePIY">https://supr.link/MePIY</a></p>
+<p>剩下十天會教一些額外的內容，例如昨天提到GAS的訊息應該是分群組的，音樂系統如何分群使用等，以及GitHub使用….如果讀者有想看的也可以留言給筆者知道，筆者會的話再做安排</p>
+<p>最後我們將檔案推上Heroku，記得怎麼推嗎?</p>
+<p>git add .<br>git commit -m ‘版本說明’<br>git push heroku master</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-19  <a class="commentCountImg" href="/2020/09/19/12thDay19/#comment-container"><span class="display-none-class">9540b7c5a8dbf9678ff29aa89185e854</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="9540b7c5a8dbf9678ff29aa89185e854">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>4 分鐘  <i class="fas fa-pencil-alt"> </i>0.6 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/19/12thDay19/">Day19 - GAS抓表(3)</a></h1><div class="content"><p>昨天我們的程式成功抓到API的資料並且對他做分析了<br>現在要串回主程序(bot.js)上</p>
+<p><img src="https://i.imgur.com/lLXAqcN.png" alt="19-1"></p>
+<p>請幫我在bot.js引用GetGas.js</p>
+<p><img src="https://i.imgur.com/mwE3NRg.png" alt="19-2"></p>
+<p><img src="https://i.imgur.com/xMGI9Fa.png" alt="19-3"> </p>
+<p>然後之前的文字回應系統，跟音樂系統一樣用一個function包起來，比較好看</p>
+<p><img src="https://i.imgur.com/uvfVZ2Q.png" alt="19-4"></p>
+<p>我們希望當訊息不符合任一前綴系統的情況，就要拿字串跟資料庫比對<br>所以我們把function放在default(默認)，只要前面的case都沒進去就會到default</p>
+<p><img src="https://i.imgur.com/N0R0NAW.png" alt="19-5"> </p>
+<p>之後新增BaseExcelFunction方法<br>內容是執行GetGas底下的getBaseExcel元素</p>
+<p><img src="https://i.imgur.com/lg1t1wq.png" alt="19-6"></p>
+<p>回來看GetGas的getBaseExcel<br>getBaseExcel元素指向一callback方法<br>帶了一個參數userTalk，callback方法使用callback代表方法的結束，呼叫方會在callback欄位宣告function，其帶回參數(messageED)就是getBaseExcel的方法中callback的值</p>
+<p><img src="https://i.imgur.com/XXBAW5u.png" alt="19-7"></p>
+<p>這樣寫完，機器人就能做簡單的回話了!</p>
+<hr>
+<p>雖然功能做好了，但有許多問題</p>
+<p>依嚴重性依序列舉的話</p>
+<ol>
+<li>   bot每從discord收到一則訊息就會使用一次API</li>
+<li>   使用JsonObject做迴圈查詢十分沒有效率</li>
+<li>   缺乏防呆&amp;參數替換</li>
+</ol>
+<p>理論上，機器人對對應的詞句回話這個動作是即時的，透過這個寫法，我們每次查詢API都必須等待2~3秒的時間，API才會將結果反饋給bot<br>而且多次傳送API不僅降低了程序的穩定，也要考慮GAS提供的每日配額<br>如果bot所在的群組一天訊息超過2萬筆，API就一定會被花光，而一天兩萬筆訊息、對於一個支援多群組的bot來說其實並不困難</p>
+<p>GetGas中對於data的處理方式也是極其低效的，雖然在捨棄SQL這種專為優化資料存取的系統時，就難以追求最高效的方法，但目前的做法也仍是相對低效的</p>
+<p>以及程序目前只是簡單的判A給B，功能十分單一<br>我沒辦法針對特定群組，有該群組專屬的詞彙，或是對特定回應帶tag等</p>
+<p>明天我們會將程序做一次翻新</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><!--!--><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-18  <a class="commentCountImg" href="/2020/09/18/12thDay18/#comment-container"><span class="display-none-class">bb88eb99e77ac2dcd0a19f4258e86863</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="bb88eb99e77ac2dcd0a19f4258e86863">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>6 分鐘  <i class="fas fa-pencil-alt"> </i>0.9 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/18/12thDay18/">Day18 - GAS抓表(2)</a></h1><div class="content"><p>昨天我們在雲端上建好了試算表<br>將GAS發布成API的GET方法，只要我們訪問就能成功獲取試算表資料</p>
+<p>今天我們來寫點程式</p>
+<p>我們來回顧一下，目前機器人在Message下可以做到的事情</p>
+<ul>
+<li>文字回應</li>
+<li>音樂系統</li>
+</ul>
+<p>我們希望增加一個可以針對表格內容，動態觸發回應的功能<br>這種功能因為不會直接知道有哪些指令，應該要是沒有前綴字的，只要字串符合就會觸發</p>
+<p>由此可知，我們應該要將這個方法添加在所有功能的最底層<br>只有當前綴字都不符合時，才會來辨識表格資料</p>
+<p>觀念大致帶過，我們開始動手</p>
+<p>先幫我在專案目錄下建立一個Script資料夾，在裡面放一個GetGas.js</p>
+<p><img src="https://i.imgur.com/OJB3z4l.png" alt="18-1"></p>
+<pre><code>//#region 全域引用
+const auth = require(&#39;../JSONHome/auth.json&#39;);
+const request = require(&#39;request&#39;);
 
+//#endregion
+</code></pre>
+<p>裡面請先幫我引用auth.json跟request</p>
+<p>auth目前只有存放機器人的key，跟key一樣，我們不希望自己與GAS串接的API暴露&amp;寫死在程式裡面，所以之後要把連結寫在auth，之後透過auth來讀取連結<br>務必注意引用auth的路徑比bot.js多了一個點，這是因為GetGas.js要先從Script路徑出來才找的到JSONHome。</p>
+<p>request是提供給js的網路請求library，我們之後都會透過他來傳遞Get方法</p>
+<p><img src="https://i.imgur.com/pwcJ7OJ.png" alt="18-2"></p>
+<p>auth.json目前的樣子</p>
+<p>在原本的Key後面加上一個逗號，然後新增Gas參數，內涵一個JsonObject{}<br>{}裡面再包一個Get參數，內涵一個JsonArray[]<br>第一個JsonObject內包一個baseExcel參數<br>baseExcel參數會帶回我們昨天做的API連結</p>
+<p>包三層是為了增加程式含意，方便之後閱讀<br>跟Get同一層之後可以再添加post等<br>不過Get原本是包JsonObject就好，這邊為了多介紹JsonArray所以用了，原本就會的同學可以少包Array</p>
+<p>這種架構下，如果我們要獲取Url就會是<br>auth.Gas.Get[0].baseExcel</p>
+<p><img src="https://i.imgur.com/YcsHJpa.png" alt="18-3"></p>
+<pre><code>//#region 宣告請求
+const baseExcel = &amp;#123;
+    &#39;method&#39;: &#39;GET&#39;,
+    &#39;url&#39;: auth.Gas.Get[0].baseExcel,
+    &#39;headers&#39;: &amp;#123;&amp;#125;
+&amp;#125;;
 
+//#endregion
+</code></pre>
+<p>再來我們宣告一個baseExcel常數，將http請求需要的參數帶給他<br>method表示我們使用的是Get方法<br>url就帶我們剛剛寫好的url<br>headers是傳送時的表頭，這邊放空值就好</p>
+<p><img src="https://i.imgur.com/8v4kmCE.png" alt="18-4"></p>
+<pre><code>//#region 傳送請求
+exports.getBaseExcel = function(userTalk, callback) &amp;#123;
+    let backValue = new Array;
+    request(baseExcel, function(error, response) &amp;#123;
+        try &amp;#123;
+            if (error) &amp;#123;
+                callback(error);
+            &amp;#125; else &amp;#123;
+                const data = JSON.parse(response.body); //接收回傳(response)的body
+                const keysValue = Object.keys(data); //將JsonObject的key值輸出成Array
+                //迴圈判斷是否符合
+                for (let i = 0; i &lt; keysValue.length; i++) &amp;#123;
+                    if (data[keysValue[i]].NAME === userTalk) &amp;#123;
+                        callback(data[keysValue[i]].VALUE); //正確回傳結果
+                    &amp;#125;
+                &amp;#125;
+                callback(false);
+            &amp;#125;
+        &amp;#125; catch (err) &amp;#123;
+            console.log(&#39;getBaseExcelError&#39;, err);
+            callback(&#39;getBaseExcelError&#39;);
+        &amp;#125;
+    &amp;#125;);
+&amp;#125;;
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
-  <link rel="icon" href="/img/avatar.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+//#endregion
+</code></pre>
+<p>最後我們實際創建一個callback方法，供外部調用<br>http請求後，將回傳值定義為JSON給data<br>之後讓data跑迴圈，判斷message是否與表格的NAME欄相符<br>叫到名字的話，機器人就要回傳VALUE值</p>
+<p>這樣我們就把GetGas.js做好了，剩下bot.js呼叫與傳送訊息的部分<br>我們明天繼續</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-17  <a class="commentCountImg" href="/2020/09/17/12thDay17/#comment-container"><span class="display-none-class">257636b2413204b2ef6cf103351a6c7d</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="257636b2413204b2ef6cf103351a6c7d">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>5 分鐘  <i class="fas fa-pencil-alt"> </i>0.8 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/17/12thDay17/">Day17 - GAS抓表(1)</a></h1><div class="content"><p>今天我們來寫GAS</p>
+<h2 id="文件創建"><a href="#文件創建" class="headerlink" title="文件創建"></a>文件創建</h2><p>首先請打開google，登入你自己的google雲端，並且在喜歡的地方創建一個資料夾，取名為DiscordDataBaseApi</p>
+<p><img src="https://i.imgur.com/rczINQm.png" alt="17-1"></p>
+<p>右鍵分別創建一個試算表跟一個GAS</p>
+<p><img src="https://i.imgur.com/gGDTERM.png" alt="17-2"></p>
+<p><img src="https://i.imgur.com/EIbdgPE.png" alt="17-3"></p>
+<p>兩個文件創立後都會直接開一個新視窗<br>Excel取名為MyData，像我們一樣隨便輸入一些資料<br>然後複製網址上面d/ 到 /edit 中間的亂碼，我的是<br>1mQ6qTJfOs3Gv5–K9r87w56wmDc3hUcpHm5hF1YKTms</p>
+<p>這串英數是我們Excel的ID，只要把這串亂碼給Google看，他就知道你找的是這張表</p>
+<p><img src="https://i.imgur.com/EPVxxkb.png" alt="17-4"></p>
+<p>我們回到 GAS ，填入以下程式</p>
+<pre><code>var id = &#39;你的表格ID&#39;; //抓取表單
+  var spreadsheet = SpreadsheetApp.openById(id); // Sheet id
+  var sheet = spreadsheet.getSheets()[0]; // 要第幾個sheet？ 0 就是第一個
+  var rowLength = sheet.getLastRow()-1; //取行長度
+  var columnLength = sheet.getLastColumn(); //取列長度
+  var data = sheet.getRange(2,1,rowLength,columnLength).getValues(); // 取得的資料
+</code></pre>
+<p>把剛剛的id給GAS抓表，抓到表後讀取行列範圍，然後從範圍中抓取資料<br>那一長串程式碼全都是google提供的function，雖然好像有library可以看，筆者是建議記下來就好</p>
+<p>我們範圍是從第2行開始抓取資料到最底，這是因為我們表格的第一行屬於標題行，給使用者看的，我們就不抓取這行資料</p>
+<p><img src="https://i.imgur.com/YGdSESn.png" alt="17-5"></p>
+<p>再來幫我新增這幾行資料</p>
+<pre><code>  var dataExport = &amp;#123;&amp;#125;;
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永恆的願望">
-  <meta name="author" content="NALocal">
-  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd,後端,hexo,fluid,pjax,微笑,微笑之家,微笑家">
-  
-     <meta name="referrer" content="no-referrer"/> 
-  
-  <title>分類 - 用Node.js製作後台零負擔的DiscordBot - 微笑家</title>
-
-  
-<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-
-
-<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-<link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-
-
-
-  
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
-
-
-
-<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/mycss/mycss.css">
-
-
-
-<script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
-  </script>
-  
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  <script  src="/js/jquery.min.js" ></script>
-  
-    <script  src="/js/jquery.pjax.min.js" ></script>
-  
-  <meta name="google-site-verification" content="CFZ1Qdei7aIe9DPeh0Mz3WqNQASscW51bUq7v1F3Tb0" />
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="微笑家" type="application/atom+xml">
-</head>
-
-<body>
-  <div id="ajaxD">
-	  <header style="height: 60vh;">
-		<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>微笑の家</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首頁
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                關於
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                文章
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分類
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                標籤
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/atom.xml">
-                <i class="iconfont icon-rss"></i>
-                rss
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-		<div class="banner" id="banner" parallax=true
-			 style="background: url('/img/banner2.jpg') no-repeat center center;
-			   background-size: cover;">
-		  <div class="full-bg-img">
-			<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-			  <div class="page-header text-center fade-in-up">
-				<span class="h2" id="subtitle" title="分類 - 用Node.js製作後台零負擔的DiscordBot">
-				  
-				</span>
-
-				
-			  </div>
-
-			  
-			</div>
-		  </div>
-		</div>
-	  </header>
-
-	  <main>
-		
-		  <div class="container nopadding-x-md">
-			<div class="py-5" id="board"
-			  >
-			  
-			  <div class="container">
-				<div class="row">
-				  <div class="col-12 col-md-10 m-auto">
-					
-
-<div class="list-group">
-  <p class="h4">總共 31 篇文章</p>
-  <hr>
-  
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/09/21/12thDay21/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day21 - 認識GitHub</span>
-      <time style="float: right;">09-21</time>
-    </a>
-  
-    
-    <a href="/2020/09/20/12thDay20/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day20 - GAS抓表(4)</span>
-      <time style="float: right;">09-20</time>
-    </a>
-  
-    
-    <a href="/2020/09/19/12thDay19/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day19 - GAS抓表(3)</span>
-      <time style="float: right;">09-19</time>
-    </a>
-  
-    
-    <a href="/2020/09/18/12thDay18/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day18 - GAS抓表(2)</span>
-      <time style="float: right;">09-18</time>
-    </a>
-  
-    
-    <a href="/2020/09/17/12thDay17/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day17 - GAS抓表(1)</span>
-      <time style="float: right;">09-17</time>
-    </a>
-  
-    
-    <a href="/2020/09/16/12thDay16/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day16 - 選擇你的資料庫</span>
-      <time style="float: right;">09-16</time>
-    </a>
-  
-    
-    <a href="/2020/09/15/12thDay15/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day15 - Heroku架設&amp;細部設定</span>
-      <time style="float: right;">09-15</time>
-    </a>
-  
-    
-    <a href="/2020/09/14/12thDay14/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day14 - Heroku與Git，介紹與安裝</span>
-      <time style="float: right;">09-14</time>
-    </a>
-  
-    
-    <a href="/2020/09/13/12thDay13/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day13 - 嵌入式訊息embed與 bot 的指令表(額外)</span>
-      <time style="float: right;">09-13</time>
-    </a>
-  
-    
-    <a href="/2020/09/12/12thDay12/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Day12 - Discord的訊息刪除與更新事件(額外)</span>
-      <time style="float: right;">09-12</time>
-    </a>
-  
-</div>
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/3/">3</a><a class="page-number" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/4/">4</a><a class="extend next" rel="next" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/3/"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-  
-    <script type="text/javascript">$(".pagination a").each(function(){$(this)[0].href+="#board";})</script>
-  
-
-
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		
-
-		
-		  <a id="scroll-top-button" href="#" role="button">
-			<i class="iconfont icon-arrowup" aria-hidden="true"></i>
-		  </a>
-		
-
-		
-		  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">關鍵字</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-		
-
-		
-		  <div class="col-lg-7 mx-auto nopadding-x-md">
-			<div class="container custom mx-auto">
-			   
-			</div>
-		  </div>
-		
-	  </main>
-	  <!-- AJAX-SCRIPTS -->
-	  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script defer>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-  </div>
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <span>java is a fucking shit</span> <i class="iconfont icon-love"></i> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            文章總共被瀏覽了 
-            <span id="busuanzi_value_site_pv"></span>
-             次喔
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            有 
-            <span id="busuanzi_value_site_uv"></span>
-             人曾經來過這裡呢
-          </span>
-      
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-<script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    <!-- Google gtag.js -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SWFNWD1RD"></script>
-    <script defer>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-1SWFNWD1RD');
-    </script>
-  
-
-  
-
-  
-
-  
-
-
-
-
-<script>
-$(document)
-.ajaxStart(function () {
-//NProgress.start();
-})
-.ajaxStop(function () {
-//NProgress.done();
-if ($(window).scrollTop() > 50) {
-	$(".pagination").fadeIn();
-} else {
-	$(".pagination").fadeOut();
-}
-});
-$(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000});
-//$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-//$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-//$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-</script>
-<script>
-$.getScript("https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js");
-//加載修復區
-$(document).on('pjax:send',function(){
-  //destroy()方法
-  if ($('.toc').length) Fluid.plugins.delTocBot(); 
-})
-$(document).on('pjax:complete', function() {
-	$("script[data-pjax], .pjax-reload script").each(function () {
-	  $(this).parent().append($(this).remove()); //所有符合標籤物件重載(目前:0)
-	});
-	Fluid.plugins.initAnchor(); //錨點重載
-	Fluid.plugins.initTocBot(); //文章目錄重載
-	Fluid.plugins.initCopyCode(); //highlight copy功能重載
-	Fluid.events.registerNavbarEvent(); //導覽頁css重載
-	Fluid.events.registerScrollTopArrowEvent(); //往上按鈕重載
-	Fluid.events.registerScrollDownArrowEvent(); //往下
-    $.getScript("/js/img-lazyload.js"); //懶加載
-    $.getScript("/js/color-schema.js"); //切換主題黑白
-	Fluid.plugins.initFancyBox(); //圖片加載
-	window.NProgress.done(); //關閉進度條
-});
-//懶加載
-$(document).ready(function(){$.getScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"); })
-</script>
-<link rel="stylesheet" href="/dist/APlayer.min.css">
-<div id="aplayer"></div>
-<script type="text/javascript" src="/dist/APlayer.min.js"></script>
-<script type="text/javascript" src="/dist/music.js"></script>
-
-<script>
-$(document).ready(function(){
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 50) {
-            $(".pagination").fadeIn();
-        } else {
-            $(".pagination").fadeOut();
+  for(i in data)&amp;#123;
+    if(data[i][0] != &quot;&quot;)&amp;#123;
+    dataExport[data[i][0]] = &amp;#123;
+      DATE:   data[i][1],
+      NAME:   data[i][2],
+      VALUE:  data[i][3]
+      &amp;#125;
+    &amp;#125;
+  &amp;#125;
+</code></pre>
+<p>如果對json操作有一點經驗的同學，對這幾行應該不陌生<br>把data中的資料一個個串成json，這樣才方便我們做後續處理</p>
+<p><img src="https://i.imgur.com/mewJW4N.png" alt="17-6"></p>
+<p>最後加上這行</p>
+<pre><code>  var dataExportFormat = JSON.stringify(dataExport);
+  return ContentService.createTextOutput(dataExportFormat).setMimeType(ContentService.MimeType.JSON);
+</code></pre>
+<p>把整理好的資料return回去<br>GAS回傳需要先經手過他們的方法，API接收到的資料才是正常的<br>這部份當成return dataExport就可以了。</p>
+<h2 id="發布"><a href="#發布" class="headerlink" title="發布"></a>發布</h2><p>表格都填完，GAS都寫好後，我們就能抓取到表格資料了<br>但是程式該怎麼訪問GAS呢?<br>為了讓程式可以訪問到GAS，我們需要將GAS做成API<br>確認程式存檔後，幫我點左上角發布-&gt;部屬為網頁應用程式</p>
+<p><img src="https://i.imgur.com/jR2dTYm.png" alt="17-7"></p>
+<p>會有三個下拉框出現</p>
+<ol>
+<li>   是版本號</li>
+<li>   發布者</li>
+<li>   存取權限</li>
+</ol>
+<p>因為是第一次發布，版本一定是1<br>發布者是你就好不要動<br>這邊要注意第三點，務必設定成Anyone,even anonymous<br>確定無誤後我們點擊Deploy，他會要你核對權限，一路允許就好</p>
+<p><img src="https://i.imgur.com/HD5slmK.png" alt="17-8"></p>
+<p>都完成後，我們最後會拿到一組連結，我們試著將連結放在瀏覽器上</p>
+<p><img src="https://i.imgur.com/mZh9b3a.png" alt="17-9"></p>
+<p>如果成功就會像筆者這樣拿到表格上的檔案了!</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-16  <a class="commentCountImg" href="/2020/09/16/12thDay16/#comment-container"><span class="display-none-class">1bf09b41e517acee57aa8bbb592632b7</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="1bf09b41e517acee57aa8bbb592632b7">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>10 分鐘  <i class="fas fa-pencil-alt"> </i>1.6 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/16/12thDay16/">Day16 - 選擇你的資料庫</a></h1><div class="content"><p>昨天我們成功把機器人丟到雲端託管，現在機器人可以..</p>
+<ul>
+<li>24小時不關機的回應大家的文字</li>
+<li>24小時不關機的播放音樂</li>
+<li>24小時不關機的做任何你已經自己寫好的原創功能!</li>
+</ul>
+<p>也就是說，原本機器人是前端(Discord)與後端(你的電腦)</p>
+<p>現在是前端(Discord)與後端(Heroku)了，儼然是一個自成循環的軟體，自行運作<br>只要不是要更新以及沒有重大bug的話，便可以減少維護，只要當一個使用者就好</p>
+<p>不過這樣的架構實際上是不夠完整的，Day14我們有帶到，關於面向使用者的軟體，通常會有</p>
+<ul>
+<li>前端</li>
+<li>後端</li>
+<li>與資料庫</li>
+</ul>
+<p>目前我們還缺乏一個資料庫，如果是之前在本機的情況，本文章只要教各位怎麼安裝MySQL就好；但是現在機器人已經被推上Heroku了，我們對對方的主機又沒有完全的控制權限，這又該怎麼辦呢?</p>
+<hr>
+<h2 id="Heroku的資料庫"><a href="#Heroku的資料庫" class="headerlink" title="Heroku的資料庫"></a>Heroku的資料庫</h2><p>我們來介紹Heroku的資料庫吧<br>因為這東西筆者的了解也不深，只是有必要提到<br>如果介紹有錯還望各位指正，以免誤導到人，感謝^^”</p>
+<p>Heroku不只提供軟體&amp;網站的上傳發佈，同時也支援這些程式在Heroku專案的主機上建立專屬的本地資料庫<br>其主要使用PostgreSQL，是一種關聯性資料庫<br>關聯性資料庫是甚麼?你當成MySQL就好，總之就是相對嚴謹(麻煩)的一種資料庫語言</p>
+<p><img src="https://i.imgur.com/COzboBR.png" alt="16-1"> </p>
+<p>免費的Heroku Postgre提供1萬則的資料容量，只要你創建的DB總資料量超過這個數字後便無法寫入，並且會跟你收費以提高額度來支援更多的資料寫入量</p>
+<p>1萬這個數字說大不大說小不小，雖然說對於個人戶是夠用了，但如果長久維運，缺乏資料管理、造成資料堆積<br>又或是資料儲存的方式比較複雜，紀錄一次可能就會占用許多空間的話…實際上筆者覺得1萬行是完全不夠Bot使用的</p>
+<p>而且因為Heroku的操作都必須透過指令，只是程式的操作可能還好，在處理資料庫這種複雜的系統時，不自己寫一個圖形介面真的很難管理</p>
+<h2 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h2><p>結合上述，我們整理出Heroku 原生資料庫的兩大問題</p>
+<ul>
+<li>免費容量低</li>
+<li>管理困難</li>
+</ul>
+<p>筆者Bot的製作訴求是自動、便利、好維護<br>如果使用Heroku資料庫的話還要擔心或許哪天Heroku會忽然想不開，去更新他們的資料庫語法…這與筆者的需求是完全背道而馳的</p>
+<p>因此，我們需要一個替代方案，這個做法就是GoogleAppsScript !</p>
+<p><img src="https://i.imgur.com/w7gmbo5.jpg" alt="16-2"> </p>
+<p>GoogleAppsScript，簡稱GAS，不是容易爆炸的那個</p>
+<p>GAS是Google提供的一種程式檔，他使用JavaScript語言，並且自動引用Google提供的函式庫</p>
+<p>因為是Google自家產品，理所當然的，GAS可以輕鬆的調用Google旗下產品的資訊(例如Google文件，試算表等)</p>
+<p>並且GAS是一種存於Google雲端的程式，只要他正式發佈便也會是24小時自動運作的程序，不會消耗到筆者一毛錢!(重點)</p>
+<h2 id="GAS的規格"><a href="#GAS的規格" class="headerlink" title="GAS的規格"></a>GAS的規格</h2><p><img src="https://i.imgur.com/wLtCjIq.png" alt="16-3"> </p>
+<p>在本主題，我們將用試算表來儲存資料<br>藉由GAS來編寫API，供Bot調用&amp;獲取資料</p>
+<p>上圖是GAS提供給使用者做各種操作的具體上限，我們看第一行的基本使用者(gmail.com)即可</p>
+<p>Properties read/write(屬性讀寫)<br>上限50000筆/天</p>
+<p>URL Fetch calls(URL調用)<br>上限20000筆/天</p>
+<p>先看URL Fetch calls，這句的意思是關於Bot一天內調用API的上限次數<br>如果Bot一天內對API的請求超過2萬次，Google就會中斷你的請求、並且給你一個大大的Error</p>
+<p>Properties read/write代表的是你的程序對試算表讀寫的次數上限<br>如果我的API被呼叫一次，程序就會對試算表做50000次的讀取，那這個API只要調用一次，今天的扣打就用完了(x</p>
+<p>這樣，我們得出一個結論<br>理論上，只要我的每個API內讀寫資料的次數平均介於2~3次<br>那我們一天的資料請求上限就會足足有2萬筆，直接是Heroku總上限的兩倍!</p>
+<p>當然這種做法也有他的弊端，Heroku的上限是總儲存上限，而我們的GAS上限是總調用上限<br>雖然隔天次數就會給你加滿，但只要我調用的次數足夠頻繁，理論上每天都會面臨資料無法再調用的問題，對於如何減少機器人的資料調用會需要做些功夫</p>
+<p>遠水救不了近火，試算表資料的調用途中經過GAS，再從住在Heroku的bot程序發送API跟GAS要資料<br>速度理所當然沒有像使用Heroku Postgre一樣即時</p>
+<p>因為試算表非正統SQL，SQL是一種專門為讀/寫資料做優化的體系；當資料量大到一個程度時，效能一定沒有SQL好</p>
+<p>但同時GAS的好處也很明顯</p>
+<p>資料的儲存幾乎是無上限的<br>Google自帶的使用者介面讓管理十分容易，相對不用擔心資料備份等問題<br>新增刪除資料的方式都會比Heroku Postgre來的更加直觀<br>不用擔心未來因為GoogleAppsScript改版，資料會很難帶走，替代方案也多的是</p>
+<p>以上，便是筆者針對資料庫方案取捨的介紹<br>明天我們著手開始編寫基本的試算表資料跟GAS</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><!--!--><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-15  <a class="commentCountImg" href="/2020/09/15/12thDay15/#comment-container"><span class="display-none-class">dd717df44a3194cbb5ee944b8353c46b</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="dd717df44a3194cbb5ee944b8353c46b">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>8 分鐘  <i class="fas fa-pencil-alt"> </i>1.3 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/15/12thDay15/">Day15 - Heroku架設&amp;細部設定</a></h1><div class="content"><p>早安<br>昨天我們把Heroku跟Git都安裝好了，今天我們要將我們的專案變成Git專案<br>並且推上Heroku</p>
+<h1 id="第一次推送專案"><a href="#第一次推送專案" class="headerlink" title="第一次推送專案"></a>第一次推送專案</h1><p>首先，跟之前一樣<br>我們先用VSCode開啟專案資料夾</p>
+<p><img src="https://i.imgur.com/ACltFP5.png" alt="15-1"></p>
+<p>確定終端機路徑正確後，輸入<br>git init</p>
+<p><img src="https://i.imgur.com/7aVXFF2.png" alt="15-2"></p>
+<p>左側的檔案都變得綠綠的<br>如果你有看的到隱藏資料夾的話，在專案底下還會看到一個.git的隱藏資料夾<br>那就是用來識別git專案的檔案，也是執行git語言時的依據</p>
+<p>這樣專案就轉換成git專案了，然後我們接下來要在heroku上創建一個專案庫<br>專案名稱的命名方式大多為 aaa-bbb-ccc<br>第一個字必須為小寫，且不能與其他在heroku上的專案撞名，所以越獨特越好<br>這邊筆者的專案名稱取做 the-bot-alice-on-heroku<br>我們輸入<br>heroku create 你的專案名稱</p>
+<p><img src="https://i.imgur.com/rpv8elG.png" alt="15-3"></p>
+<p>這時候如果到這裡看，成功的話就會看到剛剛創建的專案了<br><a target="_blank" rel="noopener" href="https://dashboard.heroku.com/">https://dashboard.heroku.com/</a></p>
+<p><img src="https://i.imgur.com/KXLt0MO.png" alt="15-4"></p>
+<p>我們繼續輸入</p>
+<p>git add .<br>git commit -m init<br>git push heroku master</p>
+<p><img src="https://i.imgur.com/FJAbH1V.png" alt="15-5"></p>
+<p>最後有看到Build succeeded就是成功了!<br>這三個指令的意思依序是</p>
+<p>git add .<br>將目錄下的所有檔案加入git控管</p>
+<p>git commit -m init<br>將git控管下的檔案全部加入本次要推送的版本，因為是第一次推送所以是init，之後第n次推送的話程式碼要改成 git commit -m ‘版本說明’</p>
+<p>git push heroku master<br>將commit起來的版本推送(上傳)到heroku的主分支，總之就是上傳檔案</p>
+<p>所以之後如果要更新程式，都是依序使用這三個命令來上傳機器人</p>
+<p>接著我們運行看看<br>heroku logs –t</p>
+<p><img src="https://i.imgur.com/BezAjQn.png" alt="15-6"></p>
+<p>這是呼叫heroku的控制後台，相當於在看遠端主機運行程序時的終端機<br>要退出時按ctrl+c退出</p>
+<p>可以看到對方也接收到我們上傳的檔案，有一個Build succeeded<br>但是後面都是npm ERR<br>以及可以看到他嘗試使用 npm start 來運行我們的專案<br>還記得我們的程序啟動試透過甚麼方式嗎?<br>沒錯，node bot!</p>
+<h1 id="平台設定"><a href="#平台設定" class="headerlink" title="平台設定"></a>平台設定</h1><p>我們在專案的根目錄新增一個檔案，取名叫做Procfile</p>
+<p><img src="https://i.imgur.com/4Xl8BEd.png" alt="15-7"></p>
+<p>裡面只有一行，寫上<br>worker: node bot</p>
+<p>可以看到，檔案在取名為Procfile後，icon會變成Heroku的標誌<br>這是Heroku可以辨識的檔案，作用是指定Heroku的啟動命令<br>worker是代表我們要運行的啟動命令是worker(程序)<br>heroku預設的啟動命令屬於web(網頁)</p>
+<p>寫好後，我們再做一次推送<br>git add .<br>git commit -m ‘npm bot’<br>git push heroku master</p>
+<p><img src="https://i.imgur.com/foAIKIR.png" alt="15-8"></p>
+<p>push完，我們打開網頁，回到heroku控制台，進入我們的專案</p>
+<p><img src="https://i.imgur.com/gLPqwGs.png" alt="15-9"></p>
+<p>會看到，紅框處是我們的推送日誌，這也是用git來控管程式時的日誌檔</p>
+<p>藍框就顯示了我們程序的啟動方式，可以看到node bot已經出現在上面了，但是沒有開啟</p>
+<p>我們點擊紫框的Resources</p>
+<p><img src="https://i.imgur.com/s2C5V61.png" alt="15-10"></p>
+<p>將 npm start給關閉，node bot開啟，這樣回去主頁面看node bot也會是開啟的狀態了</p>
+<p>最後我們在終端機輸入 heroku restart</p>
+<p><img src="https://i.imgur.com/10oZqCf.png" alt="15-11"></p>
+<p>這是重啟專案的指令，當程序崩潰或是遇到任何問題時，都可以重啟看看</p>
+<p>heroku logs -t</p>
+<p><img src="https://i.imgur.com/ZVirlHw.png" alt="15-12"> </p>
+<p><img src="https://i.imgur.com/SrXdjRa.png" alt="15-13"></p>
+<p>成功!<br>到此為止，我們成功將Bot推送到Heroku上，以後不用我們自己運行<br>機器人也會是24小時運行了，給做到這邊的自己一個鼓勵吧^^</p>
+<h1 id="其他設定"><a href="#其他設定" class="headerlink" title="其他設定"></a>其他設定</h1><p>Heroku的免費時數預設是550小時/月，如果說是自己幾個朋友使用是沒關係<br>當機器人在一個人數比較多的群組時，550小時是沒辦法支撐1個月的，每到月底、機器人就會想休息幾天</p>
+<p>但是!如果你有在Heroku的帳戶綁定信用卡的話，他會免費再給你450小時，每個月的免費時數會變成1000小時，運行機器人是完全足夠的!不用擔心會扣款</p>
+<p>我們點選右上角的設定</p>
+<p><img src="https://i.imgur.com/84iDGli.png" alt="15-14"></p>
+<p>點Billing，然後點Add credit card</p>
+<p><img src="https://i.imgur.com/Rqh5IfU.png" alt="15-15"></p>
+<p>再來就是綁卡流程，相信這部份不用截圖，各位自己會的</p>
+<p><img src="https://i.imgur.com/A1PkaAG.png" alt="15-16"></p>
+<p>綁完後，底下原本的550小時就會變成有1000小時的扣打了~</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-14  <a class="commentCountImg" href="/2020/09/14/12thDay14/#comment-container"><span class="display-none-class">c805e0959f10d40c1199d2d8d2df5a99</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="c805e0959f10d40c1199d2d8d2df5a99">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>9 分鐘  <i class="fas fa-pencil-alt"> </i>1.4 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/14/12thDay14/">Day14 - Heroku與Git，介紹與安裝</a></h1><div class="content"><p>好勒，上禮拜我們終於把基本的音樂系統做好<br>現在你的機器人支援多種功能，加上你自己做的其他系統，已經是一個強大的機器人了!</p>
+<p>之後如果我要使用機器人，只要打開cmd運行node bot，然後電腦一直開著就好</p>
+<ul>
+<li>一直開著就好</li>
+<li>自己不在其他人就沒辦法使用bot</li>
+<li>程序如果掛掉要自已重啟</li>
+</ul>
+<p>其實這就是將自己的電腦做為後端主機在運行bot<br>而這方法對於平常沒有長時間開機習慣的使用者來說是略為有些負擔了<br>就算是順便開著也要擔心程式會不會自己崩潰跳閘</p>
+<p>也因此，今天我們就會來解決這個問題，同時也是終於能提到我們的主題啦</p>
+<hr>
+<h1 id="後端0負擔"><a href="#後端0負擔" class="headerlink" title="後端0負擔"></a>後端0負擔</h1><p>一個面向使用者的服務都會有<br>一個前端視覺介面(Discord)<br>一個後端(bot.js)<br>再在後端的後面獨立出一個資料庫主機就更好了(SQL)</p>
+<p>後端0負擔的意思是我們不必再支付運行程序的電費等維護費用<br>那麼該怎麼做才能實現呢?其實也很簡單，我們把程序給其他人的電腦跑，讓他幫你管就好，也就是</p>
+<h3 id="雲端託管"><a href="#雲端託管" class="headerlink" title="雲端託管"></a>雲端託管</h3><p><img src="https://i.imgur.com/7OKEagE.png" alt="14-1"></p>
+<p><a target="_blank" rel="noopener" href="https://www.heroku.com/">Heroku官方網站</a></p>
+<p>Heroku是支援多語言的全自動託管平台<br>只要將你的程序放上去並且做好相關設定，程序就會在他們的主機上自動運行</p>
+<h1 id="註冊Heroku帳號"><a href="#註冊Heroku帳號" class="headerlink" title="註冊Heroku帳號"></a>註冊Heroku帳號</h1><p>請先到<a target="_blank" rel="noopener" href="https://signup.heroku.com/login">這個網址</a>註冊帳號資訊</p>
+<p><img src="https://i.imgur.com/7PeESWm.png" alt="14-2"></p>
+<p>First name姓<br>Last name名<br>Email Address信箱<br>Role職業<br>Primary Development Language開發語言</p>
+<p>基本上只要信箱跟開發語言沒打錯選錯就好，填好後我們直接送出</p>
+<p><img src="https://i.imgur.com/N7yKXIJ.png" alt="14-3"></p>
+<p>到這個步驟就代表前面填的資料ok，請去收信</p>
+<p><img src="https://i.imgur.com/GeRJh01.png" alt="14-4"></p>
+<p>點擊信中的連結</p>
+<p><img src="https://i.imgur.com/oVhFOKt.png" alt="14-5"></p>
+<p>這邊他要你重複輸入密碼，需8碼，由英數符號組成</p>
+<p><img src="https://i.imgur.com/1PBEoJs.png" alt="14-6"></p>
+<p>一路確認後就會來到這裡了<br>這裡是heroku的後台，左側是創建我們的應用程序專案，右側是成立小組</p>
+<p>不過我們通常會透過 Heroku CLI 來操作，所以不用管這兩個東東，我們繼續做</p>
+<h1 id="安裝Heroku-CLI"><a href="#安裝Heroku-CLI" class="headerlink" title="安裝Heroku CLI"></a>安裝Heroku CLI</h1><p>點擊<a target="_blank" rel="noopener" href="https://devcenter.heroku.com/articles/heroku-cli#windows">這個網址</a></p>
+<p>按照你的作業系統安裝對應的版本，通常是Windows 64-bit</p>
+<p><img src="https://i.imgur.com/j8Nhzgo.jpg" alt="14-7"></p>
+<p>一路next就好，最後Close</p>
+<p>最後我們開啟終端機(cmd)，注意必須是重新開啟的cmd，安裝前已經開啟的不行<br>在上面輸入heroku<br><img src="https://i.imgur.com/Q5PDR5H.png" alt="14-8"></p>
+<p>只要出現類似這樣的畫面就代表安裝成功了<br>如果沒有成功出現，可以先重開機看看，再不然可能是你的安裝版本有錯，電腦不是64位元等</p>
+<p>成功的話我們繼續輸入 heroku login</p>
+<p><img src="https://i.imgur.com/4riBzSS.png" alt="14-9"></p>
+<p>在鍵盤上輸入除了q以外的按鍵 = 同意他開啟瀏覽器提供登入</p>
+<p><img src="https://i.imgur.com/hIbxrs0.png" alt="14-10"></p>
+<p><img src="https://i.imgur.com/yUICBY3.png" alt="14-11"></p>
+<p>chrome會自動打開，因為我們前面剛在heroku註冊，所以網頁還存著登入訊息，直接按Log In，回頭看cmd就會顯示登入成功了!</p>
+<p>這樣Heroku CLI就裝好了，我們再來安裝Git</p>
+<h1 id="Git安裝"><a href="#Git安裝" class="headerlink" title="Git安裝"></a>Git安裝</h1><p>Git是一種提供程式版本控制的語言，最常見的例子是GitHub<br>透過Git語言，我們可以將專案製作成Git專案，然後透過Git將程式推送到雲端，並且保證每個版本間的修改與來源都得到紀錄</p>
+<p>Heroku正是依循Git的規則來上傳下載程式</p>
+<p>點擊<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">這個網址</a></p>
+<p>一樣選擇對應的版本<br>安裝時的選項很多，請跟我底下的圖片選擇一樣</p>
+<p><img src="https://i.imgur.com/DprmCvj.jpg" alt="14-12"></p>
+<p><img src="https://i.imgur.com/Y0z1v5M.jpg" alt="14-13"></p>
+<p>路徑跟我不一樣沒關係，總之要照他預設給你的，不要改</p>
+<p><img src="https://i.imgur.com/MqCh8g0.jpg" alt="14-14"> </p>
+<p><img src="https://i.imgur.com/jsvzoZd.jpg" alt="14-15"></p>
+<p><img src="https://i.imgur.com/TlaJ0d8.jpg" alt="14-16"></p>
+<p><img src="https://i.imgur.com/ME0BGhq.jpg" alt="14-17"></p>
+<p><img src="https://i.imgur.com/NnHcvxN.jpg" alt="14-18"></p>
+<p><img src="https://i.imgur.com/EJs2X40.jpg" alt="14-19"></p>
+<p><img src="https://i.imgur.com/aw4G31d.jpg" alt="14-20"></p>
+<p><img src="https://i.imgur.com/ZJTODzR.jpg" alt="14-21"></p>
+<p>這樣就安裝好Git了，跟剛剛一樣，我們開一個新的cmd測試是否安裝成功</p>
+<p><img src="https://i.imgur.com/cG2Rs1B.png" alt="14-22"></p>
+<p>失敗的話，除了版本問題以外，有可能是PATH檔不正確，可以拿這個keyword去排除問題試試看</p>
+<p>都沒問題的話，我們輸入以下兩個指令</p>
+<p>git config –global user.name “smile”<br>git config –global user.email “<a href="mailto:&#x61;&#x32;&#56;&#56;&#50;&#x36;&#x32;&#53;&#50;&#x32;&#x35;&#50;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x61;&#x32;&#56;&#56;&#50;&#x36;&#x32;&#53;&#50;&#x32;&#x35;&#50;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a>“</p>
+<p><img src="https://i.imgur.com/VMeScbF.png" alt="14-23"></p>
+<p>這是設定你的使用者名稱與信箱<br>我的名稱是smile，你要改成你自己的稱呼，信箱與heroku一樣就可以了</p>
+<p>之後透過git推送時，都會以這個稱呼與信箱來識別<br>這樣Heroku跟Git的前置作業都做好了，明天將專案推上Heroku</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-13  <a class="commentCountImg" href="/2020/09/13/12thDay13/#comment-container"><span class="display-none-class">8ef53469c9926a318485bca1b603caf5</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="8ef53469c9926a318485bca1b603caf5">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>2 分鐘  <i class="fas fa-pencil-alt"> </i>0.3 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/13/12thDay13/">Day13 - 嵌入式訊息embed與 bot 的指令表(額外)</a></h1><div class="content"><p>今天說說Discord的另一種訊息方式，embed</p>
+<p><img src="https://i.imgur.com/6cCIVuN.png" alt="13-1"></p>
+<p>在Discord.js中被稱為MessageEmbed，訊息嵌入元素，總之就是嵌入式訊息</p>
+<p><img src="https://i.imgur.com/mw9N4MX.png" alt="13-2"></p>
+<p>跟一般傳送訊息的手段一樣是使用 send ，但是傳送的屬性從原本的文字(string)轉成是嵌入元素(Embed)</p>
+<p><img src="https://i.imgur.com/kQQYhth.png" alt="13-3"></p>
+<p>embed宣告後，透過其文檔底下的各個方法(methods)來賦予嵌入式訊息本身，要放入哪些資訊</p>
+<p><img src="https://i.imgur.com/rDwYLkd.png" alt="14-4"></p>
+<p>將一個一個訊息嵌入embed元素後，最後從send方法傳送到discord上，就是一則embed訊息了</p>
+<p><img src="https://i.imgur.com/gRPZpUI.png" alt="14-5"></p>
+<p>底下附上標準版的embed，請各位嘗試在最初教學的 ! 方法中新增一則help觸發句，將底下範例套入後，試著替換成自己的指令文檔吧!</p>
+<pre><code>const embed = new Discord.MessageEmbed()
+      .setColor(&#39;#0099ff&#39;)
+      .setTitle(&#39;Some title&#39;)
+      .setURL(&#39;https://discord.js.org/&#39;)
+      .setAuthor(&#39;Some name&#39;, &#39;https://i.imgur.com/wSTFkRM.png&#39;, &#39;https://discord.js.org&#39;)
+      .setDescription(&#39;Some description here&#39;)
+      .setThumbnail(&#39;https://i.imgur.com/wSTFkRM.png&#39;)
+      .addField(&#39;Regular field title&#39;, &#39;Some value here&#39;)
+      .addField(&#39;\u200B&#39;, &#39;\u200B&#39;)
+      .addField(&#39;Inline field title&#39;, &#39;Some value here&#39;, true)
+      .addField(&#39;Inline field title&#39;, &#39;Some value here&#39;, true)
+      .addField(&#39;Inline field title&#39;, &#39;Some value here&#39;, true)
+      .setImage(&#39;https://i.imgur.com/wSTFkRM.png&#39;)
+      .setTimestamp()
+      .setFooter(&#39;Some footer text here&#39;, &#39;https://i.imgur.com/wSTFkRM.png&#39;);
+msg.channel.send(embed);
+</code></pre>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-12  <a class="commentCountImg" href="/2020/09/12/12thDay12/#comment-container"><span class="display-none-class">d460fb55bd1cca4ace331b36a1cd1401</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="d460fb55bd1cca4ace331b36a1cd1401">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>4 分鐘  <i class="fas fa-pencil-alt"> </i>0.6 k</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/12/12thDay12/">Day12 - Discord的訊息刪除與更新事件(額外)</a></h1><div class="content"><p>欸…原本接下來想教後台託管與資料庫的教學的<br>但因為筆者禮拜五把文稿跟圖片還有範例程式全都留在公司了…所以這兩天筆者先教一下其他東西</p>
+<p>就當作是惡補前面沒講到的Discord.js功能，我們今天來說說Discord.js的其他事件監聽吧</p>
+<hr>
+<h1 id="刪除與更新事件"><a href="#刪除與更新事件" class="headerlink" title="刪除與更新事件"></a>刪除與更新事件</h1><p>目前我們的所有事件都是建立在<br>使用者發送訊息 -&gt; Discord廣播給機器人 -&gt; 機器人的Message事件觸發</p>
+<pre><code>client.on(&#39;message&#39;, msg =&gt; &amp;#123;&amp;#125;)
+</code></pre>
+<p>我們的 bot 是使用登入了 bot 自身 keyValue 的 client 來監聽 message 事件的</p>
+<p><img src="https://i.imgur.com/qXdmhzO.png" alt="12-1"><br><img src="https://i.imgur.com/hbkivnR.png" alt="12-2"></p>
+<p>這樣，我們在Client下的Event分類中，就會找的到message的內容</p>
+<p>在程序中Client代表我們機器人本身，他的Event直接表示了他能對那些事情做出反應<br>也因此，Client的Event功能非常的多</p>
+<p>今天我們來說說MessageDelete跟MessageUpdate事件，也就是當有人刪除訊息跟更新訊息的時要做的事情</p>
+<p><img src="https://i.imgur.com/OZ84Nlj.png" alt="12-3"><br><img src="https://i.imgur.com/FSfPNZq.png" alt="12-4"></p>
+<p>Discord.js的文庫其實也蠻簡單的，不用看那些英文在說甚麼，透過事件名稱跟屬性已經足夠我們知道<br>當有人刪除留言時，Discord會將Message返還給我們<br>當有人更新留言時，Discord會將oldMessage跟newMessage</p>
+<p><img src="https://i.imgur.com/ouPctCU.png" alt="12-5"></p>
+<p>請試著用console.log查看Discord分別給了我們甚麼內容吧!</p>
+<p>之後我們把屬性中我們需要的元素拿出來組成字串，發送到原本的頻道去</p>
+<pre><code>//抓刪 刪除事件
+client.on(&#39;messageDelete&#39;, function (message) &amp;#123;
+    if (!message.guild) return; //只要是來自群組的訊息
+    let mStr = &#39;&#39;;
+    try&amp;#123;
+        mStr = mStr+
+            `事件 刪除\n`+
+            `使用者 $&amp;#123;message.member.user.username&amp;#125;\n`+
+            `群組 $&amp;#123;message.channel.name&amp;#125;\n`+
+            `刪除內容 $&amp;#123;message.content&amp;#125;`;
+
+        client.channels.get(message.channel.id).send(mStr);
+    &amp;#125;catch(err)&amp;#123;
+        console.log(&quot;messageDeleteError&quot;,err);
+    &amp;#125;
+&amp;#125;);
+
+//抓刪 更新事件
+client.on(&#39;messageUpdate&#39;, function (oldMessage, newMessage) &amp;#123;
+    if (!oldMessage.guild || !newMessage.guild) return;
+    mStr = &#39;&#39;;
+    try &amp;#123;
+        mStr = mStr +
+            `事件 更新\n` +
+            `使用者 $&amp;#123;oldMessage.member.user.username&amp;#125;\n` +
+            `群組   $&amp;#123;oldMessage.channel.name&amp;#125;\n` +
+            `舊對話 $&amp;#123;oldMessage.content&amp;#125;\n` +
+            `新對話 $&amp;#123;newMessage.content&amp;#125;`;
+
+        client.channels.get(oldMessage.channel.id).send(mStr);
+    &amp;#125; catch (err) &amp;#123;
+        console.log(&#39;messageUpdateError&#39;, err);
+    &amp;#125;
+&amp;#125;)
+</code></pre>
+<p>這樣，你的bot就會在頻道有人刪除訊息時接收訊息，然後把刪除的內容貼出來玩羞恥play了(</p>
+</div><div class="index-category-tag"><div class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a><span> </span><a class="article-more button is-small link-muted index-categories" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a></div>  <div class="level-item"><i class="fas fa-tags has-text-grey"> </i><a class="article-more button is-small link-muted index-tags" href="/tags/node-js/">node.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/bot/">bot</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord/">discord</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/discord-js/">discord.js</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/%E6%95%99%E5%AD%B8/">教學</a><span> </span><a class="article-more button is-small link-muted index-tags" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a></div><hr></div></article></div><!--!--><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">上一頁</a></div><div class="pagination-next"><a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/3/">下一頁</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">1</a></li><li><a class="pagination-link is-current" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/2/">2</a></li><li><a class="pagination-link" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/3/">3</a></li><li><a class="pagination-link" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/page/4/">4</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://avatars.githubusercontent.com/u/62000156" alt="微笑の家"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">微笑の家</p><p class="is-size-6 is-block">請給予我拯救他人的力量</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>台灣</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分類</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">標籤</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/NALocal" target="_blank" rel="noopener">關注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/NALocal"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://www.facebook.com/profile.php?id=100003120783130"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:lion31lion31@gmail.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"來源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget"><div class="card-content"><h3 class="menu-label">最新評論</h3><span class="body_hot_comment">加載中，最新評論有1分鐘緩存...</span></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-14T04:00:00.000Z">2021-12-14</time></p><p class="title"><a href="/2021/12/14/racingScript-worldFlipper/">競速疊屍腳本 - 台版彈射世界</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-16T04:00:00.000Z">2021-11-16</time></p><p class="title"><a href="/2021/11/16/fluidThemeShare/">fluid支持pjax主題源碼分享</a></p><p class="categories"><a href="/categories/hexo%E4%B8%BB%E9%A1%8C%E5%88%86%E4%BA%AB/">hexo主題分享</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-16T02:00:00.000Z">2021-11-16</time></p><p class="title"><a href="/2021/11/16/live2DShareList/">公開Live2D模型蒐集分享</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-09-27T05:47:20.000Z">2021-09-27</time></p><p class="title"><a href="/2021/09/27/aboutDiscordJs13/">關於discord.js升級至13版本</a></p><p class="categories"><a href="/categories/BaseDiscordBot/">BaseDiscordBot</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-09-16T05:57:00.000Z">2021-09-16</time></p><p class="title"><a href="/2021/09/16/hello-smile/">你好，微笑之家</a></p><p class="categories"><a href="/categories/%E6%97%A5%E8%A8%98/">日記</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分類</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/BaseDiscordBot/"><span class="level-start"><span class="level-item">BaseDiscordBot</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/hexo%E4%B8%BB%E9%A1%8C%E5%88%86%E4%BA%AB/"><span class="level-start"><span class="level-item">hexo主題分享</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%97%A5%E8%A8%98/"><span class="level-start"><span class="level-item">日記</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"><span class="level-start"><span class="level-item">鐵人賽</span></span><span class="level-end"><span class="level-item tag">31</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"><span class="level-start"><span class="level-item">用Node.js製作後台零負擔的DiscordBot</span></span><span class="level-end"><span class="level-item tag">31</span></span></a></li></ul></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">歸檔</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2021/12/"><span class="level-start"><span class="level-item">十二月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2021/09/"><span class="level-start"><span class="level-item">九月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">31</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">標籤</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/bot/"><span class="tag">bot</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/discord/"><span class="tag">discord</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/discord-js/"><span class="tag">discord.js</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/node-js/"><span class="tag">node.js</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%99%E5%AD%B8/"><span class="tag">教學</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"><span class="tag">12th鐵人賽</span><span class="tag is-grey-lightest">31</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%97%A5%E8%A8%98/"><span class="tag">日記</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Live2D/"><span class="tag">Live2D</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/fluid/"><span class="tag">fluid</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%88%E5%B0%84%E4%B8%96%E7%95%8C/"><span class="tag">彈射世界</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%85%B3%E6%9C%AC/"><span class="tag">腳本</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%81%8A%E6%88%B2/"><span class="tag">遊戲</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">訂閱更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="訂閱"></div></div></form></div></div></div><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="微笑家" height="28"></a><p class="size-small"><span>&copy; 2021 NALocal</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> <br><span>© 版權說明：[本網站所有內容均收集於互聯網或自己創作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便於網友與自己學習交流，如有侵權，請<a href="/message" target="_blank">留言</a>，立即處理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已運行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小時 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！ ❤️";
+        }var now = new Date();setInterval("createTime('2021/09/15 18:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感謝 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光臨！ ❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/NALocal/NALocal.github.io"><i class="fab fa-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="/dist/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/dist/APlayer.min.js"></script><script type="text/javascript" src="/dist/music.js"></script></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("zh-TW");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到頂端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('9a33a548232178c23121','bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6','NALocal','nalocal.github.io',false);})</script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什麼..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什麼...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"分類","tags":"標籤"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
         }
-    });
-});
-</script>
 
+        function loadMathJax() { //加载mathjax
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\(', '\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        };
 
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
-</html>
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('9a33a548232178c23121','bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6','NALocal','nalocal.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body></html>

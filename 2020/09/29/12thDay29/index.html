@@ -1,637 +1,447 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
-  <link rel="icon" href="/img/avatar.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="程式教學 C#/JAVA/HTML5/NODE.JS，永恆的願望">
-  <meta name="author" content="NALocal">
-  <meta name="keywords" content="程式,教學,程式教學,C,C#,JAVA,HTML,HTML5,NODE,NODE.JS,JAVASCRIPT,CSS,SCSS,SASS,DISCORD,BOT,BLOG,心得,SMILE,NALOCAL,NA,IT,BACK,END,BackEnd,後端,hexo,fluid,pjax,微笑,微笑之家,微笑家">
-  
-     <meta name="referrer" content="no-referrer"/> 
-  
-  <title>Day29 - tag控管機制(3) - 微笑家</title>
-
-  
-<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-
-
-<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-<link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-
-
-
-  
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
-
-
-
-<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/mycss/mycss.css">
-
-
-
-<script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"nalocal.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":"G-1SWFNWD1RD","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
-  </script>
-  
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  <script  src="/js/jquery.min.js" ></script>
-  
-    <script  src="/js/jquery.pjax.min.js" ></script>
-  
-  <meta name="google-site-verification" content="CFZ1Qdei7aIe9DPeh0Mz3WqNQASscW51bUq7v1F3Tb0" />
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="微笑家" type="application/atom+xml">
-</head>
-
-<body>
-  <div id="ajaxD">
-	  <header style="height: 70vh;">
-		<nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>微笑の家</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首頁
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                關於
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                文章
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分類
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                標籤
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/atom.xml">
-                <i class="iconfont icon-rss"></i>
-                rss
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-		<div class="banner" id="banner" parallax=true
-			 style="background: url('/img/banner2.jpg') no-repeat center center;
-			   background-size: cover;">
-		  <div class="full-bg-img">
-			<div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-			  <div class="page-header text-center fade-in-up">
-				<span class="h2" id="subtitle" title="Day29 - tag控管機制(3)">
-				  
-				</span>
-
-				
-				  <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-29 09:27" pubdate>
-        2020年9月29日 上午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      2k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      31
-       分鐘
-    </span>
-  
-
-  
-  
-</div>
-
-				
-			  </div>
-
-			  
-			</div>
-		  </div>
-		</div>
-	  </header>
-
-	  <main>
-		
-		  
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Day29 - tag控管機制(3)</h1>
-            
-            <div class="markdown-body">
-              <p>昨天我們做好了 將使用者加入身份組指令<br>今天把 創建身分組的指令做好</p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Day29 - tag控管機制(3) - 微笑家</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="微笑家"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="微笑家"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="昨天我們做好了 將使用者加入身份組指令今天把 創建身分組的指令做好 跟昨天一樣，請先開啟GAS，身分組的GAS叫做getPartyPower新增以下  function doPost(e)&amp;amp;#123;   var para &amp;#x3D; e.parameter; &amp;#x2F;&amp;#x2F; 存放 post 所有傳送的參數      var id &amp;#x3D; &amp;#39;1mQ6qTJfOs3Gv5--K9r87w56wmDc3hU"><meta property="og:type" content="blog"><meta property="og:title" content="微笑の家"><meta property="og:url" content="https://nalocal.github.io/"><meta property="og:site_name" content="微笑の家"><meta property="og:description" content="昨天我們做好了 將使用者加入身份組指令今天把 創建身分組的指令做好 跟昨天一樣，請先開啟GAS，身分組的GAS叫做getPartyPower新增以下  function doPost(e)&amp;amp;#123;   var para &amp;#x3D; e.parameter; &amp;#x2F;&amp;#x2F; 存放 post 所有傳送的參數      var id &amp;#x3D; &amp;#39;1mQ6qTJfOs3Gv5--K9r87w56wmDc3hU"><meta property="og:locale" content="zh_TW"><meta property="og:image" content="https://avatars.githubusercontent.com/u/62000156"><meta property="article:published_time" content="2020-09-29T01:27:13.000Z"><meta property="article:modified_time" content="2021-09-16T05:55:19.726Z"><meta property="article:author" content="NALocal"><meta property="article:tag" content="node.js"><meta property="article:tag" content="bot"><meta property="article:tag" content="discord"><meta property="article:tag" content="discord.js"><meta property="article:tag" content="教學"><meta property="article:tag" content="12th鐵人賽"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://avatars.githubusercontent.com/u/62000156"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://nalocal.github.io/blog/2020/09/29/12thDay29/"},"headline":"微笑家","image":["https://i.imgur.com/eqoYtRi.png","https://i.imgur.com/0brSMZw.png","https://i.imgur.com/9KlDFkj.png","https://i.imgur.com/oKcdCTg.png","https://i.imgur.com/nQgPf3p.png","https://i.imgur.com/FB6RfAd.png","https://i.imgur.com/x3Qx41S.png","https://i.imgur.com/Mf6vO49.png","https://i.imgur.com/VH2f5L2.png"],"datePublished":"2020-09-29T01:27:13.000Z","dateModified":"2021-09-16T05:55:19.726Z","author":{"@type":"Person","name":"NALocal"},"description":"昨天我們做好了 將使用者加入身份組指令今天把 創建身分組的指令做好 跟昨天一樣，請先開啟GAS，身分組的GAS叫做getPartyPower新增以下  function doPost(e)&amp;#123;   var para &#x3D; e.parameter; &#x2F;&#x2F; 存放 post 所有傳送的參數      var id &#x3D; &#39;1mQ6qTJfOs3Gv5--K9r87w56wmDc3hU"}</script><link rel="canonical" href="https://nalocal.github.io/blog/2020/09/29/12thDay29/"><link rel="icon" href="/img/favicon.png"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><link rel="stylesheet" href="/live2d/waifu.css"><script type="text/javascript" async src="/live2d/autoload.js"></script><meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="微笑家" type="application/atom+xml">
+</head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="微笑家" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a><a class="navbar-item" href="/album">Album</a><a class="navbar-item" href="/friend">Friend</a><a class="navbar-item" href="/message">Message</a><a class="navbar-item" href="/self-talking">Self-talking</a><a class="navbar-item" href="/music">Music</a><a class="navbar-item" href="/media">Media</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Join Gitter" href="https://gitter.im/hexo-theme-amazing/community"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/removeif/hexo-theme-amazing"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><!--!--><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-29  <a class="commentCountImg" href="/2020/09/29/12thDay29/#comment-container"><span class="display-none-class">8374f6210a466059f8ac2494af55546d</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="8374f6210a466059f8ac2494af55546d">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>11 分鐘  <i class="fas fa-pencil-alt"> </i>1.7 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次訪問</span></div></div><h1 class="title is-3 is-size-4-mobile">Day29 - tag控管機制(3)</h1><div class="content"><p>昨天我們做好了 將使用者加入身份組指令<br>今天把 創建身分組的指令做好</p>
 <p>跟昨天一樣，請先開啟GAS，身分組的GAS叫做getPartyPower<br>新增以下</p>
-<p><img src="https://i.imgur.com/eqoYtRi.png" srcset="/img/loading.gif" lazyload alt="29-1"></p>
-<figure class="highlight reasonml"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> <span class="hljs-keyword">do</span><span class="hljs-constructor">Post(<span class="hljs-params">e</span>)</span>&#123;<br>  var para = e.parameter; <span class="hljs-comment">// 存放 post 所有傳送的參數</span><br>  <br>  var id = &#x27;<span class="hljs-number">1</span>mQ6qTJfOs3Gv5--K9r87w56wmDc3hUcpHm5hF1YKTms&#x27;; <span class="hljs-comment">//抓取表單</span><br>  var spreadsheet = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SpreadsheetApp</span>.</span></span><span class="hljs-keyword">open</span><span class="hljs-constructor">ById(<span class="hljs-params">id</span>)</span>; <span class="hljs-comment">// Sheet id</span><br>  var sheet1 = spreadsheet.get<span class="hljs-constructor">SheetByName(<span class="hljs-string">&quot;PartyPower&quot;</span>)</span>; <span class="hljs-comment">// 根據表格名稱取表</span><br>  var rowLength = sheet1.get<span class="hljs-constructor">LastRow()</span>-<span class="hljs-number">1</span>;<br>  var columnLength = sheet1.get<span class="hljs-constructor">LastColumn()</span>;<br>  var data = sheet1.get<span class="hljs-constructor">Range(2,1,<span class="hljs-params">rowLength</span>,<span class="hljs-params">columnLength</span>)</span>.get<span class="hljs-constructor">Values()</span>; <span class="hljs-comment">// 取得的資料</span><br>  var ID   = para.ID,<br>      <span class="hljs-keyword">type</span> = para.<span class="hljs-keyword">type</span>,<br>      Power    = para.Power;<br>  <br>  var upData = <span class="hljs-literal">[]</span>;<br>  <br>  <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;=rowLength-<span class="hljs-number">1</span>;i++)&#123;<br>    upData = data<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><br>    <span class="hljs-keyword">if</span>((upData<span class="hljs-literal">[<span class="hljs-number">0</span>]</span>==ID)<span class="hljs-operator"> == </span><span class="hljs-literal">false</span>)&#123;<br>      upData = undefined;<br>    &#125;<br>  <br>  <br>    <span class="hljs-keyword">if</span>(upData != undefined)&#123;<br>      sheet1.get<span class="hljs-constructor">Range(<span class="hljs-params">i</span>+2, 1)</span>.set<span class="hljs-constructor">Value(ID)</span>;<br>      sheet1.get<span class="hljs-constructor">Range(<span class="hljs-params">i</span>+2, 2)</span>.set<span class="hljs-constructor">Value(<span class="hljs-params">type</span>)</span>;<br>      sheet1.get<span class="hljs-constructor">Range(<span class="hljs-params">i</span>+2, 3)</span>.set<span class="hljs-constructor">Value(Power)</span>;<br>      return <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContentService</span>.</span></span>create<span class="hljs-constructor">TextOutput(<span class="hljs-params">upData</span>)</span>.set<span class="hljs-constructor">MimeType(ContentService.MimeType.JSON)</span>;<br>    &#125;<br>  &#125;<br>  <br>  <br>  sheet1.append<span class="hljs-constructor">Row([ID,<span class="hljs-params">type</span>,Power])</span>; <span class="hljs-comment">// 插入一列新的資料</span><br>  var dataExportFormat = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">JSON</span>.</span></span>stringify(para);<br>  return <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ContentService</span>.</span></span>create<span class="hljs-constructor">TextOutput(<span class="hljs-params">dataExportFormat</span>)</span>.set<span class="hljs-constructor">MimeType(ContentService.MimeType.JSON)</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
+<p><img src="https://i.imgur.com/eqoYtRi.png" alt="29-1"></p>
+<pre><code>function doPost(e)&amp;#123;
+  var para = e.parameter; // 存放 post 所有傳送的參數
+  
+  var id = &#39;1mQ6qTJfOs3Gv5--K9r87w56wmDc3hUcpHm5hF1YKTms&#39;; //抓取表單
+  var spreadsheet = SpreadsheetApp.openById(id); // Sheet id
+  var sheet1 = spreadsheet.getSheetByName(&quot;PartyPower&quot;); // 根據表格名稱取表
+  var rowLength = sheet1.getLastRow()-1;
+  var columnLength = sheet1.getLastColumn();
+  var data = sheet1.getRange(2,1,rowLength,columnLength).getValues(); // 取得的資料
+  var ID   = para.ID,
+      type = para.type,
+      Power    = para.Power;
+  
+  var upData = [];
+  
+  for(i=0;i&lt;=rowLength-1;i++)&amp;#123;
+    upData = data[i]
+    if((upData[0]==ID) == false)&amp;#123;
+      upData = undefined;
+    &amp;#125;
+  
+  
+    if(upData != undefined)&amp;#123;
+      sheet1.getRange(i+2, 1).setValue(ID);
+      sheet1.getRange(i+2, 2).setValue(type);
+      sheet1.getRange(i+2, 3).setValue(Power);
+      return ContentService.createTextOutput(upData).setMimeType(ContentService.MimeType.JSON);
+    &amp;#125;
+  &amp;#125;
+  
+  
+  sheet1.appendRow([ID,type,Power]); // 插入一列新的資料
+  var dataExportFormat = JSON.stringify(para);
+  return ContentService.createTextOutput(dataExportFormat).setMimeType(ContentService.MimeType.JSON);
+&amp;#125;
+</code></pre>
 <p>加到auth.json</p>
-<p><img src="https://i.imgur.com/0brSMZw.png" srcset="/img/loading.gif" lazyload alt="29-2"></p>
+<p><img src="https://i.imgur.com/0brSMZw.png" alt="29-2"></p>
 <p>GetGas.js</p>
-<p><img src="https://i.imgur.com/9KlDFkj.png" srcset="/img/loading.gif" lazyload alt="29-3"></p>
+<p><img src="https://i.imgur.com/9KlDFkj.png" alt="29-3"></p>
 <p>bot.js</p>
-<p><img src="https://i.imgur.com/oKcdCTg.png" srcset="/img/loading.gif" lazyload alt="29-4"></p>
-<p><img src="https://i.imgur.com/nQgPf3p.png" srcset="/img/loading.gif" lazyload alt="29-5"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//創建身分組&amp;增加身分組可tag對象(續行)</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CreatePartyFunctionNow</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">switch</span> (DoingCount) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>                DoData.push(msg.content); <span class="hljs-comment">//身分組ID</span><br>                DoData.push(<span class="hljs-string">&#x27;2&#x27;</span>); <span class="hljs-comment">//type 2</span><br>                msg.channel.send(<span class="hljs-string">`請輸入要加入的tagID`</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                DoData.push(msg.content); <span class="hljs-comment">//加入tagID</span><br>                msg.channel.send(<span class="hljs-string">`申請資料如下:\n申請人 &lt;@<span class="hljs-subst">$&#123;msg.author.id&#125;</span>&gt;\n權限組 &lt;@<span class="hljs-subst">$&#123;DoData[<span class="hljs-number">0</span>]&#125;</span>&gt;\ntagID <span class="hljs-subst">$&#123;DoData[<span class="hljs-number">2</span>]&#125;</span>\n正確 Y / 錯誤 N`</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>                <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;Y&#x27;</span>) &#123;<br>                    msg.channel.send(<span class="hljs-string">&#x27;已確認，輸入資料中...&#x27;</span>);<br>                    <span class="hljs-comment">//與舊資料比對，已有此人資料變進行更新</span><br>                    EditOldPartyPower();<br>                    GetGas.postPartyPower(DoData, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">dataED</span>) </span>&#123;<br>                        <span class="hljs-keyword">if</span> (dataED) &#123;<br>                            <span class="hljs-comment">//bot內變數不會更新，手動更新</span><br>                            PartyPowerData.unshift(&#123;<br>                                <span class="hljs-string">&#x27;ID&#x27;</span>: DoData[<span class="hljs-number">0</span>],<br>                                <span class="hljs-string">&#x27;type&#x27;</span>: DoData[<span class="hljs-number">1</span>],<br>                                <span class="hljs-string">&#x27;Power&#x27;</span>: DoData[<span class="hljs-number">2</span>]<br>                            &#125;);<br>                            msg.channel.send(<span class="hljs-string">&#x27;輸入完畢!&#x27;</span>);<br>                        &#125; <span class="hljs-keyword">else</span> &#123;<br>                            msg.channel.send(<span class="hljs-string">&#x27;資料輸入失敗，請重新嘗試&#x27;</span>);<br>                        &#125;<br>                        CloseAllDoingFunction();<br>                    &#125;);<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;N&#x27;</span>) &#123;<br>                    CloseAllDoingFunction();<br>                    msg.channel.send(<span class="hljs-string">&#x27;已取消行為，請重新下達指令&#x27;</span>)<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    DoingCount--;<br>                    msg.channel.send(<span class="hljs-string">&#x27;無法辨識訊息，請輸入Y/N來選擇&#x27;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (DoUserID !== <span class="hljs-string">&#x27;&#x27;</span>) DoingCount++;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        CloseAllDoingFunction();<br>        client.channels.fetch(msg.channel.id).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(<span class="hljs-string">&#x27;發生意外錯誤，中斷指令行為，請重新下達指令!&#x27;</span>))<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;CreatePartyFunctionNowError&#x27;</span>, err);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/FB6RfAd.png" srcset="/img/loading.gif" lazyload alt="29-6"></p>
+<p><img src="https://i.imgur.com/oKcdCTg.png" alt="29-4"></p>
+<p><img src="https://i.imgur.com/nQgPf3p.png" alt="29-5"></p>
+<pre><code>//創建身分組&amp;增加身分組可tag對象(續行)
+function CreatePartyFunctionNow(msg) &amp;#123;
+    try &amp;#123;
+        switch (DoingCount) &amp;#123;
+            case 0:
+                DoData.push(msg.content); //身分組ID
+                DoData.push(&#39;2&#39;); //type 2
+                msg.channel.send(`請輸入要加入的tagID`);
+                break;
+            case 1:
+                DoData.push(msg.content); //加入tagID
+                msg.channel.send(`申請資料如下:\n申請人 &lt;@$&amp;#123;msg.author.id&amp;#125;&gt;\n權限組 &lt;@$&amp;#123;DoData[0]&amp;#125;&gt;\ntagID $&amp;#123;DoData[2]&amp;#125;\n正確 Y / 錯誤 N`);
+                break;
+            case 2:
+                if (msg.content === &#39;Y&#39;) &amp;#123;
+                    msg.channel.send(&#39;已確認，輸入資料中...&#39;);
+                    //與舊資料比對，已有此人資料變進行更新
+                    EditOldPartyPower();
+                    GetGas.postPartyPower(DoData, function(dataED) &amp;#123;
+                        if (dataED) &amp;#123;
+                            //bot內變數不會更新，手動更新
+                            PartyPowerData.unshift(&amp;#123;
+                                &#39;ID&#39;: DoData[0],
+                                &#39;type&#39;: DoData[1],
+                                &#39;Power&#39;: DoData[2]
+                            &amp;#125;);
+                            msg.channel.send(&#39;輸入完畢!&#39;);
+                        &amp;#125; else &amp;#123;
+                            msg.channel.send(&#39;資料輸入失敗，請重新嘗試&#39;);
+                        &amp;#125;
+                        CloseAllDoingFunction();
+                    &amp;#125;);
+                &amp;#125; else if (msg.content === &#39;N&#39;) &amp;#123;
+                    CloseAllDoingFunction();
+                    msg.channel.send(&#39;已取消行為，請重新下達指令&#39;)
+                &amp;#125; else &amp;#123;
+                    DoingCount--;
+                    msg.channel.send(&#39;無法辨識訊息，請輸入Y/N來選擇&#39;);
+                &amp;#125;
+                break;
+        &amp;#125;
+        if (DoUserID !== &#39;&#39;) DoingCount++;
+    &amp;#125; catch (err) &amp;#123;
+        CloseAllDoingFunction();
+        client.channels.fetch(msg.channel.id).then(channel =&gt; channel.send(&#39;發生意外錯誤，中斷指令行為，請重新下達指令!&#39;))
+        console.log(&#39;CreatePartyFunctionNowError&#39;, err);
+    &amp;#125;
+&amp;#125;
+</code></pre>
+<p><img src="https://i.imgur.com/FB6RfAd.png" alt="29-6"></p>
 <p>作法基本上跟上次新增使用者一樣<br>試著運行看看</p>
-<p><img src="https://i.imgur.com/x3Qx41S.png" srcset="/img/loading.gif" lazyload alt="29-7"></p>
-<p><img src="https://i.imgur.com/Mf6vO49.png" srcset="/img/loading.gif" lazyload alt="29-8"></p>
-<p><img src="https://i.imgur.com/VH2f5L2.png" srcset="/img/loading.gif" lazyload alt="29-9"></p>
+<p><img src="https://i.imgur.com/x3Qx41S.png" alt="29-7"></p>
+<p><img src="https://i.imgur.com/Mf6vO49.png" alt="29-8"></p>
+<p><img src="https://i.imgur.com/VH2f5L2.png" alt="29-9"></p>
 <p>成功<br>明天就是最後一篇了，筆者會把刪除的指令做好<br>其實跟現在新增的作法是大同小異的，各位不彷試試看</p>
 <p>為了將CheckID與CheckParty的分工化更明確一點，因此有稍微修改程式碼<br>這邊貼上程式碼</p>
-<figure class="highlight javascript"><table><tr><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//#region tag系統</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TagFunction</span>(<span class="hljs-params">msg, tempPrefix</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> cmd = msg.content.substring(prefix[tempPrefix].Value.length).split(<span class="hljs-string">&#x27; &#x27;</span>); <span class="hljs-comment">//以空白分割前綴以後的字串</span><br><br>    <span class="hljs-keyword">switch</span> (cmd[<span class="hljs-number">0</span>]) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;AddUser&#x27;</span>: <span class="hljs-comment">//將使用者加入身份組</span><br>            addUserFunction(msg);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;CreateParty&#x27;</span>: <span class="hljs-comment">//創建身分組&amp;增加身分組可tag對象</span><br>            CreatePartyFunction(msg);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>: <span class="hljs-comment">//身份組ID</span><br>            tagOther(msg, cmd);<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//tag人</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tagOther</span>(<span class="hljs-params">msg, cmd</span>) </span>&#123;<br>    CheckID(msg, cmd, msg.author.id, <span class="hljs-function">(<span class="hljs-params">msg, cmd, haveUserData</span>) =&gt;</span> &#123;<br>        CheckParty(msg, cmd, haveUserData, SendTagMessage);<br>    &#125;);<br>&#125;<br><br><span class="hljs-comment">//判斷此人有沒有登記資料</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CheckID</span>(<span class="hljs-params">msg, cmd, userID, OtherFunction</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> haveUserData = UserPowerData.find(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> element.userID == userID;<br>    &#125;)<br><br>    <span class="hljs-keyword">if</span> (haveUserData !== <span class="hljs-literal">undefined</span>) &#123;<br>        <span class="hljs-comment">//有資料</span><br>        <span class="hljs-keyword">return</span> OtherFunction(msg, cmd, haveUserData);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> OtherFunction(msg, cmd, <span class="hljs-literal">false</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//根據UserPower獲得Party</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CheckParty</span>(<span class="hljs-params">msg, cmd, haveUserData, OtherFunction</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> havePartyPower;<br>    havePartyPower = PartyPowerData.filter(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (haveUserData.Joins[i].indexOf(element.ID) != -<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">return</span> element.Power.indexOf(cmd[<span class="hljs-number">1</span>]) != -<span class="hljs-number">1</span><br>        &#125;<br>    &#125;)<br><br>    <span class="hljs-keyword">if</span> (isEmptyObject(havePartyPower)) &#123;<br>        OtherFunction(msg, cmd, haveUserData, <span class="hljs-literal">false</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        OtherFunction(msg, cmd, haveUserData, havePartyPower);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//傳送訊息單獨實例</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SendTagMessage</span>(<span class="hljs-params">msg, cmd, haveUserData, havePartyPower</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (haveUserData.IsAdmin) &#123;<br>        msg.channel.send(<span class="hljs-string">`&lt;@&amp;<span class="hljs-subst">$&#123;cmd[<span class="hljs-number">1</span>]&#125;</span>&gt;\n來自管理員&lt;@<span class="hljs-subst">$&#123;msg.author.id&#125;</span>&gt;的指令呼叫`</span>);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (havePartyPower) &#123;<br>        msg.channel.send(<span class="hljs-string">`&lt;@&amp;<span class="hljs-subst">$&#123;cmd[<span class="hljs-number">1</span>]&#125;</span>&gt;\n來自&lt;@<span class="hljs-subst">$&#123;msg.author.id&#125;</span>&gt;的指令呼叫`</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        msg.channel.send(<span class="hljs-string">&#x27;無權限，請確認參數是否正確&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//將xxx加入身分組</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addUserFunction</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (DoUserID === <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>            tempIsAdmin = CheckID(msg, <span class="hljs-literal">null</span>, msg.author.id, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg, cmd, haveUserData</span>) </span>&#123;<br>                <span class="hljs-keyword">if</span> (haveUserData.IsAdmin) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;);<br>            <span class="hljs-keyword">if</span> (tempIsAdmin) &#123;<br>                nowDoFunction = addUserFunctionNow;<br>                DoUserID = msg.author.id;<br>                DoData = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>                msg.channel.send(<span class="hljs-string">&#x27;請輸入要加入的使用者id&#x27;</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                msg.channel.send(<span class="hljs-string">&#x27;此指令只有管理員可執行&#x27;</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            msg.channel.send(<span class="hljs-string">&#x27;有其他人正在使用續行中，請稍等&#x27;</span>);<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;addUserFunctionError&#x27;</span>, err);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//將xxx加入身份組(續行方法)</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addUserFunctionNow</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">switch</span> (DoingCount) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>                DoData.push(msg.content); <span class="hljs-comment">//加入使用者id</span><br>                DoData.push(msg.author.username); <span class="hljs-comment">//加入申請者名字</span><br>                msg.channel.send(<span class="hljs-string">`請輸入要加入的群組`</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                DoData.push(msg.content); <span class="hljs-comment">//加入群組</span><br>                DoData.push(<span class="hljs-literal">false</span>); <span class="hljs-comment">//IsAdmin預設False不可修改</span><br>                msg.channel.send(<span class="hljs-string">`申請資料如下:\n申請人 &lt;@<span class="hljs-subst">$&#123;msg.author.id&#125;</span>&gt;\n使用者 &lt;@<span class="hljs-subst">$&#123;DoData[<span class="hljs-number">0</span>]&#125;</span>&gt;\n加入權限組 <span class="hljs-subst">$&#123;DoData[<span class="hljs-number">2</span>]&#125;</span>\n正確 Y / 錯誤 N`</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>                <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;Y&#x27;</span>) &#123;<br>                    msg.channel.send(<span class="hljs-string">&#x27;已確認，輸入資料中...&#x27;</span>);<br>                    <span class="hljs-comment">//與舊資料比對，已有此人資料變進行更新</span><br>                    CheckID(msg, <span class="hljs-literal">null</span>, DoData[<span class="hljs-number">0</span>], EditOldUserPower);<br>                    GetGas.postUserPower(DoData, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">dataED</span>) </span>&#123;<br>                        <span class="hljs-keyword">if</span> (dataED) &#123;<br>                            <span class="hljs-comment">//bot內變數不會更新，手動更新</span><br>                            UserPowerData.unshift(&#123;<br>                                <span class="hljs-string">&#x27;userID&#x27;</span>: DoData[<span class="hljs-number">0</span>],<br>                                <span class="hljs-string">&#x27;userName&#x27;</span>: DoData[<span class="hljs-number">1</span>],<br>                                <span class="hljs-string">&#x27;Joins&#x27;</span>: DoData[<span class="hljs-number">2</span>],<br>                                <span class="hljs-string">&#x27;IsAdmin&#x27;</span>: DoData[<span class="hljs-number">3</span>]<br>                            &#125;);<br>                            msg.channel.send(<span class="hljs-string">&#x27;輸入完畢!&#x27;</span>);<br>                        &#125; <span class="hljs-keyword">else</span> &#123;<br>                            msg.channel.send(<span class="hljs-string">&#x27;資料輸入失敗，請重新嘗試&#x27;</span>);<br>                        &#125;<br>                        CloseAllDoingFunction();<br>                    &#125;);<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;N&#x27;</span>) &#123;<br>                    CloseAllDoingFunction();<br>                    msg.channel.send(<span class="hljs-string">&#x27;已取消行為，請重新下達指令&#x27;</span>)<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    DoingCount--;<br>                    msg.channel.send(<span class="hljs-string">&#x27;無法辨識訊息，請輸入Y/N來選擇&#x27;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (DoUserID !== <span class="hljs-string">&#x27;&#x27;</span>) DoingCount++;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        CloseAllDoingFunction();<br>        client.channels.fetch(msg.channel.id).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(<span class="hljs-string">&#x27;發生意外錯誤，中斷指令行為，請重新下達指令!&#x27;</span>))<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;addUserFunctionNowError&#x27;</span>, err);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//用戶舊資料更新</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">EditOldUserPower</span>(<span class="hljs-params">msg, cmd, haveUserData</span>) </span>&#123;<br>    <span class="hljs-comment">//二次確認</span><br>    <span class="hljs-keyword">if</span> (haveUserData) &#123;<br>        <span class="hljs-keyword">if</span> (DoData[<span class="hljs-number">0</span>] == haveUserData.userID) &#123;<br>            DoData[<span class="hljs-number">2</span>] = haveUserData.Joins + <span class="hljs-string">&#x27;;&#x27;</span> + DoData[<span class="hljs-number">2</span>];<br>            DoData[<span class="hljs-number">3</span>] = haveUserData.IsAdmin;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-comment">//創建身分組&amp;增加身分組可tag對象</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CreatePartyFunction</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">if</span> (DoUserID === <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>            tempIsAdmin = CheckID(msg, <span class="hljs-literal">null</span>, msg.author.id, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg, cmd, haveUserData</span>) </span>&#123;<br>                <span class="hljs-keyword">if</span> (haveUserData) &#123;<br>                    <span class="hljs-keyword">if</span> (haveUserData.IsAdmin) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;);<br>            <span class="hljs-keyword">if</span> (tempIsAdmin) &#123;<br>                nowDoFunction = CreatePartyFunctionNow;<br>                DoUserID = msg.author.id;<br>                DoData = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>;<br>                msg.channel.send(<span class="hljs-string">&#x27;請輸入身份組名稱&#x27;</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                msg.channel.send(<span class="hljs-string">&#x27;此指令只有管理員可執行&#x27;</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            msg.channel.send(<span class="hljs-string">&#x27;有其他人正在使用續行中，請稍等&#x27;</span>);<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;CreatePartyFunctionError&#x27;</span>, err);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//創建身分組&amp;增加身分組可tag對象(續行)</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">CreatePartyFunctionNow</span>(<span class="hljs-params">msg</span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">switch</span> (DoingCount) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>                DoData.push(msg.content); <span class="hljs-comment">//身分組ID</span><br>                DoData.push(<span class="hljs-string">&#x27;2&#x27;</span>); <span class="hljs-comment">//type 2</span><br>                msg.channel.send(<span class="hljs-string">`請輸入要加入的tagID`</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                DoData.push(msg.content); <span class="hljs-comment">//加入tagID</span><br>                msg.channel.send(<span class="hljs-string">`申請資料如下:\n申請人 &lt;@<span class="hljs-subst">$&#123;msg.author.id&#125;</span>&gt;\n權限組 <span class="hljs-subst">$&#123;DoData[<span class="hljs-number">0</span>]&#125;</span>\ntagID <span class="hljs-subst">$&#123;DoData[<span class="hljs-number">2</span>]&#125;</span>\n正確 Y / 錯誤 N`</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>                <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;Y&#x27;</span>) &#123;<br>                    msg.channel.send(<span class="hljs-string">&#x27;已確認，輸入資料中...&#x27;</span>);<br>                    <span class="hljs-comment">//與舊資料比對，已有此人資料變進行更新</span><br>                    EditOldPartyPower();<br>                    GetGas.postPartyPower(DoData, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">dataED</span>) </span>&#123;<br>                        <span class="hljs-keyword">if</span> (dataED) &#123;<br>                            <span class="hljs-comment">//bot內變數不會更新，手動更新</span><br>                            PartyPowerData.unshift(&#123;<br>                                <span class="hljs-string">&#x27;ID&#x27;</span>: DoData[<span class="hljs-number">0</span>],<br>                                <span class="hljs-string">&#x27;type&#x27;</span>: DoData[<span class="hljs-number">1</span>],<br>                                <span class="hljs-string">&#x27;Power&#x27;</span>: DoData[<span class="hljs-number">2</span>]<br>                            &#125;);<br>                            msg.channel.send(<span class="hljs-string">&#x27;輸入完畢!&#x27;</span>);<br>                        &#125; <span class="hljs-keyword">else</span> &#123;<br>                            msg.channel.send(<span class="hljs-string">&#x27;資料輸入失敗，請重新嘗試&#x27;</span>);<br>                        &#125;<br>                        CloseAllDoingFunction();<br>                    &#125;);<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.content === <span class="hljs-string">&#x27;N&#x27;</span>) &#123;<br>                    CloseAllDoingFunction();<br>                    msg.channel.send(<span class="hljs-string">&#x27;已取消行為，請重新下達指令&#x27;</span>)<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    DoingCount--;<br>                    msg.channel.send(<span class="hljs-string">&#x27;無法辨識訊息，請輸入Y/N來選擇&#x27;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (DoUserID !== <span class="hljs-string">&#x27;&#x27;</span>) DoingCount++;<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>        CloseAllDoingFunction();<br>        client.channels.fetch(msg.channel.id).then(<span class="hljs-function"><span class="hljs-params">channel</span> =&gt;</span> channel.send(<span class="hljs-string">&#x27;發生意外錯誤，中斷指令行為，請重新下達指令!&#x27;</span>))<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;CreatePartyFunctionNowError&#x27;</span>, err);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//權限組舊資料更新</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">EditOldPartyPower</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (PartyPowerData) &#123;<br>        <span class="hljs-keyword">const</span> tempPartyData = PartyPowerData.find(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;<br>            <span class="hljs-keyword">return</span> element.ID == DoData[<span class="hljs-number">0</span>];<br>        &#125;)<br><br>        <span class="hljs-keyword">if</span> (tempPartyData !== <span class="hljs-literal">undefined</span>) &#123;<br>            DoData[<span class="hljs-number">2</span>] = tempPartyData.Power + <span class="hljs-string">&#x27;;&#x27;</span> + DoData[<span class="hljs-number">2</span>];<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//#endregion</span><br></code></pre></div></td></tr></table></figure>
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/">用Node.js製作後台零負擔的DiscordBot</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/node-js/">node.js</a>
-                    
-                      <a class="hover-with-bg" href="/tags/bot/">bot</a>
-                    
-                      <a class="hover-with-bg" href="/tags/discord/">discord</a>
-                    
-                      <a class="hover-with-bg" href="/tags/discord-js/">discord.js</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%95%99%E5%AD%B8/">教學</a>
-                    
-                      <a class="hover-with-bg" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/">12th鐵人賽</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> ，轉載請註明出處！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/09/28/12thDay28/" class="nextPageButtom">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Day28 - tag控管機制(2)</span>
-                        <span class="visible-mobile">下一篇</span>
-                      </a>
-                    
-                  </article>
-				  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2020/09/30/12thDay30/" class="nextPageButtom">
-                        <span class="hidden-mobile">Day30 - tag控管機制(4)</span>
-                        <span class="visible-mobile">上一篇</span>
-						<i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+<pre><code>//#region tag系統
+function TagFunction(msg, tempPrefix) &amp;#123;
+    const cmd = msg.content.substring(prefix[tempPrefix].Value.length).split(&#39; &#39;); //以空白分割前綴以後的字串
 
+    switch (cmd[0]) &amp;#123;
+        case &#39;AddUser&#39;: //將使用者加入身份組
+            addUserFunction(msg);
+            break;
+        case &#39;CreateParty&#39;: //創建身分組&amp;增加身分組可tag對象
+            CreatePartyFunction(msg);
+            break;
+        default: //身份組ID
+            tagOther(msg, cmd);
+            break;
+    &amp;#125;
+&amp;#125;
+
+//tag人
+function tagOther(msg, cmd) &amp;#123;
+    CheckID(msg, cmd, msg.author.id, (msg, cmd, haveUserData) =&gt; &amp;#123;
+        CheckParty(msg, cmd, haveUserData, SendTagMessage);
+    &amp;#125;);
+&amp;#125;
+
+//判斷此人有沒有登記資料
+function CheckID(msg, cmd, userID, OtherFunction) &amp;#123;
+    const haveUserData = UserPowerData.find(element =&gt; &amp;#123;
+        return element.userID == userID;
+    &amp;#125;)
+
+    if (haveUserData !== undefined) &amp;#123;
+        //有資料
+        return OtherFunction(msg, cmd, haveUserData);
+    &amp;#125; else &amp;#123;
+        return OtherFunction(msg, cmd, false);
+    &amp;#125;
+&amp;#125;
+
+//根據UserPower獲得Party
+function CheckParty(msg, cmd, haveUserData, OtherFunction) &amp;#123;
+    let havePartyPower;
+    havePartyPower = PartyPowerData.filter(element =&gt; &amp;#123;
+        if (haveUserData.Joins[i].indexOf(element.ID) != -1) &amp;#123;
+            return element.Power.indexOf(cmd[1]) != -1
+        &amp;#125;
+    &amp;#125;)
+
+    if (isEmptyObject(havePartyPower)) &amp;#123;
+        OtherFunction(msg, cmd, haveUserData, false);
+    &amp;#125; else &amp;#123;
+        OtherFunction(msg, cmd, haveUserData, havePartyPower);
+    &amp;#125;
+&amp;#125;
+
+//傳送訊息單獨實例
+function SendTagMessage(msg, cmd, haveUserData, havePartyPower) &amp;#123;
+    if (haveUserData.IsAdmin) &amp;#123;
+        msg.channel.send(`&lt;@&amp;$&amp;#123;cmd[1]&amp;#125;&gt;\n來自管理員&lt;@$&amp;#123;msg.author.id&amp;#125;&gt;的指令呼叫`);
+    &amp;#125; else if (havePartyPower) &amp;#123;
+        msg.channel.send(`&lt;@&amp;$&amp;#123;cmd[1]&amp;#125;&gt;\n來自&lt;@$&amp;#123;msg.author.id&amp;#125;&gt;的指令呼叫`);
+    &amp;#125; else &amp;#123;
+        msg.channel.send(&#39;無權限，請確認參數是否正確&#39;);
+    &amp;#125;
+&amp;#125;
+
+//將xxx加入身分組
+function addUserFunction(msg) &amp;#123;
+    try &amp;#123;
+        if (DoUserID === &#39;&#39;) &amp;#123;
+            tempIsAdmin = CheckID(msg, null, msg.author.id, function(msg, cmd, haveUserData) &amp;#123;
+                if (haveUserData.IsAdmin) return true;
+                else return false;
+            &amp;#125;);
+            if (tempIsAdmin) &amp;#123;
+                nowDoFunction = addUserFunctionNow;
+                DoUserID = msg.author.id;
+                DoData = new Array;
+                msg.channel.send(&#39;請輸入要加入的使用者id&#39;);
+            &amp;#125; else &amp;#123;
+                msg.channel.send(&#39;此指令只有管理員可執行&#39;);
+            &amp;#125;
+        &amp;#125; else &amp;#123;
+            msg.channel.send(&#39;有其他人正在使用續行中，請稍等&#39;);
+        &amp;#125;
+    &amp;#125; catch (err) &amp;#123;
+        console.log(&#39;addUserFunctionError&#39;, err);
+    &amp;#125;
+&amp;#125;
+
+//將xxx加入身份組(續行方法)
+function addUserFunctionNow(msg) &amp;#123;
+    try &amp;#123;
+        switch (DoingCount) &amp;#123;
+            case 0:
+                DoData.push(msg.content); //加入使用者id
+                DoData.push(msg.author.username); //加入申請者名字
+                msg.channel.send(`請輸入要加入的群組`);
+                break;
+            case 1:
+                DoData.push(msg.content); //加入群組
+                DoData.push(false); //IsAdmin預設False不可修改
+                msg.channel.send(`申請資料如下:\n申請人 &lt;@$&amp;#123;msg.author.id&amp;#125;&gt;\n使用者 &lt;@$&amp;#123;DoData[0]&amp;#125;&gt;\n加入權限組 $&amp;#123;DoData[2]&amp;#125;\n正確 Y / 錯誤 N`);
+                break;
+            case 2:
+                if (msg.content === &#39;Y&#39;) &amp;#123;
+                    msg.channel.send(&#39;已確認，輸入資料中...&#39;);
+                    //與舊資料比對，已有此人資料變進行更新
+                    CheckID(msg, null, DoData[0], EditOldUserPower);
+                    GetGas.postUserPower(DoData, function(dataED) &amp;#123;
+                        if (dataED) &amp;#123;
+                            //bot內變數不會更新，手動更新
+                            UserPowerData.unshift(&amp;#123;
+                                &#39;userID&#39;: DoData[0],
+                                &#39;userName&#39;: DoData[1],
+                                &#39;Joins&#39;: DoData[2],
+                                &#39;IsAdmin&#39;: DoData[3]
+                            &amp;#125;);
+                            msg.channel.send(&#39;輸入完畢!&#39;);
+                        &amp;#125; else &amp;#123;
+                            msg.channel.send(&#39;資料輸入失敗，請重新嘗試&#39;);
+                        &amp;#125;
+                        CloseAllDoingFunction();
+                    &amp;#125;);
+                &amp;#125; else if (msg.content === &#39;N&#39;) &amp;#123;
+                    CloseAllDoingFunction();
+                    msg.channel.send(&#39;已取消行為，請重新下達指令&#39;)
+                &amp;#125; else &amp;#123;
+                    DoingCount--;
+                    msg.channel.send(&#39;無法辨識訊息，請輸入Y/N來選擇&#39;);
+                &amp;#125;
+                break;
+        &amp;#125;
+        if (DoUserID !== &#39;&#39;) DoingCount++;
+    &amp;#125; catch (err) &amp;#123;
+        CloseAllDoingFunction();
+        client.channels.fetch(msg.channel.id).then(channel =&gt; channel.send(&#39;發生意外錯誤，中斷指令行為，請重新下達指令!&#39;))
+        console.log(&#39;addUserFunctionNowError&#39;, err);
+    &amp;#125;
+&amp;#125;
+
+//用戶舊資料更新
+function EditOldUserPower(msg, cmd, haveUserData) &amp;#123;
+    //二次確認
+    if (haveUserData) &amp;#123;
+        if (DoData[0] == haveUserData.userID) &amp;#123;
+            DoData[2] = haveUserData.Joins + &#39;;&#39; + DoData[2];
+            DoData[3] = haveUserData.IsAdmin;
+            return true;
+        &amp;#125; else return false;
+    &amp;#125; else return false;
+&amp;#125;
+
+//創建身分組&amp;增加身分組可tag對象
+function CreatePartyFunction(msg) &amp;#123;
+    try &amp;#123;
+        if (DoUserID === &#39;&#39;) &amp;#123;
+            tempIsAdmin = CheckID(msg, null, msg.author.id, function(msg, cmd, haveUserData) &amp;#123;
+                if (haveUserData) &amp;#123;
+                    if (haveUserData.IsAdmin) return true;
+                    else return false;
+                &amp;#125; else return false;
+            &amp;#125;);
+            if (tempIsAdmin) &amp;#123;
+                nowDoFunction = CreatePartyFunctionNow;
+                DoUserID = msg.author.id;
+                DoData = new Array;
+                msg.channel.send(&#39;請輸入身份組名稱&#39;);
+            &amp;#125; else &amp;#123;
+                msg.channel.send(&#39;此指令只有管理員可執行&#39;);
+            &amp;#125;
+        &amp;#125; else &amp;#123;
+            msg.channel.send(&#39;有其他人正在使用續行中，請稍等&#39;);
+        &amp;#125;
+    &amp;#125; catch (err) &amp;#123;
+        console.log(&#39;CreatePartyFunctionError&#39;, err);
+    &amp;#125;
+&amp;#125;
+
+//創建身分組&amp;增加身分組可tag對象(續行)
+function CreatePartyFunctionNow(msg) &amp;#123;
+    try &amp;#123;
+        switch (DoingCount) &amp;#123;
+            case 0:
+                DoData.push(msg.content); //身分組ID
+                DoData.push(&#39;2&#39;); //type 2
+                msg.channel.send(`請輸入要加入的tagID`);
+                break;
+            case 1:
+                DoData.push(msg.content); //加入tagID
+                msg.channel.send(`申請資料如下:\n申請人 &lt;@$&amp;#123;msg.author.id&amp;#125;&gt;\n權限組 $&amp;#123;DoData[0]&amp;#125;\ntagID $&amp;#123;DoData[2]&amp;#125;\n正確 Y / 錯誤 N`);
+                break;
+            case 2:
+                if (msg.content === &#39;Y&#39;) &amp;#123;
+                    msg.channel.send(&#39;已確認，輸入資料中...&#39;);
+                    //與舊資料比對，已有此人資料變進行更新
+                    EditOldPartyPower();
+                    GetGas.postPartyPower(DoData, function(dataED) &amp;#123;
+                        if (dataED) &amp;#123;
+                            //bot內變數不會更新，手動更新
+                            PartyPowerData.unshift(&amp;#123;
+                                &#39;ID&#39;: DoData[0],
+                                &#39;type&#39;: DoData[1],
+                                &#39;Power&#39;: DoData[2]
+                            &amp;#125;);
+                            msg.channel.send(&#39;輸入完畢!&#39;);
+                        &amp;#125; else &amp;#123;
+                            msg.channel.send(&#39;資料輸入失敗，請重新嘗試&#39;);
+                        &amp;#125;
+                        CloseAllDoingFunction();
+                    &amp;#125;);
+                &amp;#125; else if (msg.content === &#39;N&#39;) &amp;#123;
+                    CloseAllDoingFunction();
+                    msg.channel.send(&#39;已取消行為，請重新下達指令&#39;)
+                &amp;#125; else &amp;#123;
+                    DoingCount--;
+                    msg.channel.send(&#39;無法辨識訊息，請輸入Y/N來選擇&#39;);
+                &amp;#125;
+                break;
+        &amp;#125;
+        if (DoUserID !== &#39;&#39;) DoingCount++;
+    &amp;#125; catch (err) &amp;#123;
+        CloseAllDoingFunction();
+        client.channels.fetch(msg.channel.id).then(channel =&gt; channel.send(&#39;發生意外錯誤，中斷指令行為，請重新下達指令!&#39;))
+        console.log(&#39;CreatePartyFunctionNowError&#39;, err);
+    &amp;#125;
+&amp;#125;
+
+//權限組舊資料更新
+function EditOldPartyPower() &amp;#123;
+    if (PartyPowerData) &amp;#123;
+        const tempPartyData = PartyPowerData.find(element =&gt; &amp;#123;
+            return element.ID == DoData[0];
+        &amp;#125;)
+
+        if (tempPartyData !== undefined) &amp;#123;
+            DoData[2] = tempPartyData.Power + &#39;;&#39; + DoData[2];
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
+
+//#endregion
+</code></pre>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Day29 - tag控管機制(3)</p><p><a href="https://nalocal.github.io/blog/2020/09/29/12thDay29/">https://nalocal.github.io/blog/2020/09/29/12thDay29/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><a href="https://nalocal.github.io/blog"><p>NALocal</p></a></div></div><div class="level-item is-narrow"><div><h6>發佈於</h6><p>2020-09-29</p></div></div><div class="level-item is-narrow"><div><h6>更新於</h6><p>2021-09-16</p></div></div><div class="level-item is-narrow"><div><h6>許可協議</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="recommend-area"><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相關文章</span><br><span>  1.<a class="is-size-6" href="/2020/09/30/12thDay30/" target="_blank">Day30 - tag控管機制(4)</a><br></span><span>  2.<a class="is-size-6" href="/2020/09/28/12thDay28/" target="_blank">Day28 - tag控管機制(2)</a><br></span><span>  3.<a class="is-size-6" href="/2020/09/27/12thDay27/" target="_blank">Day27 - tag控管 - 續行方法解說</a><br></span><span>  4.<a class="is-size-6" href="/2020/09/26/12thDay26/" target="_blank">Day26 - tag控管機制(1)</a><br></span><span>  5.<a class="is-size-6" href="/2020/09/25/12thDay25/" target="_blank">Day25 - 權限系統規格</a><br></span><span>  6.<a class="is-size-6" href="/2020/09/24/12thDay24/" target="_blank">Day24 - 愛麗絲安靜!</a><br></span><span>  7.<a class="is-size-6" href="/2020/09/23/12thDay23/" target="_blank">Day23 - 音樂系統的歌單批量載入(額外)</a><br></span><span>  8.<a class="is-size-6" href="/2020/09/22/12thDay22/" target="_blank">Day22 - 音樂系統的多群組化(額外)</a><br></span></div></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/css/share.min.css"><div class="social-share"></div><script src="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜歡這篇文章？打賞一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付寶</span><span class="qrcode"><img src="https://raw.githubusercontent.com/removeif/blog_image/master/img/2019/20190802135456.png" alt="支付寶"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/removeif/blog_image/master/img/2019/20190802135550.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2020/09/30/12thDay30/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Day30 - tag控管機制(4)</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2020/09/28/12thDay28/"><span class="level-item">Day28 - tag控管機制(2)</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--><div class="card"><div class="card-content"><div class="title is-5">評論</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.0/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-TW',
+            id: '8374f6210a466059f8ac2494af55546d',
+            repo: 'nalocal.github.io',
+            owner: 'NALocal',
+            clientID: '9a33a548232178c23121',
+            clientSecret: 'bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6',
+            admin: ["NALocal"],
+            createIssueManually: true,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
             
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="gitalk-container"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#gitalk-container', function() {
-      Fluid.utils.createCssLink('/css/gitalk.css')
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
-        var options = Object.assign(
-          {"clientID":"9a33a548232178c23121","clientSecret":"bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6","repo":"nalocal.github.io","owner":"NALocal","admin":["NALocal"],"language":"zh-TW","perPage":50,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":false},
-          {
-            id: '02fee6967b7d3399e88bc5111b0760c4'
-          }
-        )
-        var gitalk = new Gitalk(options);
-        gitalk.render('gitalk-container');
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-		
-
-		
-		  <a id="scroll-top-button" href="#" role="button">
-			<i class="iconfont icon-arrowup" aria-hidden="true"></i>
-		  </a>
-		
-
-		
-		  <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">關鍵字</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-		
-
-		
-		  <div class="col-lg-7 mx-auto nopadding-x-md">
-			<div class="container custom mx-auto">
-			   
-			</div>
-		  </div>
-		
-	  </main>
-	  <!-- AJAX-SCRIPTS -->
-	  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script defer>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-  </div>
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <span>java is a fucking shit</span> <i class="iconfont icon-love"></i> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            文章總共被瀏覽了 
-            <span id="busuanzi_value_site_pv"></span>
-             次喔
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            有 
-            <span id="busuanzi_value_site_uv"></span>
-             人曾經來過這裡呢
-          </span>
-      
-    
-  </div>
-
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-    <!-- Google gtag.js -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SWFNWD1RD"></script>
-    <script defer>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-1SWFNWD1RD');
-    </script>
-  
-
-  
-
-  
-
-  
-
-
-
-
-<script>
-$(document)
-.ajaxStart(function () {
-//NProgress.start();
-})
-.ajaxStop(function () {
-//NProgress.done();
-if ($(window).scrollTop() > 50) {
-	$(".pagination").fadeIn();
-} else {
-	$(".pagination").fadeOut();
-}
-});
-$(document).pjax("a[target!=_blank]", "#ajaxD", {fragment:"#ajaxD", timeout:5000});
-//$(document).pjax("a.extend[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-//$(document).pjax("a.page-number[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-//$(document).pjax("a.nextPageButtom[target!=_blank]", "#board", {fragment:"#board", timeout:5000});
-</script>
-<script>
-$.getScript("https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js");
-//加載修復區
-$(document).on('pjax:send',function(){
-  //destroy()方法
-  if ($('.toc').length) Fluid.plugins.delTocBot(); 
-})
-$(document).on('pjax:complete', function() {
-	$("script[data-pjax], .pjax-reload script").each(function () {
-	  $(this).parent().append($(this).remove()); //所有符合標籤物件重載(目前:0)
-	});
-	Fluid.plugins.initAnchor(); //錨點重載
-	Fluid.plugins.initTocBot(); //文章目錄重載
-	Fluid.plugins.initCopyCode(); //highlight copy功能重載
-	Fluid.events.registerNavbarEvent(); //導覽頁css重載
-	Fluid.events.registerScrollTopArrowEvent(); //往上按鈕重載
-	Fluid.events.registerScrollDownArrowEvent(); //往下
-    $.getScript("/js/img-lazyload.js"); //懶加載
-    $.getScript("/js/color-schema.js"); //切換主題黑白
-	Fluid.plugins.initFancyBox(); //圖片加載
-	window.NProgress.done(); //關閉進度條
-});
-//懶加載
-$(document).ready(function(){$.getScript("https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"); })
-</script>
-<link rel="stylesheet" href="/dist/APlayer.min.css">
-<div id="aplayer"></div>
-<script type="text/javascript" src="/dist/APlayer.min.js"></script>
-<script type="text/javascript" src="/dist/music.js"></script>
-
-<script>
-$(document).ready(function(){
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 50) {
-            $(".pagination").fadeIn();
-        } else {
-            $(".pagination").fadeOut();
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://avatars.githubusercontent.com/u/62000156" alt="微笑の家"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">微笑の家</p><p class="is-size-6 is-block">請給予我拯救他人的力量</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>台灣</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分類</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">標籤</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/NALocal" target="_blank" rel="noopener">關注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/NALocal"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://www.facebook.com/profile.php?id=100003120783130"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:lion31lion31@gmail.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"來源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新評論</h3><span class="body_hot_comment">加載中，最新評論有1分鐘緩存...</span></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-14T04:00:00.000Z">2021-12-14</time></p><p class="title"><a href="/2021/12/14/racingScript-worldFlipper/">競速疊屍腳本 - 台版彈射世界</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-16T04:00:00.000Z">2021-11-16</time></p><p class="title"><a href="/2021/11/16/fluidThemeShare/">fluid支持pjax主題源碼分享</a></p><p class="categories"><a href="/categories/hexo%E4%B8%BB%E9%A1%8C%E5%88%86%E4%BA%AB/">hexo主題分享</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-16T02:00:00.000Z">2021-11-16</time></p><p class="title"><a href="/2021/11/16/live2DShareList/">公開Live2D模型蒐集分享</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-09-27T05:47:20.000Z">2021-09-27</time></p><p class="title"><a href="/2021/09/27/aboutDiscordJs13/">關於discord.js升級至13版本</a></p><p class="categories"><a href="/categories/BaseDiscordBot/">BaseDiscordBot</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-09-16T05:57:00.000Z">2021-09-16</time></p><p class="title"><a href="/2021/09/16/hello-smile/">你好，微笑之家</a></p><p class="categories"><a href="/categories/%E6%97%A5%E8%A8%98/">日記</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分類</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/BaseDiscordBot/"><span class="level-start"><span class="level-item">BaseDiscordBot</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/hexo%E4%B8%BB%E9%A1%8C%E5%88%86%E4%BA%AB/"><span class="level-start"><span class="level-item">hexo主題分享</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%97%A5%E8%A8%98/"><span class="level-start"><span class="level-item">日記</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"><span class="level-start"><span class="level-item">鐵人賽</span></span><span class="level-end"><span class="level-item tag">31</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"><span class="level-start"><span class="level-item">用Node.js製作後台零負擔的DiscordBot</span></span><span class="level-end"><span class="level-item tag">31</span></span></a></li></ul></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">歸檔</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2021/12/"><span class="level-start"><span class="level-item">十二月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2021/09/"><span class="level-start"><span class="level-item">九月 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">31</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">標籤</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/bot/"><span class="tag">bot</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/discord/"><span class="tag">discord</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/discord-js/"><span class="tag">discord.js</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/node-js/"><span class="tag">node.js</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%99%E5%AD%B8/"><span class="tag">教學</span><span class="tag is-grey-lightest">32</span></a></div><div class="control"><a class="tags has-addons" href="/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"><span class="tag">12th鐵人賽</span><span class="tag is-grey-lightest">31</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%97%A5%E8%A8%98/"><span class="tag">日記</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Live2D/"><span class="tag">Live2D</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/fluid/"><span class="tag">fluid</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%88%E5%B0%84%E4%B8%96%E7%95%8C/"><span class="tag">彈射世界</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%85%B3%E6%9C%AC/"><span class="tag">腳本</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%81%8A%E6%88%B2/"><span class="tag">遊戲</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">訂閱更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="訂閱"></div></div></form></div></div></div><!--!--><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="微笑家" height="28"></a><p class="size-small"><span>&copy; 2021 NALocal</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> <br><span>© 版權說明：[本網站所有內容均收集於互聯網或自己創作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便於網友與自己學習交流，如有侵權，請<a href="/message" target="_blank">留言</a>，立即處理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已運行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小時 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！ ❤️";
+        }var now = new Date();setInterval("createTime('2021/09/15 18:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感謝 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光臨！ ❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/NALocal/NALocal.github.io"><i class="fab fa-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="/dist/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/dist/APlayer.min.js"></script><script type="text/javascript" src="/dist/music.js"></script></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("zh-TW");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到頂端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('9a33a548232178c23121','bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6','NALocal','nalocal.github.io',false);})</script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什麼..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什麼...","untitled":"(無標題)","posts":"文章","pages":"頁面","categories":"分類","tags":"標籤"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
         }
-    });
-});
-</script>
 
+        function loadMathJax() { //加载mathjax
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\(', '\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        };
 
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
-</html>
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('9a33a548232178c23121','bbdfbe2d45288ac4b37a315cb1aa7c1a50dd9fa6','NALocal','nalocal.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body></html>
