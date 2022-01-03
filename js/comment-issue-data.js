@@ -201,19 +201,20 @@ function loadIndexHotData(authorizationToken) {
         ajaxReqForGitHub(repoIssuesUrl + "?per_page=10&sort=comments", authorizationToken, function (result) {
 
             $.each(result, function (i, item) {
-				if(isNull(item.body)) continue;
-                // 标签配色
-                if (i >= 0 & i < 4) {
-                    classDiv = "class=\"item level3\"";
-                } else if (i >= 4 & i < 7) {
-                    classDiv = "class=\"item level2\"";
-                } else if (i >= 7 & i < 9) {
-                    classDiv = "class=\"item level1\"";
-                } else {
-                    classDiv = "class=\"item level0\"";
-                }
-                hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) + '\" ' + classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
-            })
+				if(!isNull(item.body)){
+					// 标签配色
+					if (i >= 0 & i < 4) {
+						classDiv = "class=\"item level3\"";
+					} else if (i >= 4 & i < 7) {
+						classDiv = "class=\"item level2\"";
+					} else if (i >= 7 & i < 9) {
+						classDiv = "class=\"item level1\"";
+					} else {
+						classDiv = "class=\"item level0\"";
+					}
+					hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) + '\" ' + classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
+				}
+			})
             hotDiv.html("");
             if (hotContent == "") {
                 hotDiv.append("無數據紀錄！");
