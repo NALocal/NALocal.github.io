@@ -106,7 +106,7 @@ function fillComments(result, authorizationToken) {
 
 function dealWtihContentStr(contentStr) {
     if (contentStr == undefined || contentStr == "") {
-        contentStr = "内容为空！";
+        contentStr = "內容為空！";
     }
 
     // 替换图片
@@ -188,7 +188,7 @@ function renderCommentData(COMMENT_ARR) {
         $(".body_hot_comment").html(htmlContentWidget);
         loadPjax();
     } else {
-        $(".body_hot_comment").html("无数据记录！");
+        $(".body_hot_comment").html("無數據紀錄！");
     }
 }
 
@@ -201,6 +201,7 @@ function loadIndexHotData(authorizationToken) {
         ajaxReqForGitHub(repoIssuesUrl + "?per_page=10&sort=comments", authorizationToken, function (result) {
 
             $.each(result, function (i, item) {
+				if(isNull(item.body)) continue;
                 // 标签配色
                 if (i >= 0 & i < 4) {
                     classDiv = "class=\"item level3\"";
@@ -215,7 +216,7 @@ function loadIndexHotData(authorizationToken) {
             })
             hotDiv.html("");
             if (hotContent == "") {
-                hotDiv.append("无数据记录！");
+                hotDiv.append("無數據紀錄！");
             } else {
                 hotDiv.append(hotContent);
                 loadPjax();
@@ -287,7 +288,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
                         verify: false,
                         appId: appId,
                         appKey: appKey,
-                        placeholder: '留下您的高见！',
+                        placeholder: '留下您的高見！',
                         avatar: 'mp',
                         avatarForce: false,
                         meta: ["nick", "mail", "link"],
