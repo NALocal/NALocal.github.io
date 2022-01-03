@@ -289,7 +289,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
                         verify: false,
                         appId: appId,
                         appKey: appKey,
-                        placeholder: '留下您的高見！',
+                        placeholder: '留下您的高见！',
                         avatar: 'mp',
                         avatarForce: false,
                         meta: ["nick", "mail", "link"],
@@ -336,7 +336,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
             }
         }
         // console.clear();
-        console.log("~~~~欢迎光临！记得有时间多来看看哦，https://removeif.github.io/ ~~~~")
+        console.log("~~~~歡迎光臨！記得有時間多來看看喔，https://nalocal.github.io/ ~~~~")
     }
         ,
         500
