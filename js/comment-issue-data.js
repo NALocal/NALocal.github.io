@@ -211,6 +211,7 @@ function loadIndexHotData(authorizationToken) {
                 } else {
                     classDiv = "class=\"item level0\"";
                 }
+				console.log(item);
                 hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) + '\" ' + classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
             })
             hotDiv.html("");
