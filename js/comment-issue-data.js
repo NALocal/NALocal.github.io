@@ -201,7 +201,7 @@ function loadIndexHotData(authorizationToken) {
         ajaxReqForGitHub(repoIssuesUrl + "?per_page=10&sort=comments", authorizationToken, function (result) {
 
             $.each(result, function (i, item) {
-				if(!isNull(item.body)){
+				if(item.body != null){
 					// 标签配色
 					if (i >= 0 & i < 4) {
 						classDiv = "class=\"item level3\"";
