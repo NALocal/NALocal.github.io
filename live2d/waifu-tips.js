@@ -284,6 +284,8 @@ function loadTipsMessage(result) {
                     text = referrer_message.so[0] + referrer.search.split('&q=')[1].split('&')[0] + referrer_message.so[1];
                 else if (domain == 'google')
                     text = referrer_message.google[0] + document.title.split(referrer_message.google[2])[0] + referrer_message.google[1];
+				else if (domain == 'ithome')
+					text = referrer_message.ithome[0];
                 else {
                     $.each(result.waifu.referrer_hostname, function(i,val) {if (i==referrer.hostname) referrer.hostname = getRandText(val)});
                     text = referrer_message.default[0] + referrer.hostname + referrer_message.default[1];
