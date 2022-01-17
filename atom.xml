@@ -6,7 +6,7 @@
   <link href="https://nalocal.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://nalocal.github.io/blog/"/>
-  <updated>2021-12-29T10:31:31.553Z</updated>
+  <updated>2022-01-17T10:51:12.548Z</updated>
   <id>https://nalocal.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BDB更新日誌#1</title>
+    <link href="https://nalocal.github.io/blog/2022/01/17/bdb1/"/>
+    <id>https://nalocal.github.io/blog/2022/01/17/bdb1/</id>
+    <published>2022-01-17T10:00:00.000Z</published>
+    <updated>2022-01-17T10:51:12.548Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;主要更新&quot;&gt;&lt;a href=&quot;#主要更新&quot; class=&quot;headerlink&quot; title=&quot;主要更新&quot;&gt;&lt;/a&gt;主要更新&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;bot啟動時自動註冊斜線命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;次要更新&quot;&gt;&lt;a href=&quot;#次要更新&quot; class=&quot;headerlink&quot; title=&quot;次要更新&quot;&gt;&lt;/a&gt;次要更新&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;斜線命令相關邏輯調整&lt;/li&gt;
+&lt;li&gt;修改js檔名&lt;/li&gt;
+&lt;li&gt;修改部分註解&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;github&quot;&gt;&lt;a href=&quot;#github&quot; class=&quot;headerlink&quot; title=&quot;github&quot;&gt;&lt;/a&gt;github&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/NALocal/BaseDiscordBot/tree/2e168a31c74994c18e276f8f4bf1ff67d74803c9&quot;&gt;github頁面&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="BaseDiscordBot" scheme="https://nalocal.github.io/blog/categories/BaseDiscordBot/"/>
+    
+    <category term="更新日誌" scheme="https://nalocal.github.io/blog/categories/BaseDiscordBot/%E6%9B%B4%E6%96%B0%E6%97%A5%E8%AA%8C/"/>
+    
+    
+    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
+    
+    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
+    
+    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
+    
+    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
+    
+    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
+    
+  </entry>
   
   <entry>
     <title>競速疊屍腳本 - 台版彈射世界</title>
@@ -574,37 +611,6 @@
     
     
     <summary type="html">&lt;p&gt;昨天我們在雲端上建好了試算表&lt;br&gt;將GAS發布成API的GET方法，只要我們訪問就能成功獲取試算表資料&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="鐵人賽" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-    <category term="用Node.js製作後台零負擔的DiscordBot" scheme="https://nalocal.github.io/blog/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/%E7%94%A8Node-js%E8%A3%BD%E4%BD%9C%E5%BE%8C%E5%8F%B0%E9%9B%B6%E8%B2%A0%E6%93%94%E7%9A%84DiscordBot/"/>
-    
-    
-    <category term="node.js" scheme="https://nalocal.github.io/blog/tags/node-js/"/>
-    
-    <category term="bot" scheme="https://nalocal.github.io/blog/tags/bot/"/>
-    
-    <category term="discord" scheme="https://nalocal.github.io/blog/tags/discord/"/>
-    
-    <category term="discord.js" scheme="https://nalocal.github.io/blog/tags/discord-js/"/>
-    
-    <category term="教學" scheme="https://nalocal.github.io/blog/tags/%E6%95%99%E5%AD%B8/"/>
-    
-    <category term="12th鐵人賽" scheme="https://nalocal.github.io/blog/tags/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Day17 - GAS抓表(1)</title>
-    <link href="https://nalocal.github.io/blog/2020/09/17/12thDay17/"/>
-    <id>https://nalocal.github.io/blog/2020/09/17/12thDay17/</id>
-    <published>2020-09-17T01:48:31.000Z</published>
-    <updated>2021-12-29T10:34:23.278Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;今天我們來寫GAS&lt;/p&gt;</summary>
     
     
     
